@@ -52,7 +52,7 @@
         width: 30%;
         margin:16px 5% 0 0;
         position: relative;
-        flex-direction: column;
+
         &__pict{
           .number{
             position: absolute;
@@ -130,7 +130,7 @@
       display: flex;
       margin:0 auto;
       .list{
-        display: block;
+        display: inline-block;
         &__pict{
 
         }
@@ -143,6 +143,51 @@
 
         }
       }
+    }
+  }
+  .pickup{
+    width: 100%;
+    height: 958px;
+    text-align: center;
+    background: gray;
+    .category{
+      padding-top: 80px;
+      font-size: 28px;
+      font-weight: bold;
+      &__sub{
+        font-size: 24px;
+        color: blue;
+    .lists{
+      color: black;
+      display: flex;
+      width: 780px;
+      margin: 0 auto;
+      .list{
+        width: 220px;
+        display: inline-block;
+      }
+    }
+    }
+    }
+    .bland{  
+      padding: 80px 0;
+      font-size: 28px;
+      font-weight: bold;
+      &__sub{
+        font-size: 24px;
+        color: blue;
+    .lists{
+      color: black;
+      display: flex;
+      width: 780px;
+      margin: 0 auto;
+      .list{
+        width: 220px;
+        display: inline-block;
+      }
+    }
+      }
+
     }
   }
   .advertisement2{
