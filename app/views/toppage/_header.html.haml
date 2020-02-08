@@ -1,1 +1,26 @@
-.h
+.header
+  .headerBody
+    .headerBox
+      .icon
+        =link_to image_tag('logo.png', size: '140x40')
+      %form.form
+        %input{placeholder: "キーワードから探す", class: "form__input", type: "text"}
+        .form__icon
+          =link_to image_tag("icon-search 1.png", size: "19x19") 
+      .searchList
+        .listBox
+    .underBody
+      %ul.left
+        .leftCategori
+          カテゴリー
+          .CategoriNone
+          .CategoriList
+            .CategoriList__item
+        .leftBrand
+          ブランド
+          .brandNone
+      %ul.right
+        %li.right__login
+          =link_to "ログイン", "#", class: "right__none"
+        %li.right__signup
+          =link_to "新規会員登録", "#", class: "right__none"
