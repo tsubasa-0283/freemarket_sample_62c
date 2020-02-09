@@ -5,12 +5,13 @@
         .introduction-title__main
           人生を変えるフリマアプリ
         .introduction-title__sub
-          FURIMAはだれでも簡単に出品・購入できるフリマアプリです
+          FURIMAはだれでも簡単に出品・購入できる
+          %brフリマアプリです
       .download
         .download__app-store
-          -# = image_tag('Download_on_the_App_Store_Badge_US-UK_blk_092917.eps',size:"180×53")
+          = link_to image_tag('App-Store-badge.svg'),""
         .download__google-play
-          -# = image_tag('google-play-badge.png',size:"180×53")
+          = link_to image_tag('google-play-badge.png'),""
   .reason
     .reason__title
       FURIMAが選ばれる理由
@@ -21,7 +22,8 @@
             1
           = image_tag('pict-reason-01.jpg',size:"192x192")
         .list__text
-          3分ですぐに出品
+          %span 3分
+          ですぐに出品
         .list__description
           スマホで入力するだけで簡単に出品できる！
       .list
@@ -30,7 +32,8 @@
             2
           = image_tag('pict-reason-02.jpg',size:"192x192")
         .list__text
-          シンプルで使いやすい
+          %span シンプル
+          で使いやすい
         .list__description
           めんどくさい入力は必要なく、検索も購入もスムーズ！
       .list
@@ -39,7 +42,8 @@
             3
           = image_tag('pict-reason-03.jpg',size:"192x192")
         .list__text
-          手数料業界最安
+          手数料
+          %span 業界最安
         .list__description
           最大３％でお得に出品＆購入！
   .advertisement1
@@ -53,8 +57,10 @@
         %br
         欲しかったあの商品に出会えるかもしれません。
       .content__btn
-        .content__btn--app-store
-        .content__btn--google-play
+        .content__btn__app-store
+          = link_to image_tag('App-Store-badge.svg'),""
+        .content__btn__google-play
+          = link_to image_tag('google-play-badge.png'),""
   .feature
     .feature__title
       FURIMAの特徴
@@ -189,8 +195,10 @@
       .content__main
         今すぐ無料ダウンロード！
       .content__btn
-        .content__btn--app-store
-        .content__btn--google-store
+        .content__btn__app-store
+          = link_to image_tag('App-Store-badge.svg'),""
+        .content__btn__google-play
+          = link_to image_tag('google-play-badge.png'),""
 
 
       
