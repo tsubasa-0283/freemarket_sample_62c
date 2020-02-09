@@ -124,13 +124,15 @@
     &__title{
       font-size: 27px;
       font-weight: bold;
+      margin-bottom: 25px;
     }
     .lists{
       margin-top: 15px;
       display: flex;
       margin: 0 auto;
       .list{
-        display: inline-block;
+        width: 30%;
+        padding: 0 20px;
         &__pict{
 
         }
@@ -165,7 +167,6 @@
       display: flex;
       .list{
         width: 220px;
-        display: inline-block;
       }
     }
     }
@@ -177,16 +178,6 @@
       &__sub{
         font-size: 24px;
         color: blue;
-    .lists{
-      color: black;
-      display: flex;
-      width: 780px;
-      margin: 0 auto;
-      .list{
-        width: 220px;
-        display: inline-block;
-      }
-    }
       }
 
     }
