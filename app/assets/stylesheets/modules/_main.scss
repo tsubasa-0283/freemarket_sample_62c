@@ -11,7 +11,7 @@
       max-width: 1280px;
       width: 100%;
       margin:0 auto;
-      padding-top: 35px;
+      padding: 35px 60px;
       .introduction-title{
         &__main{
           font-size: 60px;
@@ -22,14 +22,30 @@
           color: white;
           margin-top: 16px;
           text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          font-size: 18px;
         }
   }
       .download{
-        &__app-store{
-          
+        display: flex;
+        margin: 24px 0 0 0;
+        &__app-store a{
+          display: block;
         }
-        &__google-play{
+        &__app-store a:hover{
+          opacity: 0.5;
+        }
+        &__app-store img{
+          width: 180px;
+          vertical-align: bottom;
+          padding-top: 13px;
+        }
 
+        &__google-play img{
+          width: 210px;
+          height: 88px;
+        }
+        &__google-play a:hover{
+          opacity: 0.5;
         }
       }
     }
@@ -44,6 +60,16 @@
       text-align: center;
       font-size: 26px;
       padding-bottom: 15px;
+      position: relative;
+    }
+    &__title:after{
+      content:"";
+      width: 70px;
+      height: 4px;
+      background-color: #3CCACE;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
     .lists{
       text-align: center;
@@ -57,8 +83,8 @@
           .number{
             position: absolute;
             display: inline-block;
-            border: solid 3px blue;
-            background-color: blue;
+            border: solid 3px #3ccace;
+            background-color: #3ccace;
             font-size: 30px;
             padding:10px 20px;
             color: white;
@@ -71,7 +97,7 @@
           line-height: 50px;
           margin-left: 2px;
           span{
-            color: blue;
+            color: #3ccace;
           }
 
         }
@@ -115,6 +141,28 @@
         margin-bottom: 30px;
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
+      &__btn{
+        display: flex;
+        &__app-store a{
+          display: block;
+        }
+        &__app-store a:hover{
+          opacity: 0.5;
+        }
+        &__app-store img{
+          width: 180px;
+          vertical-align: bottom;
+          padding-top: 13px;
+        }
+
+        &__google-play img{
+          width: 210px;
+          height: 88px;
+        }
+        &__google-play a:hover{
+          opacity: 0.5;
+        }
+      }
     }
   }
   .feature{
@@ -126,6 +174,15 @@
       font-size: 27px;
       font-weight: bold;
       margin-bottom: 25px;
+    }
+    &__title:after{
+      content:"";
+      width: 70px;
+      height: 4px;
+      background-color: #3CCACE;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
     .lists{
       margin-top: 15px;
@@ -204,11 +261,28 @@
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__btn{
-        &--app-store{
-
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto 0;
+        &__app-store a{
+          display: block;
         }
-        &--google-play{
+        &__app-store a:hover{
+          opacity: 0.5;
+        }
+        &__app-store img{
+          width: 180px;
+          vertical-align: bottom;
+          padding-top: 13px;
+        }
 
+        &__google-play img{
+          width: 210px;
+          height: 88px;
+        }
+        &__google-play a:hover{
+          opacity: 0.5;
         }
       }
     }
