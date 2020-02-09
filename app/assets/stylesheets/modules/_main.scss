@@ -16,12 +16,12 @@
         &__main{
           font-size: 60px;
           color: white;
-
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
         }
         &__sub{
           color: white;
           margin-top: 16px;
-
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
         }
   }
       .download{
@@ -52,7 +52,7 @@
         width: 30%;
         margin:16px 5% 0 0;
         position: relative;
-        flex-direction: column;
+
         &__pict{
           .number{
             position: absolute;
@@ -108,11 +108,12 @@
       &__title{
         font-size: 27px;
         font-weight: bold;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__text{
         margin-top: 20px;
         margin-bottom: 30px;
-
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
     }
   }
@@ -124,13 +125,15 @@
     &__title{
       font-size: 27px;
       font-weight: bold;
+      margin-bottom: 25px;
     }
     .lists{
       margin-top: 15px;
       display: flex;
-      margin:0 auto;
+      margin: 0 auto;
       .list{
-        display: block;
+        width: 30%;
+        padding: 0 20px;
         &__pict{
 
         }
@@ -145,8 +148,7 @@
       }
     }
   }
-<<<<<<< Updated upstream
-=======
+
   .pickup{
     width: 100%;
     height: 958px;
@@ -160,15 +162,16 @@
       &__sub{
         font-size: 24px;
         color: blue;
-        .lists{
-          color: black;
-          width: 780px;
-          margin: 0 auto;
-          display: flex;
-          .list{
-            width: 220px;r
-          }
-        }
+
+    .lists{
+      color: black;
+      width: 780px;
+      margin: 0 auto;
+      display: flex;
+      .list{
+        width: 220px;
+      }
+    }
     }
     }
     .bland{  
@@ -182,7 +185,7 @@
 
     }
   }
->>>>>>> Stashed changes
+
   .advertisement2{
     height: 360px;
     background-size: cover;
@@ -194,11 +197,11 @@
       &__sub{
         font-size: 24px;
         font-weight: bold;
-
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__main{
         font-size: 35px;
-
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__btn{
         &--app-store{
