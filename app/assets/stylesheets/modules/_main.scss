@@ -108,11 +108,12 @@
       &__title{
         font-size: 27px;
         font-weight: bold;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__text{
         margin-top: 20px;
         margin-bottom: 30px;
-
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
     }
   }
@@ -193,11 +194,11 @@
       &__sub{
         font-size: 24px;
         font-weight: bold;
-
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__main{
         font-size: 35px;
-
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
       &__btn{
         &--app-store{
