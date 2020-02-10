@@ -91,61 +91,98 @@
         .list__img
           = image_tag('icon-01.png',size:"220x150")
         .list__body
-          product3
-          %br
-          30000円
-          %br
-          （税込）
+          .list__body--name
+            product3
+          .list__body--details
+            %ul
+              %p
+                30000円
+              %p
+                = icon('fas','star') 
+                0
+            %p
+              （税込）
       .list
         .list__img
           = image_tag('icon-01.png',size:"220x150")
         .list__body
-          product2
-          %br
-          20000円
-          %br
-          （税込）
+          .list__body--name
+            product2
+          .list__body--details
+            %ul
+              %p
+                20000円
+              %p
+                = icon('fas','star') 
+                0
+            %p
+              （税込）
       .list
         .list__img
           = image_tag('icon-01.png',size:"220x150")
         .list__body
-          product1
-          %br
-          10000円
-          %br
-          （税込）
+          .list__body--name
+            product1
+          .list__body--details
+            %ul
+              %p
+                10000円
+              %p
+                = icon('fas','star') 
+                0
+            %p
+              （税込）
     .bland
       ピックアップブランド
       .bland__sub
         アーカイバ
-    -# .lists
-    -#   .list
-    -#     .list__img
-    -#       = image_tag('icon-01.png',size:"220x150")
-    -#     .list__body
-    -#       product1
-    -#       %br
-    -#       10000円
-    -#       %br
-    -#       （税込）
-    -#   .list
-    -#     .list__img
-    -#       = image_tag('icon-01.png',size:"220x150")
-    -#     .list__body
-    -#       product1 
-    -#       %br
-    -#       20000円
-    -#       %br
-    -#       （税込）
-    -#   .list
-    -#     .list__img
-    -#       = image_tag('icon-01.png',size:"220x150")
-    -#     .list__body
-    -#       product1
-    -#       %br
-    -#       30000円
-    -#       %br
-    -#       （税込）
+    .lists
+      .list
+        .list__img
+          = image_tag('icon-01.png',size:"220x150")
+        .list__body
+          .list__body--name
+            product3
+          .list__body--details
+            %ul
+              %p
+                30000円
+              %p
+                = icon('fas','star') 
+                0
+            %p
+              （税込）
+      .list
+        .list__img
+          = image_tag('icon-01.png',size:"220x150")
+        .list__body
+          .list__body--name
+            product2
+          .list__body--details
+            %ul
+              %p
+                20000円
+              %p
+                = icon('fas','star') 
+                0
+            %p
+              （税込）
+      .list
+        .list__img
+          = image_tag('icon-01.png',size:"220x150")
+        .list__body
+          .list__body--name
+            product1
+          .list__body--details
+            %ul
+              %p
+                10000円
+              %p
+                = icon('fas','star') 
+                0
+            %p
+              （税込）
+
   .advertisement2
     .content
       .content__sub
