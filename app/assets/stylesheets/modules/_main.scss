@@ -77,11 +77,12 @@
       .list{
         width: 30%;
         margin:16px 5% 0 0;
-        position: relative;
-
         &__pict{
+          position: relative;
           .number{
             position: absolute;
+            top: 0;
+            left: 0;
             display: inline-block;
             border: solid 3px #3ccace;
             background-color: #3ccace;
@@ -187,16 +188,14 @@
     .lists{
       margin-top: 15px;
       display: flex;
-      margin: 0 auto;
+      margin:0 auto;
+      justify-content: space-around;
       .list{
         width: 30%;
         padding: 0 20px;
-        &__pict{
-
-        }
         &__sub-title{
-      font-size: 19px;
-      font-weight: bold;
+        font-size: 19px;
+        font-weight: bold;
         }
         &__text{
           font-size: 17px;
@@ -214,35 +213,54 @@
     background: gray;
     .category{
       padding-top: 80px;
+      padding-bottom: 26px;
       font-size: 28px;
       font-weight: bold;
       &__sub{
         font-size: 24px;
         color: blue;
+      }
+    }
+    .bland{  
+      padding: 40px 0 26px 0;
+      font-size: 28px;
+      font-weight: bold;
+      &__sub{
+        font-size: 24px;
+        color: blue;
+      }
+
+    }
 
     .lists{
       color: black;
-      width: 780px;
-      margin: 0 auto;
       display: flex;
+      justify-content: space-around;
+      width: 684px;
+      margin: 0 auto;
       .list{
+        background-color: white;
         width: 220px;
+        margin: 0 20px;
+        text-align: left;
+        &__body{
+          padding:0 20px;
+          ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p{
+              font-size: 16px;
+            }
+          }
+          p{
+            font-size: 10px;
+          }
+        }
       }
     }
     }
-    }
-    .bland{  
-      padding: 80px 0;
-      font-size: 28px;
-      font-weight: bold;
-      &__sub{
-        font-size: 24px;
-        color: blue;
-      }
-
-    }
-  }
-
+    
   .advertisement2{
     height: 360px;
     background-size: cover;
