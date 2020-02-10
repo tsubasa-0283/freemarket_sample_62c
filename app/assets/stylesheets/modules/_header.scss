@@ -1,6 +1,108 @@
-.h {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  z-index: auto;
+* {
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
+.header {
+  padding: 0 60px;
+  .headerBody {
+    max-width: 1040px;
+    width: 100%;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 15px 0 0;
+      .headerBox {
+        height: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        .icon {
+          display: block;
+          padding-bottom: 10px;
+          margin-right: 30px;
+          border-radius: 4px;
+          
+        }
+        .icon a{
+          display: block;
+        }
+        .form {
+          margin-left: auto;
+          height: 42px;
+          width: 100%;
+          display: flex;
+          .form__input {
+            width: calc(100% - 26px);
+            height: 36px;
+            padding: 0 0 0 5px;
+          }
+          .form__icon {
+            width: 36px;
+            border: 0;
+            cursor: pointer;
+            padding: 8px;
+            margin-bottom: 6px;
+            background-color: #3CCACE;
+          }
+        }
+        .searchList {
+          .listBox {
+
+          }
+        }
+      }
+  }
+  .underBody {
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 10px;
+    min-height: 32px;
+    .left {
+      position: relative;
+      display: flex;
+      width: 201px;
+      text-align: left;
+      .leftCategori {
+        text-decoration: none;
+        padding: 0;
+        width: 99px;
+        text-align: left;
+        line-height: 38px;
+        .CategoriNone {
+
+        }
+      }
+      .leftBrand {
+        display: flex;
+        padding: 0 0 0 16px;
+        width: auto;
+        position: relative;
+        line-height: 38px;
+        .brandNone {
+
+        }
+      }
+    }
+    .right {
+      margin-left: auto;
+      display: flex;
+      list-style: none;
+      .right__login {
+        color: #333;
+        line-height: 38px;
+        padding: 0 0 0 16px;
+        width: 70.75px;
+      }
+      .right__signup {
+        color: #333;
+        line-height: 38px;
+        padding: 0 0 0 16px;
+        width: 100px;
+      }
+      .right__none {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
 }
