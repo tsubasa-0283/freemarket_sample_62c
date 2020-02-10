@@ -20,7 +20,7 @@
         .list__pict
           .number
             1
-          = image_tag('pict-reason-01.jpg',size:"192x192")
+          = image_tag('pict-reason-01.jpg',size:"306x306")
         .list__text
           %span 3分
           ですぐに出品
@@ -30,17 +30,17 @@
         .list__pict
           .number
             2
-          = image_tag('pict-reason-02.jpg',size:"192x192")
+          = image_tag('pict-reason-02.jpg',size:"306x306")
         .list__text
           %span シンプル
           で使いやすい
         .list__description
           めんどくさい入力は必要なく、検索も購入もスムーズ！
-      .list
+      .list.list--last
         .list__pict
           .number
             3
-          = image_tag('pict-reason-03.jpg',size:"192x192")
+          = image_tag('pict-reason-03.jpg',size:"306x306")
         .list__text
           手数料
           %span 業界最安
@@ -67,21 +67,21 @@
     .lists
       .list
         .list__pict
-          = image_tag('icon-01.png',size:"84x129")
+          = image_tag('icon-01.png')
         .list__sub-title
           簡単に売り買いできる
         .list__text
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .list
         .list__pict
-          = image_tag('icon-02.png',size:"84x129")
+          = image_tag('icon-03.png',size:"84x129")
         .list__sub-title
           売上金は即日振込みに対応
         .list__text
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       .list
         .list__pict
-          = image_tag('icon-02.png',size:"84x129")
+          = image_tag('icon-04.png',size:"84x129")
         .list__sub-title
           様々な支払いに対応
         .list__text
@@ -91,15 +91,15 @@
     .category
       ピックアップカテゴリー
       .category__sub
-        新規投稿商品
+        = link_to "新規投稿商品","#"
 
     .lists
       .list
         .list__img
-          = image_tag('icon-01.png',size:"220x150")
+          = link_to image_tag('icon-01.png',size:"220x150"),"/"
         .list__body
           .list__body--name
-            product3
+            product1
           .list__body--details
             %ul
               %p
@@ -111,7 +111,7 @@
               （税込）
       .list
         .list__img
-          = image_tag('icon-01.png',size:"220x150")
+          = link_to image_tag('icon-01.png',size:"220x150"),"/"
         .list__body
           .list__body--name
             product2
@@ -126,11 +126,11 @@
               （税込）
       .list
         .list__img
-          = image_tag('icon-01.png',size:"220x150")
+          = link_to image_tag('icon-01.png',size:"220x150"),"/"
         .list__body
 
           .list__body--name
-            product1
+            product3
           .list__body--details
             %ul
               %p
@@ -144,16 +144,16 @@
     .bland
       ピックアップブランド
       .bland__sub
-        アーカイバ
+        = link_to "アーカイバ","#"
 
     .lists
       .list
         .list__img
-          = image_tag('icon-01.png',size:"220x150")
+          = link_to image_tag('icon-01.png',size:"220x150"),"/"
         .list__body
 
           .list__body--name
-            product3
+            product1
           .list__body--details
             %ul
               %p
@@ -166,7 +166,7 @@
 
       .list
         .list__img
-          = image_tag('icon-01.png',size:"220x150")
+          = link_to image_tag('icon-01.png',size:"220x150"),"/"
         .list__body
           .list__body--name
             product2
@@ -182,10 +182,10 @@
 
       .list
         .list__img
-          = image_tag('icon-01.png',size:"220x150")
+          = link_to image_tag('icon-01.png',size:"220x150"),"/"
         .list__body
           .list__body--name
-            product1
+            product3
           .list__body--details
             %ul
               %p
