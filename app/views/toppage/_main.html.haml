@@ -13,14 +13,14 @@
         .download__google-play
           = link_to image_tag('google-play-badge.png'),""
   .reason
-    .reason__title
-      FURIMAが選ばれる理由
-    .lists
-      .list
+    %h2.reasonTitle 
+      FURIMAが選ばれる3つの理由
+    %ul.lists
+      %li.list
         .list__pict
-          .number
-            1
-          = image_tag('pict-reason-01.jpg',size:"306x306")
+
+          %span.number 1
+          = image_tag('pict-reason-01.jpg')
         .list__text
           %span 3分
           ですぐに出品
@@ -30,7 +30,8 @@
         .list__pict
           .number
             2
-          = image_tag('pict-reason-02.jpg',size:"306x306")
+
+          = image_tag('pict-reason-02.jpg')
         .list__text
           %span シンプル
           で使いやすい
@@ -40,7 +41,9 @@
         .list__pict
           .number
             3
-          = image_tag('pict-reason-03.jpg',size:"306x306")
+
+          = image_tag('pict-reason-03.jpg')
+
         .list__text
           手数料
           %span 業界最安
@@ -62,141 +65,130 @@
         .content__btn__google-play
           = link_to image_tag('google-play-badge.png'),""
   .feature
-    .feature__title
+    %h2.featureHead 
       FURIMAの特徴
-    .lists
-      .list
-        .list__pict
+
+    
+    .items
+      .item
+        .item__pict
           = image_tag('icon-01.png')
-        .list__sub-title
-          簡単に売り買いできる
-        .list__text
+        %h3.item__sub-title 簡単に売り買いできる
+          
+        .item__text    
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-      .list
-        .list__pict
-          = image_tag('icon-03.png',size:"84x129")
-        .list__sub-title
+      .item
+        .item__pict
+          = image_tag('icon-03.png')
+        .item__sub-title
           売上金は即日振込みに対応
-        .list__text
+        .item__text     
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
-      .list
-        .list__pict
-          = image_tag('icon-04.png',size:"84x129")
-        .list__sub-title
+      .item
+        .item__pict
+          = image_tag('icon-04.png')
+        .item__sub-title
+
           様々な支払いに対応
-        .list__text
+        .item__text
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
   .pickup
-    .category
-      ピックアップカテゴリー
-      .category__sub
-        = link_to "新規投稿商品","#"
+    %h2.categoryHead ピックアップカテゴリー
+    .products 
+      .productsHead
+        =link_to "新規投稿商品", '#'
+       
+                  
+    
+      .productLists
+        .productList
+          =link_to image_tag('icon-01.png',size:"220x150"), '#'
+          .productList__body
+            %h3.name product3
+            %br
+            30000円
+            %br
+            （税込）
+        .productList
+          =link_to image_tag('icon-01.png',size:"220x150"), '#'
+          .productList__body
+            %h3.name product2
+            %br
+            20000円
+            %br
+            （税込）
+        .productList
+          =link_to image_tag('icon-01.png',size:"220x150"), '#'
+          .productList__body
+            %h3.name product1
+            %br
+            10000円
+            %br
+            （税込）
+            
+      .bland
+        ピックアップブランド
+        .bland__sub
+          アーカイバ
 
-    .lists
-      .list
-        .list__img
-          = link_to image_tag('icon-01.png',size:"220x150"),"/"
-        .list__body
-          .list__body--name
-            product1
-          .list__body--details
-            %ul
-              %p
-                30000円
-              %p
-                = icon('fas','star')
-                0
-            %p
-              （税込）
-      .list
-        .list__img
-          = link_to image_tag('icon-01.png',size:"220x150"),"/"
-        .list__body
-          .list__body--name
-            product2
-          .list__body--details
-            %ul
-              %p
-                20000円
-              %p
-                = icon('fas','star')
-                0
-            %p
-              （税込）
-      .list
-        .list__img
-          = link_to image_tag('icon-01.png',size:"220x150"),"/"
-        .list__body
-
-          .list__body--name
-            product3
-          .list__body--details
-            %ul
-              %p
-                10000円
-              %p
-                = icon('fas','star')
-                0
-            %p
-              （税込）
-
-    .bland
-      ピックアップブランド
-      .bland__sub
-        = link_to "アーカイバ","#"
-
-    .lists
-      .list
-        .list__img
-          = link_to image_tag('icon-01.png',size:"220x150"),"/"
-        .list__body
-
-          .list__body--name
-            product1
-          .list__body--details
-            %ul
-              %p
-                30000円
-              %p
-                = icon('fas','star')
-                0
-            %p
-              （税込）
-
-      .list
-        .list__img
-          = link_to image_tag('icon-01.png',size:"220x150"),"/"
-        .list__body
-          .list__body--name
-            product2
-          .list__body--details
-            %ul
-              %p
-                20000円
-              %p
-                = icon('fas','star')
-                0
-            %p
-              （税込）
-
-      .list
-        .list__img
-          = link_to image_tag('icon-01.png',size:"220x150"),"/"
-        .list__body
-          .list__body--name
-            product3
-          .list__body--details
-            %ul
-              %p
-                10000円
-              %p
-                = icon('fas','star')
-                0
-            %p
-              （税込）
-
-
+      .productLists
+        .productList
+          =link_to image_tag('icon-01.png',size:"220x150")
+          .productList__body
+            %h3.name product3
+            %br
+            30000円
+            %br
+            （税込）
+        .productList
+          =link_to image_tag('icon-01.png',size:"220x150")
+          .productList__body
+            %h3.name product2
+            %br
+            20000円
+            %br
+            （税込）
+        .productList
+          =link_to image_tag('icon-01.png',size:"220x150")
+          .productList__body
+            %h3.name product1
+            %br
+            10000円
+            %br
+            （税込）
+    -# .bland
+    -#   ピックアップブランド
+    -#   .bland__sub
+    -#     アーカイバ
+    -# .lists
+    -#   .list
+    -#     .list__img
+    -#       = image_tag('icon-01.png',size:"220x150")
+    -#     .list__body
+    -#       product1
+    -#       %br
+    -#       10000円
+    -#       %br
+    -#       （税込）
+    -#   .list
+    -#     .list__img
+    -#       = image_tag('icon-01.png',size:"220x150")
+    -#     .list__body
+    -#       product1 
+    -#       %br
+    -#       20000円
+    -#       %br
+    -#       （税込）
+    -#   .list
+    -#     .list__img
+    -#       = image_tag('icon-01.png',size:"220x150")
+    -#     .list__body
+    -#       product1
+    -#       %br
+    -#       30000円
+    -#       %br
+    -#       （税込）
   .advertisement2
     .content
       .content__sub
@@ -207,4 +199,6 @@
         .content__btn__app-store
           = link_to image_tag('App-Store-badge.svg'),""
         .content__btn__google-play
+
           = link_to image_tag('google-play-badge.png'),""
+
