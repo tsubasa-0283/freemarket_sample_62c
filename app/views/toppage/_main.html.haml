@@ -18,6 +18,7 @@
     %ul.lists
       %li.list
         .list__pict
+
           %span.number 1
           = image_tag('pict-reason-01.jpg')
         .list__text
@@ -29,17 +30,20 @@
         .list__pict
           .number
             2
+
           = image_tag('pict-reason-02.jpg')
         .list__text
           %span シンプル
           で使いやすい
         .list__description
           めんどくさい入力は必要なく、検索も購入もスムーズ！
-      .list
+      .list.list--last
         .list__pict
           .number
             3
+
           = image_tag('pict-reason-03.jpg')
+
         .list__text
           手数料
           %span 業界最安
@@ -63,6 +67,7 @@
   .feature
     %h2.featureHead 
       FURIMAの特徴
+
     
     .items
       .item
@@ -83,6 +88,7 @@
         .item__pict
           = image_tag('icon-04.png')
         .item__sub-title
+
           様々な支払いに対応
         .item__text
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
@@ -183,7 +189,6 @@
     -#       30000円
     -#       %br
     -#       （税込）
-
   .advertisement2
     .content
       .content__sub
@@ -194,4 +199,6 @@
         .content__btn__app-store
           = link_to image_tag('App-Store-badge.svg'),""
         .content__btn__google-play
+
           = link_to image_tag('google-play-badge.png'),""
+
