@@ -256,7 +256,7 @@
 
 
   .pickup{
-    padding: 80px 0 0;
+    padding: 80px 0 ;
     background-color: #f8f8f8;
     height: 100%;
     .categoryHead{
@@ -268,22 +268,17 @@
 }
 
 
-    .bland{  
-      padding: 40px 0 26px 0;
+  .bland{  
+    padding-bottom: 80px;
+    background-color: #f8f8f8;
+    height: 100%;
+    .blandHead{
+      text-align: center;
       font-size: 28px;
+      line-height: 1.4;
       font-weight: bold;
-      .blandHead{
-        text-align: center;
-        font-size: 28px;
-        line-height: 1.4;
-        font-weight: bold;
-      }
-      &__sub{
-        font-size: 24px;
-        color: #3CCACE;
       }
     }
-
   }
 
   // ピックアップ部分の共通設定
