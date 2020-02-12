@@ -51,6 +51,14 @@ https://cacoo.com/diagrams/BHYHOxPmYMvwW9ar/B1D77
 | birth_month     | integer |                                     |
 | birth_day       | integer |                                     |
 | tel             | integer | null false, limit: 30, unique: true |
+| post_number     | integer | null: false                         |
+| prefecture      | string  | null: false                         |
+| city            | string  | null: false                         |
+| address         | string  | null: false                         |
+| city            | string  | null: false                         |
+| address         | string  | null: false                         |
+| building        | string  |                                     |
+| tel             | integer |                                     |
 
 ### Association
 - has_many :item_comments
@@ -67,14 +75,7 @@ https://cacoo.com/diagrams/BHYHOxPmYMvwW9ar/B1D77
 | Column      | Type    | Options                         |
 | ----------- | ------- | ------------------------------- |
 | user_id     | integer | null : false, foreign_key: true |
-| post_number | integer | null: false                     |
-| prefecture  | string  | null: false                     |
-| city        | string  | null: false                     |
-| address     | string  | null: false                     |
-| city        | string  | null: false                     |
-| address     | string  | null: false                     |
-| building    | string  |                                 |
-| tel         | integer |                                 |
+|                 |
 
 ### Association
 - belongs_to :user
