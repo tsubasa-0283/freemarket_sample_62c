@@ -1,3 +1,4 @@
+
 .footer {
   background-color: #272727;
   color:#fff;
@@ -29,12 +30,15 @@
     font-size: 14px;
   }
 }
-.footer__logo {
+
+// フッターロゴ
+.footer__logos {
   max-width: 160px;
   width: 100px;
   margin: 0 auto;
 }
 
+// 出品ボタン
 .exhibitionBtn {
   width: 120px;
   background: #3ccace;
