@@ -33,6 +33,8 @@
 | ユーザー管理     | devise                     |
 | クレジットカード管理 | payJP                      |
 
+## ER図
+https://cacoo.com/diagrams/BHYHOxPmYMvwW9ar/B1D77
 
 ## usersテーブル
 
@@ -149,7 +151,6 @@
 | condition_id       | integer    | null: false                     |
 | user_id            | references | null: false, foreign_key: true  |
 | postage_id         | integer    | null: false, foreign_key: true  |
-| delivery_method_id | references | null: false, foreign_key: true  |
 | prefecture         | string     | null: false                     |
 | delivery_day_id    | integer    | null: false                     |
 | price              | integer    | null: false                     |
@@ -169,7 +170,6 @@
 - has_many :images, dependent: :destroy
 - belongs_to :brand
 - belongs_to :postage
-- belongs_to :delivery_method
 - belongs_to :size
 - has_many :item_comments
 - belongs_to :item_state
@@ -264,19 +264,20 @@
 
 ## postagesテーブル(マスターテーブル)
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| burden | string | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| delivery_charge | string | null: false |
 
 ### Association
 - has_many :items
 
 
-## delivery_methodsテーブル(マスターテーブル)
+<!-- ## delivery_methodsテーブル(マスターテーブル)
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | method | string | null: false |
 
 ### Association
-- has_many :items
+- has_many :items -->
+
