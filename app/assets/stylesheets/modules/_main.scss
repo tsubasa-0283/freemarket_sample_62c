@@ -1,59 +1,61 @@
+// main全体の設定
 .main{
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-  .introduction{
+  
+// キャッチコピー(上部)
+  .introduction {
     width: 100%;
     height: 560px;
     background-image: image-url("bg-mainVisual-pict_pc.jpg");
     background-size: cover;
     display: flex;
     align-items: center;
-    .text{
+    .text {
       max-width: 1280px;
       width: 100%;
       margin:0 auto;
       padding: 35px 60px;
       .introduction-title{
-        &__main{
+        &__main {
           font-size: 60px;
-          color: white;
+          color: #fff;
           text-shadow: 0 0 5px rgba(0,0,0,0.4);
         }
-        &__sub{
-          color: white;
+        &__sub {
+          color: #fff;
           margin-top: 16px;
           text-shadow: 0 0 5px rgba(0,0,0,0.4);
           font-size: 18px;
         }
   }
-      .download{
+// ダウンロードボタン
+      .download {
         display: flex;
         margin: 24px 0 0 0;
-        &__app-store a{
+        &__app-store a {
           display: block;
         }
-        &__app-store a:hover{
+        &__app-store a:hover {
           opacity: 0.5;
         }
-        &__app-store img{
+        &__app-store img {
           width: 180px;
           vertical-align: bottom;
           padding-top: 13px;
         }
 
-        &__google-play img{
+        &__google-play img {
           width: 210px;
           height: 88px;
         }
-        &__google-play a:hover{
+        &__google-play a:hover {
           opacity: 0.5;
         }
       }
     }
   }
-  .reason{
-    // width: 100%;
-    // height: 621px;
-    // background-color: white;
+// 紹介文（フリマが選ばれる理由）
+  .reason {
     padding: 60px 20px;
     .reasonTitle{
       text-align: center;
@@ -65,7 +67,7 @@
       margin-bottom: 25px;
       position: relative;
     }
-    .reasonTitle:after{
+    .reasonTitle:after {
       content:"";
       width: 70px;
       height: 4px;
@@ -75,13 +77,13 @@
       transform: translateX(-50%);
       bottom: 0;
     }
-    .lists{
+    .lists {
       text-align: center;
       display: flex;
       max-width: 1020px;
       width: 100%;
       margin: 0 auto;
-      .list{
+      .list {
         width: 30%;
         margin:16px 5% 0 0;
         text-align: left;
@@ -89,10 +91,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        .list__pict{
+        .list__pict {
           position: relative;
           margin-bottom: 20px;
-          .number{
+          .number {
 
             display: inline-block;
             position: absolute;
@@ -111,7 +113,7 @@
             vertical-align: bottom;
           }
         }
-        &__text{
+        &__text {
           font-weight: bold;
           font-size: 24px;
           line-height: 50px;
@@ -119,26 +121,17 @@
           span{
             color: #3ccace;
           }
-
         }
-        &__description{
+        &__description {
           font-size: 18px;
           line-height: 1.5;
           margin-top: 16px;
         }
       }
-     
-    }
-    // &__title::after{
-    //   content: '';
-    //   display: block;
-    //   background: blue;
-    //   margin-bottom: 5px;
-    // }
-    &__text{
     }
   }
-  .advertisement1{        
+// キャッチコピー（中部）
+  .advertisement1 {        
     width: 100%;
     height: 400px;
     background-image: image-url('bg-topMiddleDl-pict.jpg');
@@ -146,52 +139,49 @@
     padding: 60px 20px;
     color: white;
     align-items: center;
-
-    .content{
+    .content {
       margin: 0 auto;
       width: 100%;
       max-width: 1040px;
-      &__title{
+      &__title {
         font-size: 27px;
         font-weight: bold;
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
-      &__text{
+      &__text {
         margin-top: 20px;
         margin-bottom: 30px;
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
-      &__btn{
+      &__btn {
         display: flex;
-        &__app-store a{
+        &__app-store a {
           display: block;
         }
-        &__app-store a:hover{
+        &__app-store a:hover {
           opacity: 0.5;
         }
-        &__app-store img{
+        &__app-store img {
           width: 180px;
           vertical-align: bottom;
           padding-top: 13px;
         }
 
-        &__google-play img{
+        &__google-play img {
           width: 210px;
           height: 88px;
         }
-        &__google-play a:hover{
+        &__google-play a:hover {
           opacity: 0.5;
         }
       }
     }
   }
-  .feature{
+// 紹介文（フリマの特徴）
+  .feature {
     padding: 60px 100px;
-    // width:100%;
-    // height: 632px;
     background-color: #fff;
-    // text-align: center;
-    .featureHead{
+    .featureHead {
       font-size: 27px;
       text-align: center;
       margin: 0 0 40px;
@@ -200,7 +190,7 @@
       padding-bottom: 15px;
       position: relative;
     }
-    .featureHead:after{
+    .featureHead:after {
       content:"";
       width: 70px;
       height: 4px;
@@ -211,22 +201,20 @@
       transform: translateX(-50%);
       bottom: 0;
     }
-
-    .items{
+// 商品情報部分
+    .items {
       max-width: calc(1040px + 20px);
       width: 100%;
-      // margin-top: 15px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      .item{
+      .item {
         display: flex;
         flex-direction: column;
         width: calc(1 / 3 * 100%);
-        // width: 30%;
         text-align: center;
         padding: 0 20px;
-        &__pict{
+        &__pict {
           width: 70%;
           margin: 0 auto;
           line-height: 120px;
@@ -234,28 +222,24 @@
             width: 100%;
             vertical-align: bottom;
           }
-        }
-          
-        &__sub-title{
+        }        
+        &__sub-title {
       margin: 38px 0 10px;
       font-size: 19px;
       font-weight: bold;
-
         }
-        &__text{
+        &__text {
           margin: 0 0 40px;
           font-size: 17px;
           font-weight: 200;
           text-align: left;
         }
       }
-     
     }
-  
   }
 
-
-  .pickup{
+// ピックアップ紹介文ヘッダー(カテゴリー)
+  .pickup {
     padding: 80px 0 ;
     background-color: #f8f8f8;
     height: 100%;
@@ -267,12 +251,12 @@
   }
 }
 
-
-  .bland{  
+// ピックアップ紹介文ヘッダー（ブランド）
+  .bland {  
     padding-bottom: 80px;
     background-color: #f8f8f8;
     height: 100%;
-    .blandHead{
+    .blandHead {
       text-align: center;
       font-size: 28px;
       line-height: 1.4;
@@ -282,31 +266,30 @@
   }
 
   // ピックアップ部分の共通設定
-  .products{
-    
-  .productsHead{
+  .products {
+  .productsHead {
       font-size: 24px;
       text-align: center;
       font-weight: bold;
     }
-    a{
+    a {
       text-decoration: none;
       color: #3ccace
     }
-  .productLists{
+  .productLists {
     width: 780px;
     margin: 26px auto;
     display: flex;
     justify-content: space-around;
-    .productList{
+    .productList {
       width: 220px;
       display: inline-block;
       float: left;
-      a{
+      a {
         background-color: #fff;
         display: inline-block;
       }
-      .productList--img{
+      .productList--img {
         width: 220px;
         height: 150px;
         position: relative;
@@ -326,7 +309,7 @@
           object-fit: cover;
       }
       }
-      .productList__body{
+      .productList__body {
         background-color: #fff;
         color: #333;
         padding: 16px;
@@ -352,7 +335,7 @@
     }
   }
   }
-
+// 商品評価のマーク
   .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -360,15 +343,15 @@
     text-rendering: auto;
   }
 
-
-  .advertisement2{
+// キャッチコピー（下部）
+  .advertisement2 {
     height: 360px;
     background-size: cover;
     background-image: image-url('bg-appBanner-pict.jpg');
     color: white;
     padding:100px 40px;
     text-align: center;
-    .content{
+    .content {
       &__sub{
         font-size: 24px;
         font-weight: bold;
@@ -386,20 +369,20 @@
         &__app-store a{
           display: block;
         }
-        &__app-store a:hover{
+        &__app-store a:hover {
           opacity: 0.5;
         }
-        &__app-store img{
+        &__app-store img {
           width: 180px;
           vertical-align: bottom;
           padding-top: 13px;
         }
 
-        &__google-play img{
+        &__google-play img {
           width: 210px;
           height: 88px;
         }
-        &__google-play a:hover{
+        &__google-play a:hover {
           opacity: 0.5;
         }
       }
