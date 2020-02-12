@@ -106,26 +106,38 @@
           =link_to image_tag('icon-01.png',size:"220x150"), '#'
           .productList__body
             %h3.name product3
-            %br
-            30000円
-            %br
-            （税込）
+            .details
+              %ul
+                %li 30000円
+                %li
+                  %i
+                    = icon('fas','star')
+              %p（税込）
+                
+
         .productList
           =link_to image_tag('icon-01.png',size:"220x150"), '#'
           .productList__body
-            %h3.name product2
-            %br
-            20000円
-            %br
-            （税込）
+            %h3.name product3
+            .details
+              %ul
+                %li 20000円
+                %li
+                  %i
+                    = icon('fas','star')
+              %p（税込）
+
         .productList
           =link_to image_tag('icon-01.png',size:"220x150"), '#'
           .productList__body
-            %h3.name product1
-            %br
-            10000円
-            %br
-            （税込）
+            %h3.name product3
+            .details
+              %ul
+                %li 10000円
+                %li
+                  %i
+                    = icon('fas','star')
+              %p（税込）
             
       .bland
         ピックアップブランド
@@ -137,58 +149,38 @@
           =link_to image_tag('icon-01.png',size:"220x150")
           .productList__body
             %h3.name product3
-            %br
-            30000円
-            %br
-            （税込）
+            .details
+              %ul
+                %li 30000円
+                %li
+                  %i
+                    = icon('fas','star')
+              %p（税込）
+            
         .productList
           =link_to image_tag('icon-01.png',size:"220x150")
           .productList__body
-            %h3.name product2
-            %br
-            20000円
-            %br
-            （税込）
+            %h3.name product3
+            .details
+              %ul
+                %li 20000円
+                %li
+                  %i
+                    = icon('fas','star')
+              %p（税込）
+
         .productList
           =link_to image_tag('icon-01.png',size:"220x150")
           .productList__body
-            %h3.name product1
-            %br
-            10000円
-            %br
-            （税込）
-    -# .bland
-    -#   ピックアップブランド
-    -#   .bland__sub
-    -#     アーカイバ
-    -# .lists
-    -#   .list
-    -#     .list__img
-    -#       = image_tag('icon-01.png',size:"220x150")
-    -#     .list__body
-    -#       product1
-    -#       %br
-    -#       10000円
-    -#       %br
-    -#       （税込）
-    -#   .list
-    -#     .list__img
-    -#       = image_tag('icon-01.png',size:"220x150")
-    -#     .list__body
-    -#       product1 
-    -#       %br
-    -#       20000円
-    -#       %br
-    -#       （税込）
-    -#   .list
-    -#     .list__img
-    -#       = image_tag('icon-01.png',size:"220x150")
-    -#     .list__body
-    -#       product1
-    -#       %br
-    -#       30000円
-    -#       %br
-    -#       （税込）
+            %h3.name product3
+            .details
+              %ul
+                %li 10000円
+                %li
+                  %i
+                    = icon('fas','star')
+              %p （税込）
+            
   .advertisement2
     .content
       .content__sub
