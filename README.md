@@ -34,7 +34,7 @@
 | クレジットカード管理 | payJP                      |
 
 ## ER図
-https://github.com/tsubasa-0283/freemarket_sample_62c/files/4192006/ER.pdf
+https://user-images.githubusercontent.com/53609959/74335044-9ff60380-4dde-11ea-8b62-2574950ee1b8.png
 
 ## usersテーブル
 
