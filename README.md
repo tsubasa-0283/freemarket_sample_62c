@@ -20,7 +20,8 @@
 ・pay.jpによる決済処理
 ・商品購入機能
 
-* Dependency
+## Dependency
+
 | 種別         | 名称                         |
 | 開発言語       | Ruby(ver 2.5.2)            |
 | フレームワーク    | Ruby on Rails(ver 5.0.7.2) |
