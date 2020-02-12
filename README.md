@@ -34,7 +34,7 @@
 | クレジットカード管理 | payJP                      |
 
 ## ER図
-https://cacoo.com/diagrams/BHYHOxPmYMvwW9ar/B1D77
+https://github.com/tsubasa-0283/freemarket_sample_62c/files/4192006/ER.pdf
 
 ## usersテーブル
 
