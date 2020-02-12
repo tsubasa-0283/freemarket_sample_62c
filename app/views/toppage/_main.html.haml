@@ -99,11 +99,13 @@
       .productsHead
         =link_to "新規投稿商品", '#'
        
-                  
     
       .productLists
         .productList
-          =link_to image_tag('icon-01.png',size:"220x150"), '#'
+          .productList--img
+            =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"), '#'
+          
+          
           .productList__body
             %h3.name product3
             .details
@@ -116,7 +118,8 @@
                 
 
         .productList
-          =link_to image_tag('icon-01.png',size:"220x150"), '#'
+          .productList--img
+            =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"), '#'
           .productList__body
             %h3.name product3
             .details
@@ -128,7 +131,8 @@
               %p（税込）
 
         .productList
-          =link_to image_tag('icon-01.png',size:"220x150"), '#'
+          .productList--img
+            =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"), '#'
           .productList__body
             %h3.name product3
             .details
@@ -139,14 +143,16 @@
                     = icon('fas','star')
               %p（税込）
             
-      .bland
-        ピックアップブランド
-        .bland__sub
-          アーカイバ
+  .bland
+    %h2.blandHead ピックアップブランド
+    .products 
+      .productsHead
+        =link_to "アーカイバ", '#'
 
       .productLists
         .productList
-          =link_to image_tag('icon-01.png',size:"220x150")
+          .productList--img
+            =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
           .productList__body
             %h3.name product3
             .details
@@ -155,10 +161,12 @@
                 %li
                   %i
                     = icon('fas','star')
+
               %p（税込）
             
         .productList
-          =link_to image_tag('icon-01.png',size:"220x150")
+          .productList--img
+            =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png")
           .productList__body
             %h3.name product3
             .details
@@ -170,7 +178,8 @@
               %p（税込）
 
         .productList
-          =link_to image_tag('icon-01.png',size:"220x150")
+          .productList--img
+            =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png")
           .productList__body
             %h3.name product3
             .details
@@ -191,6 +200,18 @@
         .content__btn__app-store
           = link_to image_tag('App-Store-badge.svg'),""
         .content__btn__google-play
+              %p （税込）
+            
+.advertisement2
+  .content
+    .content__sub
+      だれでもかんたん、人生を変えるフリマアプリ
+    .content__main
+      今すぐ無料ダウンロード！
+    .content__btn
+      .content__btn__app-store
+        = link_to image_tag('App-Store-badge.svg'),""
+      .content__btn__google-play
 
-          = link_to image_tag('google-play-badge.png'),""
+        = link_to image_tag('google-play-badge.png'),""
 
