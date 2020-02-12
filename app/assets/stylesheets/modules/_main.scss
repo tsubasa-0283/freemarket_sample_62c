@@ -256,26 +256,28 @@
 
 
   .pickup{
-
     padding: 80px 0 0;
     background-color: #f8f8f8;
     height: 100%;
     .categoryHead{
       text-align: center;
-
       font-size: 28px;
       line-height: 1.4;
       font-weight: bold;
-
   }
 }
-
 
 
     .bland{  
       padding: 40px 0 26px 0;
       font-size: 28px;
       font-weight: bold;
+      .blandHead{
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.4;
+        font-weight: bold;
+      }
       &__sub{
         font-size: 24px;
         color: #3CCACE;
@@ -309,6 +311,26 @@
         background-color: #fff;
         display: inline-block;
       }
+      .productList--img{
+        width: 220px;
+        height: 150px;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        z-index: auto;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          z-index: auto;
+          height: 150px;
+          background-color: #fff;
+          object-fit: cover;
+      }
+      }
       .productList__body{
         background-color: #fff;
         color: #333;
@@ -318,12 +340,31 @@
           line-height: 1.5;
           font-size: 16px;
           text-align: left;
-
+        }
+        .details {
+          font-size: 16px;
+          ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          p {
+            font-size: 10px;
+            text-align: left;
+          }
         }
       }
     }
   }
   }
+
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+  }
+
 
   .advertisement2{
     height: 360px;
