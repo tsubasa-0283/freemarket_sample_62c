@@ -20,8 +20,10 @@
 ・pay.jpによる決済処理
 ・商品購入機能
 
-* Dependency
+## Dependency
+
 | 種別         | 名称                         |
+| ---------- | -------------------------- |
 | 開発言語       | Ruby(ver 2.5.2)            |
 | フレームワーク    | Ruby on Rails(ver 5.0.7.2) |
 | マークアップ     | HTML(Haml),CSS(Saas)       |
@@ -33,8 +35,10 @@
 | ユーザー管理     | devise                     |
 | クレジットカード管理 | payJP                      |
 
+
 ## ER図
-https://cacoo.com/diagrams/BHYHOxPmYMvwW9ar/B1D77
+![Entity Relationship Diagram](https://user-images.githubusercontent.com/53609959/74335044-9ff60380-4dde-11ea-8b62-2574950ee1b8.png)
+
 
 ## usersテーブル
 
