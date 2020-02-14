@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'toppage/index'
+  get 'deteils/index'
 
-  root "toppage#index"
+  # get 'toppage/index'
+
+  # root "toppage#index"
+  root "deteils#index"
 end
