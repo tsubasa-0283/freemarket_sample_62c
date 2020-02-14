@@ -1,14 +1,16 @@
 class ApplicationController < ActionController::Base
+  before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
-  before_action :basic_auth
 
   private
 
-  # ID・パスワードは暫定です
+  def production?
+    Rails.env.production?
+  end
+
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'teckexpert62c' && password == '1234'
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
 end
-
