@@ -344,11 +344,7 @@
 | post_number     | integer | null: false                         |
 | prefecture      | string  | null: false                         |
 | city            | string  | null: false                         |
-| address         | string  | null: false                         |
-| city            | string  | null: false                         |
-| address         | string  | null: false                         |
-| building        | string  |                                     |
-| tel             | integer |                                     |
+
 
 ### Association
 - has_many :item_comments
@@ -362,10 +358,14 @@
 
 ## addressesテーブル
 
-| Column      | Type    | Options                         |
-| ----------- | ------- | ------------------------------- |
-| user_id     | integer | null : false, foreign_key: true |
-|                 |
+| Column   | Type    | Options                         |
+| -------- | ------- | ------------------------------- |
+| user_id  | integer | null : false, foreign_key: true |
+| address  | string  | null: false                     |
+| city     | string  | null: false                     |
+| address  | string  | null: false                     |
+| building | string  | null: false                     |
+| tel      | integer | null: false                     |
 
 ### Association
 - belongs_to :user
@@ -393,6 +393,8 @@
 | user_id | integer | null: false, foreign_key: true |
 | item_id | integer | null: false, foregin_key: true |
 
+- has_many :user
+- belongs_to :item
 
 ### likesテーブル
 
@@ -462,7 +464,7 @@
 - belongs_to :brand
 - belongs_to :postage
 - belongs_to :size
-- has_many :item_comments
+- belongs_to :item_comments
 - belongs_to :item_state
 
 
@@ -494,7 +496,7 @@
 | category_id | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item
+- has_many :item
 - belongs_to :category
 
 
