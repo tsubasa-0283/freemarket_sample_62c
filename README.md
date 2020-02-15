@@ -35,6 +35,9 @@
 | ユーザー管理     | devise                     |
 | クレジットカード管理 | payJP                      |
 
+## ER図
+![Entity Relationship Diagram](https://user-images.githubusercontent.com/53609959/74335044-9ff60380-4dde-11ea-8b62-2574950ee1b8.png)
+
 
 ## ER図
 ![Entity Relationship Diagram](https://user-images.githubusercontent.com/53609959/74335044-9ff60380-4dde-11ea-8b62-2574950ee1b8.png)
