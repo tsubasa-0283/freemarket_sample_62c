@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 #   root "toppage#index"
 #   get 'toppage/index'
-  get 'users/new'
-  get 'deteils/index'
+  # get 'users/new'
+  # get 'items/show'
   # get 'toppage/index'
   # root "toppage#index"
   root "deteils#index"
