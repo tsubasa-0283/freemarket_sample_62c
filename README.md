@@ -155,7 +155,6 @@
 | condition_id       | integer    | null: false                     |
 | user_id            | references | null: false, foreign_key: true  |
 | postage_id         | integer    | null: false, foreign_key: true  |
-| prefecture         | string     | null: false                     |
 | delivery_day_id    | integer    | null: false                     |
 | price              | integer    | null: false                     |
 | brand_id           | integer    | null: false                     |
@@ -341,7 +340,6 @@
 | birth_month     | integer |                                     |
 | birth_day       | integer |                                     |
 | tel             | integer | null false, limit: 30, unique: true |
-| post_number     | integer | null: false                         |
 | prefecture      | string  | null: false                         |
 | city            | string  | null: false                         |
 
@@ -352,20 +350,21 @@
 - has_many :items, dependent: :destroy
 - has_many :transactions, dependent: :destroy
 - has_many :likes
-- has_one  :addresses
-- has_one  :credit_cards
+- has_one  :address
+- has_one  :credit_card
 
 
 ## addressesテーブル
 
-| Column   | Type    | Options                         |
-| -------- | ------- | ------------------------------- |
-| user_id  | integer | null : false, foreign_key: true |
-| address  | string  | null: false                     |
-| city     | string  | null: false                     |
-| address  | string  | null: false                     |
-| building | string  | null: false                     |
-| tel      | integer | null: false                     |
+| Column      | Type    | Options                         |
+| ----------- | ------- | ------------------------------- |
+| user_id     | integer | null : false, foreign_key: true |
+| post_number | integer | null: false                     |
+| prefecture  | string  | null: false                     |
+| city        | string  | null: false                     |
+| address     | string  | null: false                     |
+| building    | string  | null: false                     |
+| tel         | integer | null: false                     |
 
 ### Association
 - belongs_to :user
@@ -393,7 +392,7 @@
 | user_id | integer | null: false, foreign_key: true |
 | item_id | integer | null: false, foregin_key: true |
 
-- has_many :user
+- belongs_to :user
 - belongs_to :item
 
 ### likesテーブル
@@ -421,7 +420,6 @@
 - has_many :users, dependent: :destroy
 - belongs_to :item
 - belongs_to :transaction_state
-- belongs_to :transaciton_state
 - belongs_to :buyer, class_name: "User"
 
 ## transactions_statesテーブル(マスターテーブル)
@@ -457,14 +455,13 @@
 - has_many :transactions, dependent: :destroy
 - belongs_to :user
 - belongs_to :condition
-- has_many :category_items, dependent: :destroy
-- has_many :categorys, through: :category_items
+- has_many :categorys, through: :category
 - belongs_to :delivery_day
 - has_many :images, dependent: :destroy
 - belongs_to :brand
 - belongs_to :postage
 - belongs_to :size
-- belongs_to :item_comments
+- has_many :item_comments
 - belongs_to :item_state
 
 
@@ -488,32 +485,19 @@
 - has_many :items
 
 
-## category_itemsテーブル
-
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| item_id     | references | null: false, foreign_key: true |
-| category_id | references | null: false, foreign_key: true |
-
-### Association
-- has_many :item
-- belongs_to :category
-
-
 ## categorysテーブル(マスターテーブル)
 
 | Column    | Type    | Options     |
 | --------- | ------- | ----------- |
 | name      | string  | null: false |
-| parent_id | integer | null: false |
+| ancestry | integer | null: false |
 
 ### Association
-- has_many :category_items, dependent: :destroy
 - has_many :items, through: :category_items, dependent: :destroy
 - belongs_to :size
 - belongs_to :parent, class_name: :Category
 - has_many :children, class_name: :Category, foreign_key: :parent_id
-
+- has_ancestry
 
 ## sizesテーブル(マスターテーブル)
 
@@ -563,14 +547,3 @@
 
 ### Association
 - has_many :items
-
-
-<!-- ## delivery_methodsテーブル(マスターテーブル)
-
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| method | string | null: false |
-
-### Association
-- has_many :items -->
-
