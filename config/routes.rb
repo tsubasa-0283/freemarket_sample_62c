@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   # get 'toppage/index'
   # root "toppage#index"
   root "deteils#index"
+
+  root 'items#index'
+  resources :items, except: :show
 end
 
