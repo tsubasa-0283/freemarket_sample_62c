@@ -20,8 +20,10 @@
 ・pay.jpによる決済処理
 ・商品購入機能
 
-* Dependency
+## Dependency
+
 | 種別         | 名称                         |
+| ---------- | -------------------------- |
 | 開発言語       | Ruby(ver 2.5.2)            |
 | フレームワーク    | Ruby on Rails(ver 5.0.7.2) |
 | マークアップ     | HTML(Haml),CSS(Saas)       |
@@ -32,6 +34,9 @@
 | 自動デプロイ     | capistrano                 |
 | ユーザー管理     | devise                     |
 | クレジットカード管理 | payJP                      |
+
+## ER図
+![Entity Relationship Diagram](https://user-images.githubusercontent.com/53609959/74335044-9ff60380-4dde-11ea-8b62-2574950ee1b8.png)
 
 
 ## usersテーブル
@@ -49,6 +54,14 @@
 | birth_month     | integer |                                     |
 | birth_day       | integer |                                     |
 | tel             | integer | null false, limit: 30, unique: true |
+| post_number     | integer | null: false                         |
+| prefecture      | string  | null: false                         |
+| city            | string  | null: false                         |
+| address         | string  | null: false                         |
+| city            | string  | null: false                         |
+| address         | string  | null: false                         |
+| building        | string  |                                     |
+| tel             | integer |                                     |
 
 ### Association
 - has_many :item_comments
@@ -65,14 +78,7 @@
 | Column      | Type    | Options                         |
 | ----------- | ------- | ------------------------------- |
 | user_id     | integer | null : false, foreign_key: true |
-| post_number | integer | null: false                     |
-| prefecture  | string  | null: false                     |
-| city        | string  | null: false                     |
-| address     | string  | null: false                     |
-| city        | string  | null: false                     |
-| address     | string  | null: false                     |
-| building    | string  |                                 |
-| tel         | integer |                                 |
+|                 |
 
 ### Association
 - belongs_to :user
@@ -149,7 +155,6 @@
 | condition_id       | integer    | null: false                     |
 | user_id            | references | null: false, foreign_key: true  |
 | postage_id         | integer    | null: false, foreign_key: true  |
-| delivery_method_id | references | null: false, foreign_key: true  |
 | prefecture         | string     | null: false                     |
 | delivery_day_id    | integer    | null: false                     |
 | price              | integer    | null: false                     |
@@ -169,7 +174,6 @@
 - has_many :images, dependent: :destroy
 - belongs_to :brand
 - belongs_to :postage
-- belongs_to :delivery_method
 - belongs_to :size
 - has_many :item_comments
 - belongs_to :item_state
@@ -264,19 +268,20 @@
 
 ## postagesテーブル(マスターテーブル)
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| burden | string | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| delivery_charge | string | null: false |
 
 ### Association
 - has_many :items
 
 
-## delivery_methodsテーブル(マスターテーブル)
+<!-- ## delivery_methodsテーブル(マスターテーブル)
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | method | string | null: false |
 
 ### Association
-- has_many :items
+- has_many :items -->
+
