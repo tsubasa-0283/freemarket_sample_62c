@@ -1,0 +1,14 @@
+.container
+  .header
+    %h1
+  .main
+    %h2
+    .form
+      .upload_box
+        %h3.upload_head
+          出品画像
+          .form_tag
+            必須
+        %p
+          最大10枚までアップロードできます
+        .
