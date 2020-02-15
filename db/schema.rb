@@ -10,10 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20200214072612) do
-
-=======
 ActiveRecord::Schema.define(version: 20200215035216) do
 
   create_table "installs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -28,7 +24,6 @@ ActiveRecord::Schema.define(version: 20200215035216) do
     t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true, using: :btree
   end
 
->>>>>>> 6fae8b164f4682456aaa53cbbbe241b72b4b1fd6
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image"
     t.datetime "created_at", null: false
