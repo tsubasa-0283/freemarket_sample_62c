@@ -1,0 +1,161 @@
+.contents { 
+  background-color: #f8f8f8;
+  // ヘッダー
+  .signup-header {
+    text-align: center;
+    padding: 20px;
+    img {
+      width: 185px;
+      height: 49px;
+    }
+  }
+
+
+  .box {
+    text-align: center;
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    // 会員情報入力
+    .box-header {
+      font-size: 22px;
+      padding: 32px;
+      font-weight: 600;
+    }
+    // フォーム全体
+    .box-form {
+      padding: 0 40px 64px;
+      &__content {
+        max-width: 345px;
+        margin: 0 auto;
+        &__input {
+          margin-top: 32px;
+          // 入力フォーム（リスト）
+          &__list {
+            display: flex;
+            float: left;
+            width: 100%;
+            margin-bottom: 32px;
+            // 生年月日
+            &__barth {
+              display: inline-block;
+              position: relative;
+            }
+            // 都道府県
+            &__prefectures {
+              float: left;
+              display: inline-block;
+              position: relative;
+            }
+          }
+        }
+        // 会員登録情報
+        label {
+          float: left;
+          font-weight: 300;
+        }
+        // 任意
+        span.bule {
+          color: white;
+          background-color: #3CCACE;
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          vertical-align: top;
+        }
+        // 必須
+        span.red {
+          float: left;
+          color: white;
+          background-color: red;
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          vertical-align: top;
+        }
+        span.none {
+          margin: auto 5px;
+        }
+        // 入力フォーム
+        input {
+          width: 100%;
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        // 生年月日
+        .barth {
+          width: 90px;
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        // 見出し
+        .box-form__description {
+          padding-top: 32px;
+          font-size: 22px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    // 新規登録ボタン
+    .signup {
+      height: 100px;
+      max-width: 343px;
+      margin: 0 auto;
+      &__btn {
+        height: 50px;
+        width: 100%;
+        font-size: 14px;
+        background-color: #3CCACE;
+        color: white;
+        display: block;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+  }
+  // リスト
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    padding: 0 40px 0 10px;
+    border: 1px solid #b4b3b3;
+    border-radius: 2px;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+  .arrow-icon {
+    position: absolute;
+    z-index: 2;
+    top: 33%;
+    right: 5px;
+    pointer-events: none;
+    color: gray;
+  }
+}
