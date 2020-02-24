@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20200224064837) do
-
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "src"
@@ -35,8 +33,8 @@ ActiveRecord::Schema.define(version: 20200224064837) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                          null: false
-    t.integer  "price",                         null: false
+    t.string   "name"
+    t.integer  "price"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "prefecture",                    null: false
@@ -53,7 +51,6 @@ ActiveRecord::Schema.define(version: 20200224064837) do
     t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
     t.index ["postage_id"], name: "index_items_on_postage_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
-
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
