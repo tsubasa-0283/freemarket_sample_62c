@@ -1,5 +1,9 @@
 .main {
   background-color: #f8f8f8;
+  img {
+    width: 100%;
+    vertical-align: bottom;
+  }
 }
 .showMain {
   padding: 40px;
@@ -20,6 +24,42 @@
         }
         &__body {
           margin: 16px 0 0;
+          ul{
+            ul{
+              display:flex;
+              justify-content: center;
+              margin-top: 10px;
+              li{
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        .table {
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            tr {
+              font-size: 14px;
+              th {
+                border: solid 1px #dedede;
+                width: 20%;
+                padding: 8px;
+                text-align: center;
+                background-color:#eee;
+              }
+              td {
+                border: solid 1px #dedede;
+                padding: 0.5em;
+                text-align: left;
+                padding: 15px;
+                a {
+                  color: #3CCACE;
+                  text-decoration: none;
+                }
+              }              
+            }
+          }
         }
     }
     }
