@@ -1,0 +1,17 @@
+// 新規登録ボタン
+.signup-btn {
+  width: 345px;
+  height: 48px;
+  background-color: #3CCACE;
+  cursor: pointer;
+  display: block;
+  border-radius: 4px;
+  margin: 5px auto;
+  padding-top: 11px;
+  a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    color: #fff;
+  }
+}
