@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'users/new'
   # get 'deteils/index'
   # get 'toppage/index'
-  root "toppage#index"
-  # root "deteils#index"
+  # root "toppage#index"
+  root "deteils#index"
+
+  root 'items#index'
+  resources :items, except: :show
 end

@@ -1,0 +1,78 @@
+.item-container
+  %item.item-main
+    %section.item-main__container
+      #item-container
+        %div
+          .item-main__inner
+            -# = form_for @item, html: {class: "item-main dropzone", id: "item-dropzone"} % do
+            %h2.item-main__header
+              商品の情報を入力
+            .item-main__upload-box
+              %h3.item-main__upload-head
+                出品画像
+              %span.item-main__form-require
+                必須
+              %p 最大10枚までアップロードできます
+              .item-main__dropbox-content.clearfix.state-image-10
+                .item-main__upload-items-content
+                  .item-main__upload-items.item-main__upload-items--have-item-0
+              -# = f.fields_for :item_images do | image |
+                .dropzone-container.clearfix
+                  #preview
+                  .dropzone-area
+                    = image.label :image, class: "dropzone-box", for: "upload-image" do
+                      .input_area
+                        -# = %image.= file_field :image, multiple: true, name: 'item_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                      %p
+                        ドラッグアンドドロップ
+                        またはクリックしてファイルをアップロード
+          .item-main__content
+            .item-main__form-group
+              = f.label :item_name do
+                商品名
+                %span.item-main__form-require
+                  必須
+              %div
+                = f.text__field :item_name { class: 'item-main__input-default', placeholder: '商品名（必須　40字まで)'　}
+            .item-main__form-group
+              = f.label :description do
+                商品の説明
+                  %span.item-main__form-require
+                    必須
+              = f.text_area :description {class: 'item-main__textarea-default', placeholder: '商品の説明（必須　１０００文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません、あわせやすいのでおすすめです', row: '5' }
+          .item-main_content
+            %h3.item-main-head
+              商品の詳細
+            .item-main__form-group
+              = f.label :category_id do
+                カテゴリー
+                  %span.item-main__form-require
+                    必須
+                  .item-main__select
+                    %i.fas fa-chevron-down
+                    = f.collection_select :category_id, :id, :name, { prompt: "選択してください"}, class: 'item-main_select-default', id: 'item-main__select-category--content'
+            .item-main__form-group
+              =f.label :brand_id do
+                ブランド
+                  %span.item-main_form-elective
+                    任意
+              = f.text_field :brand_id, { class: 'item-main__input-default', placeholder: '例）シャネル' }
+            .item-main__form-group
+              = f.label :condition_id do
+                商品の状態
+                  %span.item-main__form-require
+                    必須
+                  .item-main__select
+                    %i.fas fa-chevron-down
+                    = f.collection_select :brand_id, :id, :value, { prompt: "選択してください" }, class: 'item-main_select-default', id: 'item-main__select-condition-content'
+          .item-main_content
+            %h3.item-main-head
+              配送について
+            .item-main__form-group
+              = f.label :postage_id do
+                配送料の負担
+                  %span.item-main__form-require
+                    必須
+                  .item_main__select
+                    %i.fas fa-chevron-down
+                    = f.collection_select :postage_id :id, :value, { prompt: "選択してください" }, class: 'item-main_select-default'
