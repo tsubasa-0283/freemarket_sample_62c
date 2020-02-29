@@ -44,6 +44,8 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    ancestry (3.0.7)
+      activerecord (>= 3.2.0)
     arel (7.1.4)
     bcrypt (3.1.13)
     bindex (0.8.1)
@@ -262,6 +264,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  ancestry
   byebug
   capistrano
   capistrano-bundler
@@ -277,6 +280,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  mini_magick
   mysql2 (>= 0.3.18, < 0.6.0)
   puma (~> 3.0)
   rails (~> 5.0.7, >= 5.0.7.2)

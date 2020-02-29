@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200224114208) do
+
+ActiveRecord::Schema.define(version: 20200228132545) do
+
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "prefecture_id"
     t.string   "city"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "src"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id", using: :btree
   end
 
   create_table "installs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -29,6 +46,27 @@ ActiveRecord::Schema.define(version: 20200224114208) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_installs_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "prefecture",                    null: false
+    t.text     "description",     limit: 65535, null: false
+    t.integer  "condition_id",                  null: false
+    t.integer  "delivery_day_id",               null: false
+    t.integer  "brand_id",                      null: false
+    t.integer  "likes_count",                   null: false
+    t.integer  "user_id",                       null: false
+    t.integer  "category_id",                   null: false
+    t.integer  "item_state_id",                 null: false
+    t.integer  "postage_id",                    null: false
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
+    t.index ["postage_id"], name: "index_items_on_postage_id", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,4 +92,5 @@ ActiveRecord::Schema.define(version: 20200224114208) do
     t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree
   end
 
+  add_foreign_key "images", "items"
 end

@@ -13,7 +13,9 @@
     .underBody
       %ul.left
         .leftCategori
-          カテゴリー
+          - @category.each do |category|
+          
+          カテゴリ
           .CategoriNone
           .CategoriList
             .CategoriList__item
