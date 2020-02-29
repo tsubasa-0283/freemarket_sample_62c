@@ -78,8 +78,6 @@
 | address     | string  | null: false                     |
 | building    | string  | null: false                     |
 | tel         | integer | null: false                     |
-| prefecture  | string  | null: false                     |
-| city        | string  | null: false                     |
 
 ### Association
 - belongs_to :user
