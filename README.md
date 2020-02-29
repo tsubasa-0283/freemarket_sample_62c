@@ -90,7 +90,6 @@
 | Column                | Type    | Options                        |
 | --------------------- | ------- | ------------------------------ |
 | user_id               | integer | null: false, foreign_key: true |
-| card_number           | integer | null: false                    |
 | expiration_date_month | integer | null: false                    |
 | expiration_date_year  | integer | null: false                    |
 | sequrity_code         | integer | null: false                    |
