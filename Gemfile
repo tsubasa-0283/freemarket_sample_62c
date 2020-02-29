@@ -71,12 +71,17 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
 end
 
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'active_hash'
+<<<<<<< Updated upstream
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ancestry'
 
+=======
+gem 'payjp'
+>>>>>>> Stashed changes

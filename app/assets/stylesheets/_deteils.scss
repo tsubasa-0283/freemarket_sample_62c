@@ -65,3 +65,27 @@
     }
   }
 }
+.exhibitionBtn {
+  width: 120px;
+  background: #3ccace;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position:fixed;
+  padding: 15px;
+  opacity: 1;
+  &__text {
+
+    span {
+      color: #fff;
+      display: block;
+      font-size: 18px;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+  }
+}
+.exhibitionBtn:hover {
+  opacity: 0.5;
+}
