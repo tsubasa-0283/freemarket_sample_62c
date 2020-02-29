@@ -103,8 +103,11 @@
       .productLists
         .productList
           .productList--img
+            .productList--img__sold
+              .productList--img__sold__inner
+                SOLD
             =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"), '#'
-          
+
           
           .productList__body
             %h3.name product3
@@ -115,7 +118,7 @@
                   %i
                     = icon('fas','star')
               %p（税込）
-                
+
 
         .productList
           .productList--img
@@ -132,6 +135,9 @@
 
         .productList
           .productList--img
+            .productList--img__sold
+              .productList--img__sold__inner
+                SOLD
             =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"), '#'
           .productList__body
             %h3.name product3
@@ -142,6 +148,8 @@
                   %i
                     = icon('fas','star')
               %p（税込）
+
+              
             
   .bland
     %h2.blandHead ピックアップブランド
@@ -152,6 +160,9 @@
       .productLists
         .productList
           .productList--img
+            .productList--img__sold
+              .productList--img__sold__inner
+                SOLD
             =link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
           .productList__body
             %h3.name product3
