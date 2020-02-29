@@ -54,8 +54,7 @@
 | birth_month     | integer |                                     |
 | birth_day       | integer |                                     |
 | tel             | integer | null false, limit: 30, unique: true |
-| prefecture      | string  | null: false                         |
-| city            | string  | null: false                         |
+
 
 
 ### Association
@@ -79,6 +78,8 @@
 | address     | string  | null: false                     |
 | building    | string  | null: false                     |
 | tel         | integer | null: false                     |
+| prefecture  | string  | null: false                     |
+| city        | string  | null: false                     |
 
 ### Association
 - belongs_to :user
@@ -154,15 +155,15 @@
 | name               | string     | null: false                     |
 | description        | text       | null: false                     |
 | condition_id       | integer    | null: false                     |
-| user_id            | references | null: false, foreign_key: true  |
+| user            | references | null: false, foreign_key: true  |
 | postage_id         | integer    | null: false, foreign_key: true  |
 | prefecture         | string     | null: false                     |
 | delivery_day_id    | integer    | null: false                     |
 | price              | integer    | null: false                     |
 | brand_id           | integer    | null: false                     |
 | likes_count        | integer    | null: false                     |
-| category_id        | references | null: false , foreign_key: true |
-| item_state_id      | references | null: false , foreign_key: true |
+| category        | references | null: false , foreign_key: true |
+| item_state     | references | null: false , foreign_key: true |
 
 ### Association
 - has_many :likes, dependent: :destroy
@@ -199,7 +200,7 @@
 - has_many :items
 
 
-## categorysテーブル(マスターテーブル)
+## categoriesテーブル(マスターテーブル)
 
 | Column    | Type    | Options     |
 | --------- | ------- | ----------- |
@@ -217,7 +218,7 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| item_id | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
 | size    | string     | null: false                    |
 
 
@@ -235,7 +236,7 @@
 
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
-| item_id | references | null:false, foreign_key: true |
+| item | references | null:false, foreign_key: true |
 | image   | string     | null: false                   |
 
 ### Associations
