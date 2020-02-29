@@ -76,3 +76,5 @@ end
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'active_hash'
+gem 'carrierwave'
+gem 'mini_magick'
