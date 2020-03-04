@@ -1,78 +1,200 @@
 .item-container
-  %item.item-main
-    %section.item-main__container
-      #item-container
-        %div
-          .item-main__inner
-            -# = form_for @item, html: {class: "item-main dropzone", id: "item-dropzone"} % do
-            %h2.item-main__header
-              商品の情報を入力
-            .item-main__upload-box
-              %h3.item-main__upload-head
-                出品画像
-              %span.item-main__form-require
-                必須
-              %p 最大10枚までアップロードできます
-              .item-main__dropbox-content.clearfix.state-image-10
-                .item-main__upload-items-content
-                  .item-main__upload-items.item-main__upload-items--have-item-0
-              -# = f.fields_for :item_images do | image |
-                .dropzone-container.clearfix
-                  #preview
-                  .dropzone-area
-                    = image.label :image, class: "dropzone-box", for: "upload-image" do
-                      .input_area
-                        -# = %image.= file_field :image, multiple: true, name: 'item_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                      %p
-                        ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード
-          .item-main__content
-            .item-main__form-group
-              = f.label :item_name do
-                商品名
-                %span.item-main__form-require
-                  必須
-              %div
-                = f.text__field :item_name { class: 'item-main__input-default', placeholder: '商品名（必須　40字まで)'　}
-            .item-main__form-group
-              = f.label :description do
-                商品の説明
-                  %span.item-main__form-require
-                    必須
-              = f.text_area :description {class: 'item-main__textarea-default', placeholder: '商品の説明（必須　１０００文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません、あわせやすいのでおすすめです', row: '5' }
-          .item-main_content
-            %h3.item-main-head
-              商品の詳細
-            .item-main__form-group
-              = f.label :category_id do
-                カテゴリー
-                  %span.item-main__form-require
-                    必須
-                  .item-main__select
-                    %i.fas fa-chevron-down
-                    = f.collection_select :category_id, :id, :name, { prompt: "選択してください"}, class: 'item-main_select-default', id: 'item-main__select-category--content'
-            .item-main__form-group
-              =f.label :brand_id do
-                ブランド
-                  %span.item-main_form-elective
-                    任意
-              = f.text_field :brand_id, { class: 'item-main__input-default', placeholder: '例）シャネル' }
-            .item-main__form-group
-              = f.label :condition_id do
-                商品の状態
-                  %span.item-main__form-require
-                    必須
-                  .item-main__select
-                    %i.fas fa-chevron-down
-                    = f.collection_select :brand_id, :id, :value, { prompt: "選択してください" }, class: 'item-main_select-default', id: 'item-main__select-condition-content'
-          .item-main_content
-            %h3.item-main-head
-              配送について
-            .item-main__form-group
-              = f.label :postage_id do
-                配送料の負担
-                  %span.item-main__form-require
-                    必須
-                  .item_main__select
-                    %i.fas fa-chevron-down
-                    = f.collection_select :postage_id :id, :value, { prompt: "選択してください" }, class: 'item-main_select-default'
+  .item-head
+    %h2.item-head__header
+      商品の情報を入力
+  .item-main
+    %form.item-main__form
+    .upload-box
+      .item-main__header
+        %h3.subtitle
+          出品画像
+        %span.form-require
+          必須
+      %p.upload-box__text
+        最大10枚までアップロードできます
+      .upload-box__content
+        .upload-box-items
+          %input.file{multiple: "multiple", name: "image", display: "none", type: "file" }/
+          %i.fas.fa-camera
+          %p.upload-box-items__text
+            ドラッグアンドドロップ
+            %br
+            またはクリックしてファイルをアップロード
+    .item-main__content
+      .item-main__content-form-group
+        .item-main__header
+          %label
+            商品名
+          %span.form-require
+            必須
+        %input.input-default{placeholder: "商品名（40字まで)"}
+      .item-main__content-form-group
+        .item-main__header
+          %label
+            商品の説明
+          %span.form-require
+            必須
+        %input.textarea-default{placeholder: "商品の説明（必須　１０００文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません、あわせやすいのでおすすめです", rows:"7" }
+    .item-main__content
+      %h3.item-main__content-head
+        商品の詳細
+      .item-main__content-form-group
+        .item-main__header
+          %label
+            カテゴリー
+          %span.form-require
+            必須
+          .item-main__content-select
+            %i.fasfa-chevron-down
+            %select.item-main__content-select-default
+              %option{value: ''} ---
+              %option{value: '1'} レディース
+              %option{value: '2'} メンズ
+              %option{value: '3'} ベビー・キッズ
+              %option{value: '4'} インテリア・住まい・小物
+              %option{value: '5'} 本・音楽・ゲーム
+              %option{value: '6'} コスメ・香水・美容
+              %option{value: '7'} 家電・スマホ・カメラ
+              %option{value: '8'} スポーツ・レジャー
+              %option{value: '9'} ハンドメイド
+              %option{value: '1001'} チケット
+              %option{value: '1002'} 自動車・オートバイ
+              %option{value: '1003'} その他
+          .item-main__content-select
+            %i.fas.fa-chevron-down
+            %select.item-main__content-select-default
+              %option{value: ''} ---
+              %option{value: '10'} トップス
+              %option{value: '11'} ジャケット／アウター
+              %option{value: '12'} パンツ
+              %option{value: '13'} スカート
+              %option{value: '14'} ワンピース
+              %option{value: '15'} 靴
+              %option{value: '16'} ルームウェア・パジャマ
+              %option{value: '17'} 帽子
+              %option{value: '18'} バッグ
+              %option{value: '19'} アクセサリー
+              %option{value: '20'} 小物
+              %option{value: '21'} 時計
+              %option{value: '22'} ウィッグ／エクステ
+              %option{value: '23'} 浴衣／水着
+              %option{value: '24'} スーツ／フォーマル／ドレス
+              %option{value: '25'} マタニティ
+          .item-main__content-select
+            %i.fas.fa-chevron-down
+            %select.item-main__content-select-default
+              %option{value: ''} ---
+              %option{value: '100'} Tシャツ／カットソー（半袖／袖なし）
+              %option{value: '101'} Tシャツ／カットソー（七分／長袖）
+              %option{value: '102'} シャツ／ブラウス（半袖／袖なし）
+              %option{value: '103'} シャツ／ブラウス（七分／長袖）
+              %option{value: '104'} ポロシャツ
+              %option{value: '105'} キャミソール
+              %option{value: '106'} タンクトップ
+              %option{value: '107'} ホルダーネック
+              %option{value: '108'} ニット／セーター
+              %option{value: '109'} チュニック
+              %option{value: '110'} カーディガン／ボレロ
+              %option{value: '111'} アンサンブル
+              %option{value: '112'} ベスト／ジレ
+              %option{value: '113'} パーカー
+              %option{value: '114'} トレーナー／スウェット
+              %option{value: '115'} ベアトップ／チューブトップ
+              %option{value: '116'} ジャージ
+      .item-main__content-form-group
+        .item-main__header
+          %label
+            ブランド
+          %span.form-elective
+            任意
+        %input.input-default{placeholder: "例）シャネル" }
+      .item-main__content-form-group
+        .item-main__header
+          %label
+            商品の状態
+          %span.form-require
+            必須
+          .item-main__content-select
+            %i.fas.fa-chevron-down
+            %select.item-main__content-select-default
+              %option{value: ''}
+              %option{value: '150'} 新品、未使用
+              %option{value: '151'} 未使用に近い
+              %option{value: '152'} 目立った傷や汚れなし
+              %option{value: '153'} やや傷や汚れあり
+              %option{value: '154'} 傷や汚れあり
+              %option{value: '155'} 全体的に状態が悪い
+    .item-main__content
+      %h3.item-main__content-head
+        配送について
+      .item-main__content-form-group
+        %label
+          配送料の負担
+        %span.form-require
+          必須
+        .item-main__select
+          %i.fas.fa-chevron-down
+          %select.item-main__content-select-default
+            %option{value: '201'} ---
+            %option{value: '202' } 送料込み(出品者負担)
+            %option{value: '203'} 着払い（購入者負担)
+            %option{value: '204'} 着払い（購入者負担)
+      .item-main__content-form-group
+        %label
+          発送元の地域
+        %span.form-require
+          必須
+        .item-main__content-select
+          %i.fas.fa-chevron-down
+          %select.item-main__content-select-default
+            %option{value: '33'} 広島県
+            %option{value: '34'} 徳島県
+            %option{value: '35'} 香川県
+            %option{value: '36'} 愛媛県
+            %option{value: '37'} 高知県
+            %option{value: '38'} 福岡県
+            %option{value: '39'} 佐賀県
+            %option{value: '40'} 長崎県
+            %option{value: '41'} 熊本県
+            %option{value: '42'} 大分県
+            %option{value: '43'} 宮崎県
+            %option{value: '44'} 鹿児島県
+            %option{value: '45'} 沖縄県
+            %option{value: '46'} 未定
+      .item-main__content-form-group
+        %label
+          発送までの日数
+        %span.form-require
+          必須
+        .item-main__content-select
+          %i.fas.fa-cgeveron-down
+          %select.item-main__content-select-default
+            %option{value: '200'} ---
+            %option{value: '201'} 1~2日で発送
+            %option{value: '202'} 2~3日で発送
+            %option{value: '203'} 4~7日で発送
+    .item-main__content
+      .item-main__content-head
+        価格（300〜9,999,999）
+      .content-price
+        .content-price__left
+          %label
+            販売価格
+          %span.form-require
+            必須
+          %span.content-price__center
+            ¥
+          %input.content-price__input{ placeholder: '価格'}
+      .box
+        .box__left
+          販売手数料（10%）
+        .box__right
+          ー
+      .box
+        .box__left
+          販売利益
+        .box__right
+          ー
+      .btn-box
+        %button.btn-box__red{ type: "submit", name: '出品する' }
+        = link_to '戻る', :back ,class: 'btn-box__gray'
