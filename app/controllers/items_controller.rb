@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
     
     def new
         @item = Item.new
-        @item.images.new
+        @item.images.build
+        # gon.length = 0
     end
     
     def create
@@ -20,4 +21,4 @@ class ItemsController < ApplicationController
     def destroy
     end
     
-    end
+end

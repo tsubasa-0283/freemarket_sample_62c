@@ -41,47 +41,47 @@
                 line-height: 1.4em;
             }
         }
-            &__text {
-            font-size: 14px;
-            line-height: 1.4em;
+        &__text {
+        font-size: 14px;
+        line-height: 1.4em;
+        margin-top: 16px;
+        }
+        &__content {
             margin-top: 16px;
-            }
-            &__content {
-                margin-top: 16px;
-                .upload-box-items {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-                    min-height: 162px;
-                    flex-wrap: wrap;
-                    -webkit-box-pack: center;
-                    position: relative;
-                    border-width: 1px;
-                    border-style: dashed;
-                    border-color: rgb(204,204,204);
-                    background-color: #F5F5F5;
-                    border-image: initial;
-                    transition: all 0.5s ease-out 0s;
-                    .file {
-                        display: none;
-                    }
-                    .fa-camera {
-                        position: absolute;
-                        font-size: 20px;
-                        padding-bottom: 30px;
-                        // transform: translate(-50%, -50%)
-                    }
-                    &__text {
-                        font-size: 12px;
-                        line-height: 1.4em;
-                        text-align: center;
-                        width: 100%;
-                        padding-top: 50px;
-                    }
+            .upload-box-items {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                min-height: 162px;
+                flex-wrap: wrap;
+                -webkit-box-pack: center;
+                position: relative;
+                border-width: 1px;
+                border-style: dashed;
+                border-color: rgb(204,204,204);
+                background-color: #F5F5F5;
+                border-image: initial;
+                transition: all 0.5s ease-out 0s;
+                .file {
+                    display: none;
+                }
+                .fa-camera {
+                    position: absolute;
+                    font-size: 20px;
+                    padding-bottom: 30px;
+                    // transform: translate(-50%, -50%)
+                }
+                &__text {
+                    font-size: 12px;
+                    line-height: 1.4em;
+                    text-align: center;
+                    width: 100%;
+                    padding-top: 50px;
                 }
             }
         }
+    }
     &__content {
         padding: 40px;
         &-form-group {
@@ -100,6 +100,7 @@
                 outline: 0;
                 padding: 0 16px;
                 width: inherit;
+
             }
             .textarea-default {
                 width: 100%;
@@ -177,6 +178,30 @@
                 font: inherit;
             }
         }
+        .btn-box {
+            margin-bottom: 32px;
+            width: 360px;
+            margin: 0 auto 24px;
+            &__red {
+                background-color: red;
+                color: white;
+                width: 100%;
+                margin-bottom: 24px;
+                font-size: 17px;
+                min-height: 48px;
+                border-radius: 4px;
+            }
+            &__gray {
+                display: block;
+                width: 100%;
+                background-color: gray;
+                border-color: transparent;
+                color: black;
+                font-size: 17px;
+                min-height: 48px;
+                border-radius: 4px;
+            }
+        }
     }
     label {
         font-size: 14px;
@@ -204,29 +229,5 @@
         font-style: normal;
         font-weight: 600;
         line-height: 1.4em;
-    }
-    .btn-box {
-        margin-bottom: 32px;
-        width: 360px;
-        margin: 0 auto 24px;
-        &__red {
-            background-color: red;
-            color: white;
-            width: 100%;
-            margin-bottom: 24px;
-            font-size: 17px;
-            min-height: 48px;
-            border-radius: 4px;
-        }
-        &__gray {
-            display: block;
-            width: 100%;
-            background-color: gray;
-            border-color: transparent;
-            color: black;
-            font-size: 17px;
-            min-height: 48px;
-            border-radius: 4px;
-        }
     }
 }

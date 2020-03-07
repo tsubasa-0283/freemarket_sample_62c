@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prefefture_id: 1
+  city: MyString
+
+two:
+  prefefture_id: 1
+  city: MyString
