@@ -1,0 +1,45 @@
+.header
+  .headerBody
+    .headerBox
+      .icon
+        =link_to image_tag('logo.png', size: '140x40'), "/"
+      %form.form
+        %input{placeholder: "キーワードから探す", class: "form__input", type: "text"}
+        #search.form__icon
+          =link_to image_tag("icon-search 1.png", size: "19x19") 
+      .searchList
+        .listBox
+        
+    .underBody
+      .left
+        #category.leftCategori
+          = link_to "カテゴリ",""
+          %ul.parent_box
+            - Category.where(ancestry: nil).each do |parent|
+              %li#parent.parent_list
+              = link_to "#{parent.name}","#"
+            -# - @parents.each do |p|
+            -#   %li#parent.parent_list
+            -#     = link_to "#{p.name}", "#"
+                -# %ul.children_box
+                -#   - p.children.each do |c|
+                -#     %li.children_list
+                -#       = link_to "#{c.name}", "#"
+                -#       %ul.grandchildren_box
+                -#         - c.children.each do |gc|
+                -#           %li.grandchildren_list
+                -#             = link_to "#{gc.name}", "#"
+    
+          .CategoriNone
+          .CategoriList
+            .CategoriList__item
+        .leftBrand
+          ブランド
+          .brandNone
+      %ul.right
+        %li.right__login
+          =link_to "ログイン", new_user_session_path, class: "right__none"
+        %li.right__signup
+          =link_to "新規会員登録", new_user_registration_path, class: "right__none"
+      
+
