@@ -33,13 +33,21 @@
             .box-form__content__input
               %label お名前
               %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：山田太郎'
+              .box-form__content__input__list
+                .box-form__content__input__list__name
+                  = f.text_field :content, class: 'form__input__name', placeholder: '例：山田'
+                .box-form__content__input__list__name
+                  = f.text_field :content, class: 'form__input__name', placeholder: '例：太郎'
               .box-form__content__input__message
 
             .box-form__content__input
               %label お名前カナ
               %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: 'ヤマダタロウ'
+              .box-form__content__input__list
+                .box-form__content__input__list__name
+                  = f.text_field :content, class: 'form__input__name', placeholder: '例：ヤマダ'
+                .box-form__content__input__list__name
+                  = f.text_field :content, class: 'form__input__name', placeholder: '例：タロウ'
               .box-form__content__input__message
 
             .box-form__content__input
@@ -230,17 +238,6 @@
 
             .box-form__description
               送付先情報
-            .box-form__content__input
-              %label 送付先氏名
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：山田太郎'
-              .box-form__content__input__message
-            .box-form__content__input
-
-              %label 送付先氏名ふりがな
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：やまだたろう'
-              .box-form__content__input__message
 
             .box-form__content__input
               %label 郵便番号
