@@ -13,7 +13,9 @@
     .underBody
       %ul.left
         .leftCategori
-          カテゴリー
+          - @category.each do |category|
+          
+          カテゴリ
           .CategoriNone
           .CategoriList
             .CategoriList__item
@@ -24,5 +26,6 @@
         %li.right__login
           =link_to "ログイン", new_user_session_path, class: "right__none"
         %li.right__signup
-          =link_to "新規会員登録", "#", class: "right__none"
+          =link_to "新規会員登録", new_user_registration_path, class: "right__none"
+      
 
