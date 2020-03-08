@@ -5,11 +5,23 @@ class ItemsController < ApplicationController
     
     def new
         @item = Item.new
-        @item.images.build
+        @item.images.new
+        @category = Category.all
+    #     @category_parent_array = ["---"]
+    #   Category.where(ancestry: nil).each do |parent|
+    #      @category_parent_array << parent.name
+    #   end
+        # @categories = Category.where(sub: params[:sub], sub_sub: params[:sub_sub])
         # gon.length = 0
     end
     
     def create
+      @item = Item.new(item_params)
+      if @item.save
+        redirect_to root_path
+      else
+        render :new
+      end
     end
     
     def edit
@@ -19,6 +31,12 @@ class ItemsController < ApplicationController
     end
     
     def destroy
+    end
+
+    private
+
+    def item_params
+        params.require(:item).permit(:name, :price, images.attributes: [:src])
     end
     
 end

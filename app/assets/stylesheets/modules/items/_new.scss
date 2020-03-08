@@ -48,7 +48,7 @@
         }
         &__content {
             margin-top: 16px;
-            .upload-box-items {
+            &-items {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -67,17 +67,17 @@
                     display: none;
                 }
                 .fa-camera {
-                    position: absolute;
-                    font-size: 20px;
-                    padding-bottom: 30px;
-                    // transform: translate(-50%, -50%)
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 1.4em;
+                    width: 24px;
+                    height: 24px;
                 }
-                &__text {
+                &_text {
                     font-size: 12px;
                     line-height: 1.4em;
                     text-align: center;
                     width: 100%;
-                    padding-top: 50px;
                 }
             }
         }
@@ -88,7 +88,7 @@
             align-items: center;
             width: 100%;
             margin-top: 32px;
-            // display: inline-flex;
+            // display: inline-flex;"
             .input-default {
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -99,8 +99,7 @@
                 margin: 0;
                 outline: 0;
                 padding: 0 16px;
-                width: inherit;
-
+                width: 100%;
             }
             .textarea-default {
                 width: 100%;
@@ -146,15 +145,16 @@
         .content-price {
             padding-bottom: 12px;
             &__left {
-                align-items: center;
-                display: flex;
+                margin-right: 80px;
+                white-space: nowrap;
+                width: 30%;
             }
             &__center {
                 font-size: 14px;
                 margin-right: 8px;
             }
             &__input {
-                text-align: left;
+                text-align: right;
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
@@ -162,7 +162,7 @@
                 margin: 0;
                 outline: none;
                 padding: 0 16px;
-                width: 30%;
+                width: 60%;
             }
         }
         .box {
@@ -189,14 +189,19 @@
                 margin-bottom: 24px;
                 font-size: 17px;
                 min-height: 48px;
+                font-weight: bold;;
                 border-radius: 4px;
             }
             &__gray {
                 display: block;
                 width: 100%;
-                background-color: gray;
+                background-color:#ccc;
                 border-color: transparent;
-                color: black;
+                color: #222;
+                text-align: center;
+                padding: 14px 24px;
+                font-weight: bold;
+                text-decoration: none;
                 font-size: 17px;
                 min-height: 48px;
                 border-radius: 4px;
