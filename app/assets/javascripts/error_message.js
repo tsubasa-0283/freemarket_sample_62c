@@ -1,3 +1,4 @@
+// バックエンドの例外処理の際のポップアップ表示に使うので今はコメントアウト
 // (function(factory) {
 //     if(type define === "function" && define.amd) {
 //         define( ["jquery", "../jquery.validate"], factory);
