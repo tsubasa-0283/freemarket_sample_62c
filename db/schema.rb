@@ -10,9 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20200308064449) do
 
-ActiveRecord::Schema.define(version: 20200224064837) do
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "prefecture_id", null: false
+    t.string   "city",          null: false
+    t.integer  "user_id"
+    t.integer  "post_number",   null: false
+    t.string   "address",       null: false
+    t.string   "building",      null: false
+    t.integer  "tel",           null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
 
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
+
+  create_table "conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "condition",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delivery_days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "days",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "src"
@@ -35,29 +70,45 @@ ActiveRecord::Schema.define(version: 20200224064837) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                          null: false
-    t.integer  "price",                         null: false
+    t.string   "name"
+    t.integer  "price"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "prefecture",                    null: false
     t.text     "description",     limit: 65535, null: false
-    t.integer  "condition_id",                  null: false
-    t.integer  "delivery_day_id",               null: false
-    t.integer  "brand_id",                      null: false
     t.integer  "likes_count",                   null: false
     t.integer  "user_id",                       null: false
     t.integer  "category_id",                   null: false
     t.integer  "item_state_id",                 null: false
-    t.integer  "postage_id",                    null: false
+    t.integer  "brand_id"
+    t.integer  "review_id"
+    t.integer  "condition_id"
+    t.integer  "postage_id"
+    t.integer  "delivery_day_id"
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["condition_id"], name: "index_items_on_condition_id", using: :btree
+    t.index ["delivery_day_id"], name: "index_items_on_delivery_day_id", using: :btree
     t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
     t.index ["postage_id"], name: "index_items_on_postage_id", using: :btree
+    t.index ["review_id"], name: "index_items_on_review_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
-
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "postages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "delivery_charge", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,5 +130,9 @@ ActiveRecord::Schema.define(version: 20200224064837) do
     t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "conditions"
+  add_foreign_key "items", "delivery_days"
+  add_foreign_key "items", "postages"
 end
