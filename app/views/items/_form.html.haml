@@ -53,21 +53,21 @@
             %span.form-require
               必須
           .item-main__content-select
-            %i.fasfa-chevron-down
             = f.collection_select(:category , Category.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
           .item-main__content-select
-            %i.fas.fa-chevron-down
             = f.collection_select(:category, Category.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
           .item-main__content-select
-            %i.fas.fa-chevron-down
             = f.collection_select(:category , Category.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
         .item-main__content-form-group
-          .itemm-main__content-head
+          .item-main__content-head
             = f.label :brand_id do
               ブランド
             %span.form-elective
               任意
-            = f.text_field :brand_id, class: 'input-default', placeholder: "例）シャネル"
+          = f.text_field :brand_id, class: 'input-default', placeholder: "例）シャネル"
         .item-main__content-form-group
           .item-main__content-head
             = f.label :condition_id do
@@ -75,8 +75,8 @@
             %span.form-require
               必須
           .item-main__content-select
-            %i.fas.fa-chevron-down
             = f.collection_select(:condition_id ,Condition.all, :id, :condition, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
       .item-main__content
         %h3.subtitle
           配送について
@@ -87,8 +87,8 @@
             %span.form-require
               必須
           .item-main__content-select
-            %i.fas.fa-chevron-down
             = f.collection_select(:postage_id ,Postage.all, :id, :delivery_charge, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
         .item-main__content-form-group
           .item-main__content-head
             = f.label :prefecture do
@@ -96,8 +96,8 @@
             %span.form-require
               必須
           .item-main__content-select
-            %i.fas.fa-chevron-down
             = f.collection_select(:prefecture, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
         .item-main__content-form-group
           .item-main__content-head
             = f.label :delivery_day_id do
@@ -105,8 +105,8 @@
             %span.form-require
               必須
           .item-main__content-select
-            %i.fas.fa-cgeveron-down
             = f.collection_select( :delivery_day_id ,DeliveryDay.all, :id, :days, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
       .item-main__content
         .subtitle
           価格（300〜9,999,999）
@@ -124,9 +124,15 @@
           .item_handling_charge
             販売手数料（10%）
             .right_bar
-
+              —
           .sell_profit
             販売利益
-          = f.submit '出品する', class: 'btn-box__red'
-          = link_to root_path, class: 'btn-box__gray' do
-            もどる
+            .right_bar
+              —
+          .btn-box
+            = f.submit '出品する', class: 'btn-box__red'
+            = link_to root_path, class: 'btn-box__gray' do
+              もどる
+          .caution
+            %p.caution__text
+              禁止されている出品,行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売,は犯罪であり処罰される可能性があります。また、出品をもちまして,加盟店規約,に同意したことになります。
