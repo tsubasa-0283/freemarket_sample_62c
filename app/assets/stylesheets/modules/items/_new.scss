@@ -23,161 +23,198 @@
         border: 1px solid #eee;
         padding: 0 40px 64px;
     }
+    &__box {
+        border-top: 1px solid #eee;
+        background: white;
+    }
+    // 画像アップロード画面
     .upload-box {
+        width: 620px;
         padding: 40px;
-        vertical-align: baseline;
         margin: 0;
-        border-width: 0px;
-        border-style: initial;
-        border-color: initial;
-        border-image: initial;
-        font: inherit;
         .item-main__header {
             display: flex;
             align-items: center;
-            .subtitle {
-                font-size: 14px;
-                font-weight: 600;
+        }
+        .fa-camera {
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.4em;
+            width: 24px;
+            height: 24px;
+        }
+        .item_dropbox {
+            display: block;
+            width: 620px;
+            margin: 16px auto 0;
+            background: white;
+            position: relative;
+            min-height: 162px;
+            background: #f5f5f5;
+            border: 1px dashed #ccc;
+            font-size: 0;
+            text-align: center;
+            &__text {
+                font-size: 12px;
                 line-height: 1.4em;
+                text-align: center;
+                width: 100%;
             }
         }
+        .input-area {
+            display: flex;
+            justify-self: space-around;
+            height: 100%;
+            margin: 0 auto;
+            margin-top: 48px;
+        }
+        .image-box__container {
+            flex-wrap: wrap;
+            display: flex;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+            cursor: pointer;
+            min-height: 162px;
+        }
+        // &__head {
+        //     font-size: 14px;
+        //     font-weight: 600;
+        //     line-height: 1.4em;
+        // }
         &__text {
         font-size: 14px;
         line-height: 1.4em;
         margin-top: 16px;
         }
-        &__content {
-            margin-top: 16px;
-            &-items {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                min-height: 162px;
-                flex-wrap: wrap;
-                -webkit-box-pack: center;
-                position: relative;
-                border-width: 1px;
-                border-style: dashed;
-                border-color: rgb(204,204,204);
-                background-color: #F5F5F5;
-                border-image: initial;
-                transition: all 0.5s ease-out 0s;
-                .file {
-                    display: none;
-                }
-                .fa-camera {
-                    font-size: 12px;
-                    text-align: center;
-                    line-height: 1.4em;
-                    width: 24px;
-                    height: 24px;
-                }
-                &_text {
-                    font-size: 12px;
-                    line-height: 1.4em;
-                    text-align: center;
-                    width: 100%;
-                }
-            }
-        }
+        // &__content {
+        //     margin-top: 16px;
+        // }
     }
+    // 商品名入力画面
     &__content {
         padding: 40px;
+        border-top: 1px solid #eee;
         &-form-group {
             align-items: center;
             width: 100%;
-            margin-top: 32px;
-            // display: inline-flex;"
+            margin-top: 16px;
+            // 商品名入力
             .input-default {
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
                 font-family: inherit;
                 font-size: inherit;
+                background-color: #fff;;
                 height: 48px;
-                margin: 0;
-                outline: 0;
-                padding: 0 16px;
+                padding: 10px 16px 8px;
                 width: 100%;
             }
+            // 商品説明入力
             .textarea-default {
                 width: 100%;
                 margin-top: 16px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                box-sizing: border-box;
                 color: #222;
                 font-size: 16px;
-                margin: 0;
+                max-width: 100%;
+                min-height: 104%;
                 outline: none;
-                padding: 13px 16px;
+                padding: 10px;
                 resize: vertical;
                 vertical-align: middle;
                 height: 181px;
             }
         }
         &-head {
-            color: rgb(136, 136, 136);
+            color: #222;
             font-size: 14px;
             font-weight: 600;
             line-height: 1.4em;
             margin-bottom: 24px;
         }
         &-select {
-            margin-top: 16px;
+            // margin-top: 16px;
             width: 100%;
             &-default {
                 background-color: white;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                box-sizing: border-box;
+                text-indent: 0px;
+                position: relative;
                 color: #222;
                 font-size: 16px;
                 height: 48px;
-                line-height: 1px;
-                margin: 0;
-                outline: none;
-                padding: 0 56px 0 16px;
-                width: 100%;
-            }
-        }
-        .content-price {
-            padding-bottom: 12px;
-            &__left {
-                margin-right: 80px;
-                white-space: nowrap;
-                width: 30%;
-            }
-            &__center {
-                font-size: 14px;
-                margin-right: 8px;
-            }
-            &__input {
-                text-align: right;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 48px;
-                margin: 0;
-                outline: none;
+                line-height: 1.5;
+                margin-bottom: 5px;
                 padding: 0 16px;
-                width: 60%;
+                width: 100%;
+                cursor: pointer;
+                z-index: 2;
+            }
+            .fa-chevron-select {
+                bottom: 0;
+                margin: auto;
+                pointer-events: none;
+                position: absolute;
+                right: 16px;
+                top: 0;
             }
         }
-        .box {
-            padding: 12px 0;
-            display: flex;
-            &__left {
-                margin-right: auto;
-                font: inherit;
-                white-space: nowrap;
-            }
-            &__right {
-                font-size: 14px;
-                font: inherit;
+        //価格
+        .content-price {
+            background: white;
+            padding-top: 32px;
+            white-space: nowrap;
+            &__form {
+                padding-bottom: 16px;
+                &-left {
+                    white-space: nowrap;
+                    float: left;
+                    color: #888888;
+                    display: flex;
+                    color: #222;
+                    // width: 30%;
+                    font-size: 14px;
+                    padding-top: 16px;
+                }
+                &-center {
+                    font-size: 14px;
+                    margin-right: 8px;
+                }
+                &-input {
+                    text-align: right;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    height: 48px;
+                    margin: 0;
+                    outline: none;
+                    padding: 0 16px;
+                    width: 60%;
+                }
             }
         }
+        // .box {
+        //     padding: 12px 0;
+        //     display: flex;
+        //     &__left {
+        //         display: block;
+        //         padding: 24px 0;
+        //         margin-top: 30px;
+        //         border-top: 1px solid #ccc;
+        //     }
+        //     &__right {
+        //         font-size: 14px;
+        //         padding: 24px 0;
+        //         border-top: 1px solid #ccc;
+        //     }
+        // }
+        // 販売価格
         .btn-box {
             margin-bottom: 32px;
             width: 360px;
@@ -208,6 +245,46 @@
             }
         }
     }
+    .item_price-input {
+        text-align: right;
+        float: right;
+        display: flex;
+    }
+    .item_handling_charge {
+        display: block;
+        padding: 24px 0;
+        margin-top: 30px;
+        border-bottom: 1px solid #eee;
+    }
+    .price_form-box {
+        display: inline-block;
+        position: relative;
+        width: inherit;
+    }
+    #price_calc {
+        text-align: right;
+        height: 48px;
+        border-radius: 4px;
+        font-size: 20px;
+        float: right;
+        border: 1px solid #ccc;
+        white-space: nowrap;
+    }
+    p.price {
+        display: inline-block;
+        font-size: 25px;
+        line-height: 48px;
+        padding: 5px;
+        float: right;
+    }
+    .right_bar {
+        padding-top: 20px;
+        font-size:15px;
+    }
+    .sell_profit {
+        padding: 24px 0;
+        border-top: 1px solid #eee;
+    }
     label {
         font-size: 14px;
         font-weight: 600;
@@ -234,5 +311,12 @@
         font-style: normal;
         font-weight: 600;
         line-height: 1.4em;
+    }
+    .subtitle {
+        color: rgb(136, 136, 136);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4em;
+        margin-bottom: 24px;
     }
 }
