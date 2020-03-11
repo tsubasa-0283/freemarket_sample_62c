@@ -80,21 +80,12 @@
             cursor: pointer;
             min-height: 162px;
         }
-        // &__head {
-        //     font-size: 14px;
-        //     font-weight: 600;
-        //     line-height: 1.4em;
-        // }
         &__text {
         font-size: 14px;
         line-height: 1.4em;
         margin-top: 16px;
         }
-        // &__content {
-        //     margin-top: 16px;
-        // }
     }
-    // 商品名入力画面
     &__content {
         padding: 40px;
         border-top: 1px solid #eee;
@@ -102,7 +93,6 @@
             align-items: center;
             width: 100%;
             margin-top: 16px;
-            // 商品名入力
             .input-default {
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -139,7 +129,6 @@
             margin-bottom: 24px;
         }
         &-select {
-            // margin-top: 16px;
             width: 100%;
             position: relative;
             &_icon{
@@ -178,7 +167,6 @@
                 top: 0;
             }
         }
-        //価格
         .content-price {
             background: white;
             padding-top: 32px;
@@ -191,7 +179,6 @@
                     color: #888888;
                     display: flex;
                     color: #222;
-                    // width: 30%;
                     font-size: 14px;
                     padding-top: 16px;
                 }
@@ -212,22 +199,6 @@
                 }
             }
         }
-        // .box {
-        //     padding: 12px 0;
-        //     display: flex;
-        //     &__left {
-        //         display: block;
-        //         padding: 24px 0;
-        //         margin-top: 30px;
-        //         border-top: 1px solid #ccc;
-        //     }
-        //     &__right {
-        //         font-size: 14px;
-        //         padding: 24px 0;
-        //         border-top: 1px solid #ccc;
-        //     }
-        // }
-        // 販売価格
         .sell-btn-box {
 
         }
