@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
         @item = Item.new
         @item.images.new
         @category = Category.all
+        # ancestryのカテゴリーページを作成するためにコメントアウト
     #     @category_parent_array = ["---"]
     #   Category.where(ancestry: nil).each do |parent|
     #      @category_parent_array << parent.name
