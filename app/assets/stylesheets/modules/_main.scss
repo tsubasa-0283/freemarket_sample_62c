@@ -280,10 +280,12 @@
     width: 780px;
     margin: 26px auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     .productList {
       width: 220px;
       display: inline-block;
+      margin-bottom: 20px;
       a {
         background-color: #fff;
         display: inline-block;
