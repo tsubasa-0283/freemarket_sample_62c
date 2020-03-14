@@ -73,9 +73,10 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
-gem 'carrierwave'
 gem 'fog-aws'
 gem 'active_hash'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ancestry'
+gem 'pry-rails'
+

@@ -104,7 +104,7 @@
           .productList
             =link_to '#'
             .productList--img
-              = image_tag item.images, size: '188x252'
+              -# = image_tag item.images[0]
             .productList__body
               %h3.name
                 = item.name
