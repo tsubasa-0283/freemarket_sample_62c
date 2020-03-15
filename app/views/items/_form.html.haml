@@ -48,18 +48,11 @@
           商品の詳細
         .item-main__content-form-group
           .item-main__content-head
-            = f.label :category do
-              カテゴリー
+            = f.label 'カテゴリー', class: 'listing-default__label'
             %span.form-require
               必須
           .item-main__content-select
-            = f.collection_select(:category , Category.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
-            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
-          .item-main__content-select
-            = f.collection_select(:category, Category.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
-            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
-          .item-main__content-select
-            = f.collection_select(:category , Category.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = f.select :category , @category_parent_array, {}, {class: 'item-main__content-select-default', id: 'parent_category'}
             = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
         .item-main__content-form-group
           .item-main__content-head
@@ -105,7 +98,7 @@
             %span.form-require
               必須
           .item-main__content-select
-            = f.collection_select( :delivery_day_id ,DeliveryDay.all, :id, :days, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = f.collection_select( :delivery_day_id ,DeliveryDay.all, :id, :day, {prompt: "---"}, {class: 'item-main__content-select-default'})
             = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
       .item-main__content
         .subtitle
