@@ -62,8 +62,12 @@ class ItemsController < ApplicationController
 
     private
 
-    def item_params
+    def set_item
+      @item = Item.find(params[:id])
+    end
 
+    def item_params
+      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :brand_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, images_attributes: [:image_url] )
     end
 
 end
