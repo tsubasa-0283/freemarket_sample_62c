@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-#   root "toppage#index"
-#   get 'toppage/index'
-  get 'users/new'
-  # get 'deteils/index'
-  # get 'toppage/index'
-  root "toppage#index"
-  # root "deteils#index"
+  get 'users/top'
+
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions      => 'users/sessions',
+  }
+
+  devise_scope :user do
+    get  'users/sign_up' => 'users/registrations#new'
+    post 'users/sign_up' => 'users/registrations#create'
+  end
+
+  root 'toppage#index'
 end
