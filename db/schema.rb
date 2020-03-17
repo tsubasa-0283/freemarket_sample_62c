@@ -10,47 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200224114208) do
+ActiveRecord::Schema.define(version: 20200212102636) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "prefecture_id"
-    t.string   "city"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "installs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nickname",                            null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "first_name_kana"
+    t.string   "last_name_kana"
+    t.integer  "tel"
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_installs_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "nickname",        null: false
-    t.string  "email",           null: false
-    t.string  "password",        null: false
-    t.string  "first_name",      null: false
-    t.string  "last_name",       null: false
-    t.string  "first_name_kana", null: false
-    t.string  "last_name_kana",  null: false
-    t.integer "tel",             null: false
-    t.integer "birth_year"
-    t.integer "birth_month"
-    t.integer "birth_day"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["password"], name: "index_users_on_password", unique: true, using: :btree
+    t.index ["encrypted_password"], name: "index_users_on_encrypted_password", unique: true, using: :btree
     t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree
   end
 

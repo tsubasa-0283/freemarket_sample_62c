@@ -1,0 +1,7 @@
+%h1 登録が完了しました。
+-if user_signed_in?
+  .log_in
+    = link_to "ログアウト", destroy_user_session, method: :delete
+-else
+  .log_out
+    = link_to "ログイン", new_user_session_path, method: :get

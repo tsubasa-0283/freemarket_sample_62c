@@ -45,7 +45,7 @@
 | --------------- | ------- | ----------------------------------- |
 | nickname        | string  | null: false,limit: 20               |
 | email           | string  | null: false, unique: true           |
-| password        | strinfg | null: false, unique: true           |
+| password        | string  | null: false, unique: true           |
 | first_name      | string  | null: false, limit: 30              |
 | last_name       | string  | null: false, limit: 30              |
 | first_name_kana | string  | null: false, limit: 30              |
