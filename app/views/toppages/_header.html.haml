@@ -5,15 +5,18 @@
         =link_to image_tag('logo.png', size: '140x40'), "/"
       %form.form
         %input{placeholder: "キーワードから探す", class: "form__input", type: "text"}
-        .form__icon
+        #search.form__icon
           =link_to image_tag("icon-search 1.png", size: "19x19") 
       .searchList
         .listBox
-        
     .underBody
-      %ul.left
-        .leftCategori
-          カテゴリー
+      .left
+        #category.leftCategori
+          = link_to "カテゴリ",""
+          %ul.parent_box
+            - Category.where(ancestry: nil).each do |parent|
+              %li#parent.parent_list
+              = link_to "#{parent.name}","#"
           .CategoriNone
           .CategoriList
             .CategoriList__item
@@ -25,5 +28,5 @@
           =link_to "ログイン", new_user_session_path, class: "right__none"
         %li.right__signup
           =link_to "新規会員登録", new_user_registration_path, class: "right__none"
-      
+
 
