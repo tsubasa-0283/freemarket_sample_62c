@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
+    before_action :set_category, only: [:edit, :update]
     def index
         @items = Items.includes(:images).order('create_at DESC')
     end
@@ -7,7 +8,6 @@ class ItemsController < ApplicationController
     def new
         @item = Item.new
         @item.images.new
-        @category = Category.all
         #セレクトボックスの初期値
         @category_parent_array = ["---"]
         # データベースから親カテゴリーのみを抽出し、配列化
@@ -18,10 +18,12 @@ class ItemsController < ApplicationController
 
     def create
       @item = Item.new(item_params)
+      @item.status = 0
+      @item.user_id = current_user.id
       if @item.save
         redirect_to root_path
       else
-        render :new
+        render :new unless @item.valid?
       end
     end
 
@@ -29,6 +31,38 @@ class ItemsController < ApplicationController
     end
 
     def update
+      @item = Item.find(params[:id])
+      @images = @item.images
+
+      # 登録画像のidの配列を生成
+      ids = @item.images.map{|image| image.id}
+      # 登録済み画像のうち、編集後もまだ残っている画像のidの配列を生成する（文字列から数値に変換する）
+      exist_ids = registered_images_params[:ids].map[&:to_i]
+      # 登録済み画像が残っていない場合、配列を空にする
+      exist_ids.clear if exist_ids[0] == 0
+
+      if(exist_ids.length != 0 || new_image_params[:images][0] != "") && @item.update!(item_update_params)
+
+        # 登録済み画像のうち削除ボタンを押した画像を削除する
+        delete_ids = ids - exist_ids
+        delete_ids each do |id|
+          @item.images.find(id).destroy
+        end
+      end
+
+      # 新規登録画像があれば保存する
+      unless new_image_params[:images][0] == ""
+        new_image_params[:images].each do |image|
+          @item.images.ceate(src: image, item_id: @item_id)
+        end
+      end
+
+      format.js{rnder ajax_redirect_to(item_path(@item))}
+
+      else
+        flash[:alert] = "未入力項目があります"
+        render :edit
+      end
     end
 
     def destroy
@@ -70,4 +104,21 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :brand_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, images_attributes: [:image_url] )
     end
 
-end
+    def item_update_params
+      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :brand_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id )
+    end
+
+    def registered_images_params
+      params.require(:registered_images_ids).permit({ids: []})
+    end
+
+    def new_image_params
+      params.require(:new_images).permit({images: []})
+    end
+
+    def set_category
+      @category_parent_array = ["---"]
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+      end
+    end

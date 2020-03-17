@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20200315150823) do
     t.integer  "price"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.string   "prefecture",                    null: false
+    t.string   "prefecture_id",                 null: false
     t.text     "description",     limit: 65535, null: false
     t.integer  "likes_count",                   null: false
     t.integer  "user_id",                       null: false

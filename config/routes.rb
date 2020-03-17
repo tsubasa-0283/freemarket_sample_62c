@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root 'items#index'
-  resources :items, only: [:index, :show, :new, :edit, :destroy], except: :show do
+  resources :items do
   # Ajaxで動くアクションのルートを作成
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       get 'get_size',defaults: {format: 'json'}
     end
   end
+
+
 end
