@@ -13,10 +13,10 @@ $(function(){
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                 <select>
-                            <i class='fas fa-chevron-down item-main__content-select_icon'></i>
+                                <i class='fas fa-chevron-down item-main__content-select_icon'></i>
                             </div>
                         </div>`;
-        $('.item-main__content-select').append(childSelectHtml);
+        $('.item-main__content-category').append(childSelectHtml);
     }
     // 孫カテゴリーの表示作成
     function appendGrandchidrenBox(insertHTML){
@@ -30,7 +30,7 @@ $(function(){
                                     <i class='fas fa-chevron-down item-main__content-select_icon'></i>
                                 </div>
                             </div>`;
-        $('.item-main__content-select').append(grandchildSelectHtml);
+        $('.item-main__content-category').append(grandchildSelectHtml);
     }
     // 親カテゴリー選択後のイベント
     $('#parent_category').on('change', function(){
@@ -65,7 +65,7 @@ $(function(){
         }
     });
     // 子カテゴリー選択後のイベント
-    $('.item-main__content-head').on('change', '#child_category', function(){
+    $('.item-main__content-category').on('change', '#child_category', function(){
         var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
         if (childId != "---"){ //子カテゴリーが初期値でないことを確認
             $.ajax({
@@ -116,10 +116,10 @@ $(function(){
                                 </div>
                             </div>
                         </div>`;
-        $('.item-main__content-head').append(sizeSelectHtml);
+        $('.item-main__content-category').append(sizeSelectHtml);
     }
     // 孫のカテゴリー選択後のイベント
-    $('.item-main__content-head').on('change', '#grandchild_category', function (){
+    $('.item-main__content-category').on('change', '#grandchild_category', function (){
         var grandchildId = $('#grandchild_category option:selected').data('category'); //選択された孫のカテゴリーのidを取得
         if (grandchildId != "---"){
             //孫カテゴリーが初期値でないことを確認
@@ -140,9 +140,9 @@ $(function(){
                     appendSizeBox(insertHTML);
                 }
             })
-            .fail(function (){
-                alert('サイズ取得に失敗しました');
-            })
+            // .fail(function (){
+            //     alert('サイズ取得に失敗しました');
+            // })
         }else{
             $('#size_wrapper').remove(); //孫カテゴリーが初期値になった時、サイズ欄以下を削除する
             $('#brand-wrapper').remove();
