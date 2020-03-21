@@ -78,12 +78,9 @@ end
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'active_hash'
-<<<<<<< Updated upstream
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'active_hash'
 gem 'ancestry'
 
-=======
 gem 'payjp'
->>>>>>> Stashed changes
