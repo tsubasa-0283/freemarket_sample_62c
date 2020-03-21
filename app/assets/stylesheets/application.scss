@@ -1,5 +1,5 @@
 @import "reset";
-@import "modules/toppage";
+@import "modules/toppages";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "modules/header";
@@ -8,4 +8,5 @@
 @import "modules/signup";
 @import "modules/login";
 @import "./deteils";
-
+@import "modules/items/new";
+@import "modules/items/edit";
