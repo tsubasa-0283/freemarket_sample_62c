@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
       if @item.save
         redirect_to root_path, notice: "出品しました"
       else
-        render :new unless @item.valid? alert: "必須項目を入力してください"
+        redirect_to new_item_path, alert: "必須項目を入力してください"
       end
     end
 
