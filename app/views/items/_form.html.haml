@@ -139,7 +139,3 @@
           .caution
             %p.caution__text
               禁止されている出品,行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売,は犯罪であり処罰される可能性があります。また、出品をもちまして,加盟店規約,に同意したことになります。
-              
-
-
-              -# = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {}, {class: 'item-main__content-select-default', id: 'parent_category'}
