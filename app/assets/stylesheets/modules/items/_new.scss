@@ -127,12 +127,23 @@
             font-weight: 600;
             line-height: 1.4em;
             margin-bottom: 24px;
+            position: relative;
+            &_icon {
+                position: absolute;
+                pointer-events: none;
+                right: 330px;
+                top:  1012px;
+                z-index: 3;
+                color: #888;
+                font-size: 16px;
+            }
         }
         &-select {
             width: 100%;
             position: relative;
             &_icon{
                 position: absolute;
+                pointer-events: none;
                 right: 16px;
                 top: 25%;
                 z-index: 2;
@@ -167,6 +178,7 @@
                 top: 0;
             }
         }
+
         .content-price {
             background: white;
             padding-top: 32px;
@@ -273,6 +285,18 @@
         float: right;
     }
     .right_bar {
+        float: right;
+        font-size:16px;
+    }
+    .right-profit_bar {
+        float: right;
+        font-size:16px;
+    }
+    .right_price {
+        float: right;
+        font-size:16px;
+    }
+    .right-profit_price {
         float: right;
         font-size:16px;
     }

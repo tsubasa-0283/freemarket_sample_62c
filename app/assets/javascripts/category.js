@@ -1,7 +1,7 @@
 $(function(){
     // カテゴリーセレクトボックスのオプションを作成
     function appendOption(category){
-        var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+        var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
         return html;
     }
     // 子カテゴリーの表示作成
@@ -13,10 +13,10 @@ $(function(){
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                 <select>
-                            <i class='fas fa-chevron-down item-main__content-select_icon'></i>
+                                <i class='fas fa-chevron-down item-main__content-select_icon'></i>
                             </div>
                         </div>`;
-        $('.item-main__content-select').append(childSelectHtml);
+        $('.item-main__content-category').append(childSelectHtml);
     }
     // 孫カテゴリーの表示作成
     function appendGrandchidrenBox(insertHTML){
@@ -30,7 +30,7 @@ $(function(){
                                     <i class='fas fa-chevron-down item-main__content-select_icon'></i>
                                 </div>
                             </div>`;
-        $('.item-main__content-select').append(grandchildSelectHtml);
+        $('.item-main__content-category').append(grandchildSelectHtml);
     }
     // 親カテゴリー選択後のイベント
     $('#parent_category').on('change', function(){
@@ -39,7 +39,7 @@ $(function(){
             $.ajax({
                 url: 'get_category_children',
                 type: 'GET',
-                data: { parent_name: parentCategory },
+                data: { parent_id: parentCategory },
                 dataType: 'json'
             })
             .done(function(children){
@@ -65,7 +65,7 @@ $(function(){
         }
     });
     // 子カテゴリー選択後のイベント
-    $('.item-main__content-head').on('change', '#child_category', function(){
+    $('.item-main__content-category').on('change', '#child_category', function(){
         var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
         if (childId != "---"){ //子カテゴリーが初期値でないことを確認
             $.ajax({
@@ -97,7 +97,7 @@ $(function(){
     });
     //サイズセレクトボックスのオプション作成
     function appendSizeOption(size){
-        var html = `<option value="${size.size}">${size.size}</option>`;
+        var html = `<option value="${size.id}">${size.size}</option>`;
         return html;
     }
     // サイズ・ブランド入力欄の表示作成
@@ -116,10 +116,10 @@ $(function(){
                                 </div>
                             </div>
                         </div>`;
-        $('.item-main__content-head').append(sizeSelectHtml);
+        $('.item-main__content-category').append(sizeSelectHtml);
     }
     // 孫のカテゴリー選択後のイベント
-    $('.item-main__content-head').on('change', '#grandchild_category', function (){
+    $('.item-main__content-category').on('change', '#grandchild_category', function (){
         var grandchildId = $('#grandchild_category option:selected').data('category'); //選択された孫のカテゴリーのidを取得
         if (grandchildId != "---"){
             //孫カテゴリーが初期値でないことを確認
@@ -140,12 +140,40 @@ $(function(){
                     appendSizeBox(insertHTML);
                 }
             })
-            .fail(function (){
-                alert('サイズ取得に失敗しました');
-            })
+            // その他カテゴリーを選択した際にも出てしまうためコメントアウトしてます。
+            // .fail(function (){
+            //     alert('サイズ取得に失敗しました');
+            // })
         }else{
             $('#size_wrapper').remove(); //孫カテゴリーが初期値になった時、サイズ欄以下を削除する
             $('#brand-wrapper').remove();
         }
     });
+    $(".price_form-box").on("input", function() {
+
+        var input = $(".price_form-box").val();
+    
+        var fee = (input / 10).toFixed();
+    
+        var profit = input - fee
+        
+    
+        if (input.length === 0 || input.length > 7 ) {
+    
+          $(".right_bar").css("display", "none");
+          $(".right_price").text("-");
+    
+          $(".right-profit_bar").css("display", "none");
+          $(".right-profit_price").text("-");
+    
+        } else {
+    
+          $(".right_bar").css("display", "inline");
+          $(".right_price").text(fee);
+    
+          $(".right-profit_bar").css("display", "inline");
+          $(".right-profit_price").text(profit);
+    
+        }
+      });
 });

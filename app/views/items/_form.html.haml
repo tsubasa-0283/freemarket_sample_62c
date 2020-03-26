@@ -20,13 +20,11 @@
               .item-num-0#image-box__container
               = f.fields_for :images do |i|
                 .input-area
-                  = i.file_field :image, type:'file', name: "item[images_attributes][][src]", value:"src", style: "display:none", id:"img-file", required: true
+                  = i.file_field :images, type:'file', name: "item[images_attributes][][src]", value:"src", style: "display:none", id:"img-file", required: true
                   %label.input{for: "img-file"}
                     %i.fas.fa-camera
                     .item_dropbox__text
-                      ドラッグアンドドロップ
-                      %br
-                      またはクリックしてファイルをアップロード
+                      クリックしてファイルをアップロード
           -# 商品名入力欄
       .item-main__content
         .item-main__content-form-group
@@ -51,9 +49,9 @@
             = f.label 'カテゴリー', class: 'listing-default__label'
             %span.form-require
               必須
-          .item-main__content-select
-            = f.select :category , @category_parent_array, {}, {class: 'item-main__content-select-default', id: 'parent_category'}
-            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+          .item-main__content-category
+            = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, class: 'item-main__content-select-default', id: 'parent_category'
+            = icon('fas', 'chevron-down', class: "item-main__content-head_icon")
         .item-main__content-form-group
           .item-main__content-head
             = f.label :brand_id do
@@ -89,7 +87,7 @@
             %span.form-require
               必須
           .item-main__content-select
-            = f.collection_select(:prefecture, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
             = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
         .item-main__content-form-group
           .item-main__content-head
@@ -116,12 +114,16 @@
               = f.number_field :price, id: 'price_calc',class: 'price_form-box', placeholder: '0'
           .item_handling_charge
             販売手数料（10%）
+            .right_price
+              -
             .right_bar
-              —
+              ￥
           .sell_profit
             販売利益
-            .right_bar
-              —
+            .right-profit_price
+              -
+            .right-profit_bar
+              ￥
           -# ボタン
           .btn-box
             = f.submit '出品する', class: 'btn-box__red'

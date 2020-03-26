@@ -11,15 +11,22 @@
         .listBox
     .underBody
       .left
-        #category.leftCategori
-          = link_to "カテゴリ",""
-          %ul.parent_box
-            - Category.where(ancestry: nil).each do |parent|
-              %li#parent.parent_list
-              = link_to "#{parent.name}","#"
-          .CategoriNone
-          .CategoriList
-            .CategoriList__item
+        .leftCategori
+          カテゴリ
+          %ul.parent__tree
+            - @category_parent_array.each do |parent|
+              %li.parent__tree__item
+                = link_to "#{parent.name}", "#", class:"parent"
+
+                %ul.children__tree
+                  - parent.children.each do |child|
+                    %li.children__tree__item
+                      = link_to "#{child.name}", "#", class:"child"
+
+                      %ul.grandchildren__tree
+                        - child.children.each do |grandchild|
+                          %li.grandchildren__tree__item
+                            = link_to "#{grandchild.name}", "#", class:"grandchild"
         .leftBrand
           ブランド
           .brandNone
