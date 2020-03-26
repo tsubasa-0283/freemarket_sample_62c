@@ -20,7 +20,7 @@
               .item-num-0#image-box__container
               = f.fields_for :images do |i|
                 .input-area
-                  = i.file_field :image, type:'file', name: "item[images_attributes][][src]", value:"src", style: "display:none", id:"img-file", required: true
+                  = i.file_field :images, type:'file', name: "item[images_attributes][][src]", value:"src", style: "display:none", id:"img-file", required: true
                   %label.input{for: "img-file"}
                     %i.fas.fa-camera
                     .item_dropbox__text
@@ -52,8 +52,13 @@
             %span.form-require
               必須
           .item-main__content-category
-            = f.select :category , @category_parent_array, {}, {class: 'item-main__content-select-default', id: 'parent_category'}
-            = icon('fas', 'chevron-down', class: "item-main__content-category_icon")
+            = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, class: 'item-main__content-select-default', id: 'parent_category'
+            -# = f.select :category_id, @category_parent_array, {}, {class: 'item-main__content-select-default', id: 'parent_category'}
+            -# %select{class: 'item-main__content-select-default', id: "parent_category", name: "item[category_id][]", data: {parent_category: @category.id}}
+            -#   %option{value: ""} ---
+            -#   - Category.where('ancestry IS NULL').each do |c|
+            -#     %option{value: "#{c.id}"} #{c.name}
+            = icon('fas', 'chevron-down', class: "item-main__content-head_icon")
         .item-main__content-form-group
           .item-main__content-head
             = f.label :brand_id do
@@ -89,7 +94,7 @@
             %span.form-require
               必須
           .item-main__content-select
-            = f.collection_select(:prefecture, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
             = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
         .item-main__content-form-group
           .item-main__content-head
@@ -116,12 +121,16 @@
               = f.number_field :price, id: 'price_calc',class: 'price_form-box', placeholder: '0'
           .item_handling_charge
             販売手数料（10%）
+            .right_price
+              -
             .right_bar
-              —
+              ￥
           .sell_profit
             販売利益
-            .right_bar
-              —
+            .right-profit_price
+              -
+            .right-profit_bar
+              ￥
           -# ボタン
           .btn-box
             = f.submit '出品する', class: 'btn-box__red'
@@ -130,3 +139,7 @@
           .caution
             %p.caution__text
               禁止されている出品,行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売,は犯罪であり処罰される可能性があります。また、出品をもちまして,加盟店規約,に同意したことになります。
+              
+
+
+              -# = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {}, {class: 'item-main__content-select-default', id: 'parent_category'}

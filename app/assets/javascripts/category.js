@@ -1,7 +1,7 @@
 $(function(){
     // カテゴリーセレクトボックスのオプションを作成
     function appendOption(category){
-        var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+        var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
         return html;
     }
     // 子カテゴリーの表示作成
@@ -39,7 +39,7 @@ $(function(){
             $.ajax({
                 url: 'get_category_children',
                 type: 'GET',
-                data: { parent_name: parentCategory },
+                data: { parent_id: parentCategory },
                 dataType: 'json'
             })
             .done(function(children){
@@ -97,7 +97,7 @@ $(function(){
     });
     //サイズセレクトボックスのオプション作成
     function appendSizeOption(size){
-        var html = `<option value="${size.size}">${size.size}</option>`;
+        var html = `<option value="${size.id}">${size.size}</option>`;
         return html;
     }
     // サイズ・ブランド入力欄の表示作成
@@ -140,6 +140,7 @@ $(function(){
                     appendSizeBox(insertHTML);
                 }
             })
+            // その他カテゴリーを選択した際にも出てしまうためコメントアウトしてます。
             // .fail(function (){
             //     alert('サイズ取得に失敗しました');
             // })
@@ -148,4 +149,31 @@ $(function(){
             $('#brand-wrapper').remove();
         }
     });
+    $(".price_form-box").on("input", function() {
+
+        var input = $(".price_form-box").val();
+    
+        var fee = (input / 10).toFixed();
+    
+        var profit = input - fee
+        
+    
+        if (input.length === 0 || input.length > 7 ) {
+    
+          $(".right_bar").css("display", "none");
+          $(".right_price").text("-");
+    
+          $(".right-profit_bar").css("display", "none");
+          $(".right-profit_price").text("-");
+    
+        } else {
+    
+          $(".right_bar").css("display", "inline");
+          $(".right_price").text(fee);
+    
+          $(".right-profit_bar").css("display", "inline");
+          $(".right-profit_price").text(profit);
+    
+        }
+      });
 });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315132522) do
+ActiveRecord::Schema.define(version: 20200325105234) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -61,19 +61,17 @@ ActiveRecord::Schema.define(version: 20200315132522) do
     t.string   "prefecture_id",                 null: false
     t.string   "brand_id",                      null: false
     t.text     "description",     limit: 65535, null: false
-    t.integer  "likes_count",                   null: false
-    t.integer  "user_id",                       null: false
+    t.integer  "seller_id",                     null: false
     t.integer  "category_id",                   null: false
-    t.integer  "item_state_id",                 null: false
     t.integer  "postage_id",                    null: false
     t.integer  "condition_id"
     t.integer  "delivery_day_id"
+    t.string   "buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["condition_id"], name: "index_items_on_condition_id", using: :btree
     t.index ["delivery_day_id"], name: "index_items_on_delivery_day_id", using: :btree
-    t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
     t.index ["postage_id"], name: "index_items_on_postage_id", using: :btree
-    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+    t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
