@@ -88,7 +88,16 @@ class ItemsController < ApplicationController
       end
     end
 
+    def show
+      render :index unless user_signed_in? && current_user.id == @item.id
+    end
     def destroy
+      if user_signed_in? && current_user.id == @item.id
+        item = Item.find(params[:id])
+        item.destroy
+      else
+        render :index
+      end
     end
 
 
