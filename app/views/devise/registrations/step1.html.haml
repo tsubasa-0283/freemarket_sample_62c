@@ -1,5 +1,5 @@
 .contents
-  .signup-header 
+  .signup-header
     %h1
       =link_to image_tag("logo.png"),"/"
     .signup-bar
@@ -8,24 +8,24 @@
       %h2.box-header
         会員情報入力
       .box-form
-        = form_for '' do |f|
+        = form_for(@user, url: users_signup_sms_path, html: {method: :"get"}) do |f|
           .box-form__content
             .box-form__content__input
               %label ニックネーム
               %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：フリマ太郎'
+              = f.text_field :nickname, class: 'form__input', placeholder: '例：フリマ太郎'
               .box-form__content__input__message
             .box-form__content__input
 
               %label メールアドレス
               %span.red 必須
-              = f.email_field :content, class: 'form__input', placeholder: 'PC・携帯どちらでも可'
+              = f.email_field :email, class: 'form__input', placeholder: 'PC・携帯どちらでも可'
               .box-form__content__input__message
             .box-form__content__input
 
               %label パスワード
               %span.red 必須
-              = f.password_field :content, class: 'form__input', placeholder: '７文字以上の半角英数字'
+              = f.password_field :password, autocomplete: "new-password", class: 'form__input', placeholder: '７文字以上の半角英数字'
               .box-form__content__input__message
 
             .box-form__description
@@ -35,9 +35,9 @@
               %span.red 必須
               .box-form__content__input__list
                 .box-form__content__input__list__name
-                  = f.text_field :content, class: 'form__input__name', placeholder: '例：山田'
+                  = f.text_field :last_name, class: 'form__input__name', placeholder: '例：山田'
                 .box-form__content__input__list__name
-                  = f.text_field :content, class: 'form__input__name', placeholder: '例：太郎'
+                  = f.text_field :first_name, class: 'form__input__name', placeholder: '例：太郎'
               .box-form__content__input__message
 
             .box-form__content__input
@@ -45,9 +45,9 @@
               %span.red 必須
               .box-form__content__input__list
                 .box-form__content__input__list__name
-                  = f.text_field :content, class: 'form__input__name', placeholder: '例：ヤマダ'
+                  = f.text_field :last_name_kana, class: 'form__input__name', placeholder: '例：ヤマダ'
                 .box-form__content__input__list__name
-                  = f.text_field :content, class: 'form__input__name', placeholder: '例：タロウ'
+                  = f.text_field :first_name_kana, class: 'form__input__name', placeholder: '例：タロウ'
               .box-form__content__input__message
 
             .box-form__content__input
@@ -234,50 +234,50 @@
                     %option(value="30")30
                     %option(value="31")31
                 %span.none 日
-              .box-form__content__input__message
+            -#   .box-form__content__input__message
 
-            .box-form__description
-              送付先情報
+            -# .box-form__description
+            -#   送付先情報
 
-            .box-form__content__input
-              %label 郵便番号
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：1234567'
-              .box-form__content__input__message
+            -# .box-form__content__input
+            -#   %label 郵便番号
+            -#   %span.red 必須
+            -#   = f.text_field :content, class: 'form__input', placeholder: '例：1234567'
+            -#   .box-form__content__input__message
 
-            .box-form__content__input
-              %label 都道府県
-              %span.red 必須
-              %br
-              .box-form__content__input__list
-                .box-form__content__input__list__prefectures
-                  = icon('fas', 'chevron-down', class: "arrow-icon")
-                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'input'
-              .box-form__content__input__message
+            -# .box-form__content__input
+            -#   %label 都道府県
+            -#   %span.red 必須
+            -#   %br
+            -#   .box-form__content__input__list
+            -#     .box-form__content__input__list__prefectures
+            -#       = icon('fas', 'chevron-down', class: "arrow-icon")
+            -#       = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'input'
+            -#   .box-form__content__input__message
 
-            .box-form__content__input
-              %label 市区町村
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：〇〇市〇〇町'
-              .box-form__content__input__message
+            -# .box-form__content__input
+            -#   %label 市区町村
+            -#   %span.red 必須
+            -#   = f.text_field :content, class: 'form__input', placeholder: '例：〇〇市〇〇町'
+            -#   .box-form__content__input__message
 
-            .box-form__content__input
-              %label 番地
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：〇〇丁目〇〇番地'
-              .box-form__content__input__message
+            -# .box-form__content__input
+            -#   %label 番地
+            -#   %span.red 必須
+            -#   = f.text_field :content, class: 'form__input', placeholder: '例：〇〇丁目〇〇番地'
+            -#   .box-form__content__input__message
 
-            .box-form__content__input
-              %label マンション名やビル名、部屋番号
-              %span.bule 任意
-              = f.text_field :content, class: 'form__input', placeholder: '例：〇〇ビル〇〇号室'
-              .box-form__content__input__message
+            -# .box-form__content__input
+            -#   %label マンション名やビル名、部屋番号
+            -#   %span.bule 任意
+            -#   = f.text_field :content, class: 'form__input', placeholder: '例：〇〇ビル〇〇号室'
+            -#   .box-form__content__input__message
 
-            .box-form__content__input
-              %label お届け先の電話番号
-              %span.bule 任意
-              = f.telephone_field :content, class: 'form__input', placeholder: '例：08012345678'
-              .box-form__content__input__message
+            -# .box-form__content__input
+            -#   %label お届け先の電話番号
+            -#   %span.bule 任意
+            -#   = f.telephone_field :content, class: 'form__input', placeholder: '例：08012345678'
+            -#   .box-form__content__input__message
 
           .signup
-            = f.submit '新規登録', class: 'signup__btn'
+            = f.submit '次へ進む', class: 'signup__btn'

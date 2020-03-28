@@ -1,62 +1,88 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  # before_action :create, only: [:create, :index]
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  def step1
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+    @user = User.new
+    @user.build_address 
+    # binding.pry
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def step2
+    session[:nickname] = params[:user][:nickname]
+    session[:email] = params[:user][:email]
+    session[:password] = params[:user][:password]
+    session[:password_confirmation] = params[:user][:password_confirmation]
+    session[:first_name_kana] = params[:user][:first_name_kana]
+    session[:first_name] = params[:user][:first_name]
+    session[:last_name] = params[:user][:last_name]
+    # session[:birsthday] = birthday_join
+    
+    @user = User.new #(nickname:session[:nickname], email: session[:email], password: session[:password],  first_name_kana: session[:first_name_kana],last_name_kana: session[:last_name_kana], first_name: session[:first_name], last_name: session[:last_name], birthday: session[:birthday],phone: params[:user][:phone])
+    @user.build_address
+    # binding.pry
+  end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def step3
+    session[:address_last_name] = user_params[:address_last_name]
+    session[:address_first_name] = user_params[:address_first_name]
+    session[:address_last_name_kana] = user_params[:address_last_name_kana]
+    session[:address_first_name_kana] = user_params[:address_first_name_kana]
+    @user = User.new
+    @address = Address.new
+    @user.build_address
+    # binding.pry
+  end
 
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+  def create
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      first_name_kana: session[:first_name_kana],
+      last_name_kana: session[:last_name_kana],
+      first_name: session[:first_name],
+      last_name: session[:last_name],
+      birsthday: session[:birsthday],
+      tel: params[:user][:tel]
+    )
+    # binding.pry
+    if @user.save
+      session[:id] = @user.id
+      # redirect_to controller: addresses_new_path, action: 'step3'
+      sign_in User.find(@user.id) #ログイン状態を保持する記述
+      redirect_to users_signup_done_path
+    else
+      redirect_to step1, notice: '初めから入れなおして下さい'
+    end
+    
+  end
 
-  # protected
+  private
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def user_params
+    params.require(:user).permit(
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :birthday
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+    )
+  end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def birsthday_join
+    year = params[:user]["birthday(1i)"]
+    month = params[:user]["birthday(2i)"]
+    day = params[:user]["birthday(3i)"]
+    birthday = year.to_s + "-" + month.to_s + "-" + day.to_s
+  end
 end

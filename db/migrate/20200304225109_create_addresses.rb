@@ -8,6 +8,11 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.string  :address, null: false
       t.string  :building, null: false
       t.integer :tel, null:false
+      t.string  :address_last_name, null: false
+      t.string  :address_first_name, null: false
+      t.string  :address_last_name_kana, null: false
+      t.string  :address_first_name_kana, null: false
+      t.string  :address_first_name_kana, null: false
       t.timestamps
     end
   end

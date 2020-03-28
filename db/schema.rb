@@ -10,18 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315150823) do
+ActiveRecord::Schema.define(version: 20200328111909) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "prefecture_id", null: false
-    t.string   "city",          null: false
+    t.integer  "prefecture_id",           null: false
+    t.string   "city",                    null: false
     t.integer  "user_id"
-    t.integer  "post_number",   null: false
-    t.string   "address",       null: false
-    t.string   "building",      null: false
-    t.integer  "tel",           null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "post_number",             null: false
+    t.string   "address",                 null: false
+    t.string   "building",                null: false
+    t.integer  "tel",                     null: false
+    t.string   "address_last_name",       null: false
+    t.string   "address_first_name",      null: false
+    t.string   "address_last_name_kana",  null: false
+    t.string   "address_first_name_kana", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -122,9 +126,7 @@ ActiveRecord::Schema.define(version: 20200315150823) do
     t.integer "birth_year"
     t.integer "birth_month"
     t.integer "birth_day"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["password"], name: "index_users_on_password", unique: true, using: :btree
-    t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree
+    t.string  "prefecture_id"
   end
 
   add_foreign_key "addresses", "users"

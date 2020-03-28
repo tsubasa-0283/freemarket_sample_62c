@@ -1,0 +1,27 @@
+.contents
+  .signup-header
+    %h1
+      =link_to image_tag("logo.png"),"/"
+    .signup-bar
+  .main
+    .box
+      %h2.box-header
+        電話番号を入力
+      .box-form
+        = form_for(@user, url: users_signup_address_path, html: {method: :"get"}) do |f|
+          .step3_1__bottom_contents
+            .step3_1__bottom_contents__top
+              %h2.top_string 電話番号の確認
+            .step3_1__bottom_contents__bottom
+              .step3_1__bottom_contents__bottom__box
+                .step3_1__bottom_contents__bottom__box__phone_num
+                  %p 携帯電話の番号
+                = f.text_field :tel, placeholder: '携帯電話の番号を入力', class: "step3_1__bottom_contents__bottom__box__input"
+                .step3_1__bottom_contents__bottom__box__text
+                  %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+                = f.submit "SMSを送信する", class:'step3_1__bottom_contents__bottom__box__submit_sms'
+                .step3_1__bottom_contents__bottom__box__submit_bottom
+                  %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+                .step3_1__bottom_contents__bottom__box__most_bottom
+                  = link_to "#", class: "most_bottom_link" do
+                    %p.most_bottom_link 電話番号の確認が必要な理由 >

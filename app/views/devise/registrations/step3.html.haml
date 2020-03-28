@@ -1,0 +1,48 @@
+.contents
+  .signup_header
+    %h1
+      = link_to image_tag("logo.png"),"/"
+    .signup-bar
+  .main
+    .box
+      %h2.box-header
+        送付先情報
+      .box_form
+        = form_for(@address,  url: users_signup_done_path) do |f| # url: {controller: signup_done_path, action: "done"}
+          .box-form__content
+            .box-form__content__input
+              %label 郵便番号
+              %span.red 必須
+              = f.text_field :post_number, class: 'form__input', placeholder: '例：1234567'
+              .box-form__content__input__message
+            .box-form__content__input
+              %label 都道府県
+              %span.red 必須
+              = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: 'input'}) 
+              = icon('fas', 'chevron-down', class: "arrow-icon")
+              .box-form__content__input__message
+              
+            = f.fields_for :addresses do |d|
+              .box-form__content__input
+                %label 市区町村
+                %span.red 必須
+                = d.text_field :city, class: 'form__input', placeholder: '例：〇〇市〇〇町'
+                .box-form__content__input__message
+              .box-form__content__input
+                %label 番地
+                %span.red 必須
+                = d.text_field :address, class: 'form__input', placeholder: '例：〇〇丁目〇〇番地'
+                .box-form__content__input__message
+              .box-form__content__input
+                = d.label :building do
+                  マンション名やビル名、部屋番号
+                %span.bule
+                  任意
+                = d.text_field :building, class: 'form__input', placeholder: '例：〇〇ビル〇〇号室'
+                .box-form__content__input__message
+              .box-form__content__input
+                %label お届け先の電話番号
+                %span.bule 任意
+                = d.telephone_field :tel, class: 'form__input', placeholder: '例：08012345678'
+          .signup
+            = f.submit '次へ進む', class: 'sign__btn'
