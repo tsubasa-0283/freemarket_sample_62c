@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
     def index
-        @items = Items.includes(:images).order('create_at DESC')
+        @items = Item.includes(:images).order('create_at DESC')
     end
 
     def new
@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
     def show
       render :index unless user_signed_in? && current_user.id == @item.id
     end
-    
+
     def destroy
       if user_signed_in? && current_user.id == @item.id
         item = Item.find(params[:id])
