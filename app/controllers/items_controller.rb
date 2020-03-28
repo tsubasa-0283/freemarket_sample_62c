@@ -96,9 +96,13 @@ class ItemsController < ApplicationController
     def destroy
       if user_signed_in? && current_user.id == @item.id
         item = Item.find(params[:id])
-        item.destroy
+        if item.destroy
+          redirect_to root_path, notice: "削除しました"
+        else
+          redirect_to root_path, alert: "削除に失敗しました"
+        end
       else
-        render :index
+        redirect_to  new_user_session_path
       end
     end
 
