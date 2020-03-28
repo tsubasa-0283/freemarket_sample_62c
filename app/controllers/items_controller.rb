@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
     def index
-        @items = Items.includes(:images).order('create_at DESC')
+        @items = Item.includes(:images).order('create_at DESC')
     end
 
     def new
@@ -89,9 +89,21 @@ class ItemsController < ApplicationController
       end
     end
 
-    def destroy
+    def show
+      render :index unless user_signed_in? && current_user.id == @item.id
     end
 
+    def destroy
+      if user_signed_in? && current_user.id == @item.id
+        if @item.destroy
+          redirect_to root_path, notice: "削除しました"
+        else
+          redirect_to root_path, alert: "削除に失敗しました"
+        end
+      else
+        redirect_to  new_user_session_path
+      end
+    end
 
     private
 
