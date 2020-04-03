@@ -55,13 +55,11 @@ $(function(){
                 appendChildrenBox(insertHTML);
             })
             .fail(function(){
-                alert('カテゴリー取得に失敗しました');
+                $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
+                $('#grandchildren_wrapper').remove();
+                $('#size_wrapper').remove();
+                $('#brand_wrapper').remove();
             })
-        }else{
-            $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
-            $('#grandchildren_wrapper').remove();
-            $('#size_wrapper').remove();
-            $('#brand_wrapper').remove();
         }
     });
     // 子カテゴリー選択後のイベント
