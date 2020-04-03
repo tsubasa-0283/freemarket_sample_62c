@@ -51,14 +51,17 @@
               必須
           .item-main__content-category
             = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, class: 'item-main__content-select-default', id: 'parent_category'
-            = icon('fas', 'chevron-down', class: "item-main__content-head_icon")
+            = icon('fas', 'chevron-down', class: "item-main__content-select-default__icon")
         .item-main__content-form-group
           .item-main__content-head
             = f.label :brand_id do
               ブランド
             %span.form-elective
               任意
-          = f.text_field :brand_id, class: 'input-default', placeholder: "例）シャネル"
+            = f.fields_for :brand do |b|
+              .item-main__content-select
+                = b.text_field :name, placeholder: "例）シャネル", value: "", class: "item-main__content-select-default", type: "text"
+          -# = f.text_field :brand_id, class: 'input-default', placeholder: "例）シャネル"
         .item-main__content-form-group
           .item-main__content-head
             = f.label :condition_id do

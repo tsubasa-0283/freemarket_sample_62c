@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     def new
         @item = Item.new
         @item.images.new
-
+        @item.build_brand
         #セレクトボックスの初期値
         @category_parent_array = Category.where(ancestry: nil)
         # データベースから親カテゴリーのみを抽出し、配列化
@@ -42,7 +42,6 @@ class ItemsController < ApplicationController
 
     def create
       @item = Item.new(item_params)
-      # @item.status = 0
       @item.seller_id = "1"
       if @item.save
         redirect_to root_path, notice: "出品しました"
@@ -52,6 +51,11 @@ class ItemsController < ApplicationController
     end
 
     def edit
+      @category = @item.category
+      # @child_categories = Category.where(:ancestry = ?, "#{@category.parent.ancestry}")
+      # @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+      @condition_array = Condition.all
+      @item.build_brand
     end
 
     def update
@@ -97,10 +101,11 @@ class ItemsController < ApplicationController
 
     def set_item
       @item = Item.find(params[:id])
+      @images = @item.images
     end
 
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, :brand_id, images_attributes: [:src] ).merge(seller_id: "1")
+      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, brand_attributes: [:id,:name], images_attributes: [:src] ).merge(seller_id: "1")
     end
 
     def item_update_params
