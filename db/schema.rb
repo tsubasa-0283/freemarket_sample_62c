@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200328111909) do
+ActiveRecord::Schema.define(version: 20200402203833) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "prefecture_id",           null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20200328111909) do
     t.integer  "post_number",             null: false
     t.string   "address",                 null: false
     t.string   "building",                null: false
-    t.integer  "tel",                     null: false
+    t.string   "address_tel",             null: false
     t.string   "address_last_name",       null: false
     t.string   "address_first_name",      null: false
     t.string   "address_last_name_kana",  null: false
@@ -115,18 +115,18 @@ ActiveRecord::Schema.define(version: 20200328111909) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "nickname",        null: false
-    t.string  "email",           null: false
-    t.string  "password",        null: false
-    t.string  "first_name",      null: false
-    t.string  "last_name",       null: false
-    t.string  "first_name_kana", null: false
-    t.string  "last_name_kana",  null: false
-    t.integer "tel",             null: false
-    t.integer "birth_year"
-    t.integer "birth_month"
-    t.integer "birth_day"
-    t.string  "prefecture_id"
+    t.string "nickname",           null: false
+    t.string "email",              null: false
+    t.string "encrypted_password", null: false
+    t.string "first_name",         null: false
+    t.string "last_name",          null: false
+    t.string "first_name_kana",    null: false
+    t.string "last_name_kana",     null: false
+    t.string "tel",                null: false
+    t.date   "birth_date",         null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["encrypted_password"], name: "index_users_on_encrypted_password", unique: true, using: :btree
+    t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree
   end
 
   add_foreign_key "addresses", "users"

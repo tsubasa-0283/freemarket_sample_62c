@@ -24,7 +24,7 @@ $(function(){
             "item[category_id]": { required: true, choice: "選択して下さい" },
             "item[condition_id]": {required: "選択して下さい" },
             "item[delivery_day_id]": {required: 選択して下さい},
-            "item[postage_id]": {required: "選択して下さい"}
+            "item[postage_id]": {required: "選択して下さい"},
             "item[price]": { required: "300から999999までの値を入力して下さい。"}
         }
     });

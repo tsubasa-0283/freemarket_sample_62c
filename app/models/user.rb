@@ -15,7 +15,6 @@ class User < ApplicationRecord
   # validates :birthday, presence: true, length: { with: year_month_day }
   # validates :password, presence: true, length: { minimum: 8 }
   # validates :tel, presence: true, format: { with: phone_number }
-
   has_one   :address, dependent: :destroy
   accepts_nested_attributes_for :address
   has_many  :items

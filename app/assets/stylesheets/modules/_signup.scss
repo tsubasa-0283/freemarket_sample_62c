@@ -30,6 +30,24 @@
         margin: 0 auto;
         &__input {
           margin-top: 32px;
+          &__message {
+            margin-top: 8px;
+            p {
+              line-height: 1.5;
+              font-size: 14px;
+              text-align: left;
+              color: #333;
+            }
+          }
+          &__center {
+            margin: 0;
+            padding: 0;
+            p {
+              line-height: 1.5;
+              font-size: 14px;
+              color: #333;
+            }
+          }
           // 入力フォーム（リスト）
           &__list {
             display: flex;
@@ -44,18 +62,48 @@
               display: inline-block;
               position: relative;
             }
+            &__info {
+              line-height: 1.5;
+              margin-top: 8px;
+              p {
+                color: gray;
+                font-size: 14px;
+                display: inline-block;
+              }
+            }
             // 都道府県
             &__prefectures {
-              float: left;
+              // float: left;
               display: inline-block;
               position: relative;
             }
           }
         }
+        // ボタン下のコンテンツ
+        &__bottom_contents {
+          margin-top: 8px;
+          line-height: 1.5;
+          p {
+            font-size: 14px;
+            color: #333;
+            text-align: left;
+          }
+        }
+        &__bottom_right {
+          margin-top: 24px;
+          text-align: right;
+          a {
+            color: #0099e8;
+            text-decoration: none;
+            font-size: 14px;
+
+          }
+
+        }
         // 会員登録情報
         label {
           float: left;
-          font-weight: 300;
+          font-weight: 600;
         }
         // 任意
         span.bule {
@@ -93,24 +141,26 @@
           background: #fff;
           line-height: 1.5;
           font-size: 16px;
+          margin: 8px 0 0;
           }
-        }
-        // 生年月日
-        .barth {
-          width: 90px;
-          height: 48px;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
-          line-height: 1.5;
-          font-size: 16px;
         }
         // 見出し
         .box-form__description {
           padding-top: 32px;
           font-size: 22px;
           font-weight: 600;
+        }
+      }
+       // 生年月日
+       .birthday-select{
+        margin-top: 10px;
+        p{
+          display: inline;
+        }
+        select{
+          height: 46px;
+          width: 70px;
+          padding: 0 10px;
         }
       }
     }
@@ -120,7 +170,7 @@
       height: 100px;
       max-width: 343px;
       margin: 0 auto;
-      margin-top: 89px;
+      margin-top: 24px;
       &__btn {
         height: 50px;
         width: 100%;
@@ -139,8 +189,8 @@
     }
   
   // リスト
-  select {
-    -webkit-appearance: none;
+  .select {
+    -webkit-appearapnce: none;
     -moz-appearance: none;
     appearance: none;
     width: 100%;
@@ -155,6 +205,29 @@
   select::-ms-expand {
     display: none;
   }
+
+  .content-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    padding: 0 40px 0 10px;
+    border: 1px solid #b4b3b3;
+    border-radius: 2px;
+    margin-top: 8px;
+    &__icon {
+      position: relative;
+      left: 43%;
+      bottom: 25px;
+      color: #888;
+      font-size: 16px;
+    }
+  }
+
   .arrow-icon {
     position: absolute;
     z-index: 2;
@@ -163,4 +236,5 @@
     pointer-events: none;
     color: gray;
   }
+
 }
