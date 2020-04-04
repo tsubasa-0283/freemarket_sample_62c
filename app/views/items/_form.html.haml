@@ -1,16 +1,112 @@
 .item-container
-  %item.item-main
-    %section.item-main__container
-      #item-container
-        %div
-          .item-main__inner
-            -# = form_for @item, html: {class: "item-main dropzone", id: "item-dropzone"} % do
-            %h2.item-main__header
-              商品の情報を入力
-            .item-main__upload-box
-              %h3.item-main__upload-head
-                出品画像
-              %span.item-main__form-require
+  .item-head
+    %h2.item-head__header
+      商品の情報を入力
+  .item-main
+    = form_for(@item, class: 'item-main__form') do |f|
+      .item-main__box
+        .upload-box
+          .item-main__header
+            %h3.upload-bo__head
+              = f.label :image, "出品画像"
+            %span.form-require
+              必須
+          %p.upload-box__text
+            最大10枚までアップロードできます
+            -# 画像アップロード部分
+          .item_dropbox
+            .image-box__container
+              #image-box-1
+              .item-num-0#image-box__container
+              = f.fields_for :images do |i|
+                .input-area
+                  = i.file_field :images, type:'file', name: "item[images_attributes][][src]", value:"src", style: "display:none", id:"img-file", required: true
+                  %label.input{for: "img-file"}
+                    %i.fas.fa-camera
+                    .item_dropbox__text
+                      クリックしてファイルをアップロード
+          -# 商品名入力欄
+      .item-main__content
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :name do
+              商品名
+            %span.form-require
+              必須
+          = f.text_field :name, class: 'input-default', placeholder: "商品名（40字まで)"
+        .item-main__content-form-group
+          .item-main__header
+          = f.label :description do
+            商品の説明
+          %span.form-require
+            必須
+          = f.text_area :description , class: 'textarea-default' , placeholder: "商品の説明（必須　１０００文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません、あわせやすいのでおすすめです", rows:"7"
+      .item-main__content
+        %h3.subtitle
+          商品の詳細
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label 'カテゴリー', class: 'listing-default__label'
+            %span.form-require
+              必須
+          .item-main__content-category
+            = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, class: 'item-main__content-select-default', id: 'parent_category'
+            = icon('fas', 'chevron-down', class: "item-main__content-head_icon")
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :brand_id do
+              ブランド
+            %span.form-elective
+              任意
+          = f.text_field :brand_id, class: 'input-default', placeholder: "例）シャネル"
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :condition_id do
+              商品の状態
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select(:condition_id ,Condition.all, :id, :condition, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+      .item-main__content
+        %h3.subtitle
+          配送について
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :postage_id do
+              配送料の負担
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select(:postage_id ,Postage.all, :id, :delivery_charge, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :prefecture do
+              発送元の地域
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :delivery_day_id do
+              発送までの日数
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select( :delivery_day_id ,DeliveryDay.all, :id, :day, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+      .item-main__content
+        .subtitle
+          価格（300〜9,999,999）
+        .content-price
+          .content-price__form
+            .content-price__form-left
+              = f.label :price do
+                販売価格
+              %span.form-require
                 必須
             .item_price-input
               %p.price
@@ -18,12 +114,16 @@
               = f.number_field :price, id: 'price_calc',class: 'price_form-box', placeholder: '0'
           .item_handling_charge
             販売手数料（10%）
+            .right_price
+              -
             .right_bar
-              —
+              ￥
           .sell_profit
             販売利益
-            .right_bar
-              —
+            .right-profit_price
+              -
+            .right-profit_bar
+              ￥
           -# ボタン
           .btn-box
             = f.submit '出品する', class: 'btn-box__red'

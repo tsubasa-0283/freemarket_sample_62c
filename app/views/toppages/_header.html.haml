@@ -9,30 +9,24 @@
           =link_to image_tag("icon-search 1.png", size: "19x19") 
       .searchList
         .listBox
-        
     .underBody
       .left
-        #category.leftCategori
-          = link_to "カテゴリ",""
-          %ul.parent_box
-            - Category.where(ancestry: nil).each do |parent|
-              %li#parent.parent_list
-              = link_to "#{parent.name}","#"
-            -# - @parents.each do |p|
-            -#   %li#parent.parent_list
-            -#     = link_to "#{p.name}", "#"
-                -# %ul.children_box
-                -#   - p.children.each do |c|
-                -#     %li.children_list
-                -#       = link_to "#{c.name}", "#"
-                -#       %ul.grandchildren_box
-                -#         - c.children.each do |gc|
-                -#           %li.grandchildren_list
-                -#             = link_to "#{gc.name}", "#"
-    
-          .CategoriNone
-          .CategoriList
-            .CategoriList__item
+        .leftCategori
+          カテゴリ
+          %ul.parent__tree
+            - @category_parent_array.each do |parent|
+              %li.parent__tree__item
+                = link_to "#{parent.name}", "#", class:"parent"
+
+                %ul.children__tree
+                  - parent.children.each do |child|
+                    %li.children__tree__item
+                      = link_to "#{child.name}", "#", class:"child"
+
+                      %ul.grandchildren__tree
+                        - child.children.each do |grandchild|
+                          %li.grandchildren__tree__item
+                            = link_to "#{grandchild.name}", "#", class:"grandchild"
         .leftBrand
           ブランド
           .brandNone
@@ -41,5 +35,5 @@
           =link_to "ログイン", new_user_session_path, class: "right__none"
         %li.right__signup
           =link_to "新規会員登録", new_user_registration_path, class: "right__none"
-      
+
 
