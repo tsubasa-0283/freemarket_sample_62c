@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :items, except: :show
   resources :cards, only: [:new, :show, :destroy] do
     collection do
