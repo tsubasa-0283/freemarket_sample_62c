@@ -1,14 +1,19 @@
-.sell-main
-  .sell-main-board
-    .sell-main-board_#sub
-      .form
-        .formbox
-        = form_for @item do |f|
-          .form-box
-            .form-label
-              %label 出品画像
-              %span.must-section 必須
-              %span ※5枚まで
+.item-container
+  .item-head
+    %h2.item-head__header
+      商品の情報を入力
+  .item-main
+    = form_for(@item, class: 'item-main__form') do |f|
+      .item-main__box
+        .upload-box
+          .item-main__header
+            %h3.upload-bo__head
+              = f.label :image, "出品画像"
+            %span.form-require
+              必須
+          %p.upload-box__text
+            最大10枚までアップロードできます
+            -# 画像アップロード部分
           #image-box
             #previews
               - if @item.persisted?
@@ -18,103 +23,258 @@
               .js-file_group{"data-index" => "#{image.index}"}
                 = image.file_field :src, class: 'js-file'
                 %br/
-                %span.js-remove delete
+                %span.js-remove 消去
               - if @item.persisted?
                 = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
               - if @item.persisted?
                 .js-file_group{"data-index" => "#{@item.images.count}"}
                   = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-                  .js-remove delete
-          %hr.border
-          %p.form-title
-            商品
-          .form-box
-            .form-label
-              %label 商品名
-              %span.must-section 必須
-            .form-textfield
-              .form-textfield__input
-                = f.text_field :name, placeholder: "40文字まで", type: "text"
-          .form-box
-            .form-label
-              %label 商品の説明
-              %span.must-section 必須
-            .form-textfield
-              .form-textfield__input
-                = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          ", rows: "7"
-              .form-textfield__count
-                %span> 0/1000
-          %hr.border
-          %p.form-title
-            商品の詳細
-          .form-box
-            .form-label
-              %label カテゴリー
-              %span.must-section 必須
-            .form-select-category{id: "parent_wrapper"}
-              .form-select-category__option
-                %select{class: 'form-select__option-box', id: "parent_category", name: "item[category_id][]", data: {root: @category.root.id}}
-                  %option{value: ""} 選択してください
-                  - Category.where('ancestry IS NULL').each do |category|
-                    %option{value: "#{category.id}", class: "parent-category-box"} #{category.name}
-            .form-select-category{id: "children_wrapper"}
-              .form-select-category__option
-                %select{class: 'form-select__option-box', id: "child_category", name: "item[category_id][]", data: {child: @category.parent.id}}
-                  %option{value: ""} 選択してください
-                  - @child_categories.each do |category|
-                    %option{value: "#{category.id}"} #{category.name}
-            .form-select-category{id: "grandchildren_wrapper"}
-              .form-select-category__option
-                = f.collection_select :category_id, @grand_child, :id, :name, {prompt: "選択してください"}, class: 'form-select__option-box', id: 'parent_category-edit'
-          .form-box
-            .form-label
-              %label ブランド
-              %span.free-secton 任意
-            .form-textfield
-              = f.fields_for :brand do |brand|
-                .form-textfield__input
-                = brand.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default", type: "text"
-          .form-box
-            .form-label
-              %label 商品の状態
-              %span.must-section 必須
-            .form-select
-              .form-select__option
-                = f.collection_select :condition_id, @condition_array, :id, :condition, {prompt: "選択してください"}, class: 'form-select__option-box', id: 'status'
-          %hr.border
-          %p.form-title
-            価格
-          .price-box
-            .price-label
-              %label 販売価格
-              %span.must-section 必須
-            .price-textfield
-              .pre
+                  .js-remove 消去
+          -# 商品名入力欄
+      .item-main__content
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :name do
+              商品名
+            %span.form-require
+              必須
+          = f.text_field :name, class: 'input-default', placeholder: "商品名（40字まで)"
+        .item-main__content-form-group
+          .item-main__header
+          = f.label :description do
+            商品の説明
+          %span.form-require
+            必須
+          = f.text_area :description , class: 'textarea-default' , placeholder: "商品の説明（必須　１０００文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません、あわせやすいのでおすすめです", rows:"7"
+      .item-main__content
+        %h3.subtitle
+          商品の詳細
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label 'カテゴリー', class: 'listing-default__label'
+            %span.form-require
+              必須
+          .form-select-category{id: "parent_wrapper"}
+            .form-select-category__option
+              %select{class: 'form-select__option-box', id: "parent_category", name: "item[category_id][]", data: {root: @category.parent.parent.id}}
+                %option{value: ""} 選択してください
+                - Category.where('ancestry IS NULL').each do |category|
+                  %option{value: "#{category.id}", class: "parent-category-box"} #{category.name}
+          .form-select-category{id: "children_wrapper"}
+            .form-select-category__option
+              %select{class: 'form-select__option-box', id: "child_category", name: "item[category_id][]", data: {child: @category.parent.id}}
+                %option{value: ""} 選択してください
+                - @child_categories.each do |category|
+                  %option{value: "#{category.id}"} #{category.name}
+          .form-select-category{id: "grandchildren_wrapper"}
+            .form-select-category__option
+              = f.collection_select :category_id, @grand_child, :id, :name, {prompt: "選択してください"}, class: 'form-select__option-box', id: 'parent_category-edit'
+          -# .item-main__content-category
+          -#   = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, class: 'item-main__content-select-default', id: 'parent_category'
+          -#   = icon('fas', 'chevron-down', class: "item-main__content-select-default__icon")
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :brand_id do
+              ブランド
+            %span.form-elective
+              任意
+            = f.fields_for :brand do |b|
+              .item-main__content-select
+                = b.text_field :name, placeholder: "例）シャネル", value: "", class: "item-main__content-select-default", type: "text"
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :condition_id do
+              商品の状態
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select(:condition_id ,Condition.all, :id, :condition, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+      .item-main__content
+        %h3.subtitle
+          配送について
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :postage_id do
+              配送料の負担
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select(:postage_id ,Postage.all, :id, :delivery_charge, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :prefecture do
+              発送元の地域
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+        .item-main__content-form-group
+          .item-main__content-head
+            = f.label :delivery_day_id do
+              発送までの日数
+            %span.form-require
+              必須
+          .item-main__content-select
+            = f.collection_select( :delivery_day_id ,DeliveryDay.all, :id, :day, {prompt: "---"}, {class: 'item-main__content-select-default'})
+            = icon('fas', 'chevron-down', class: "item-main__content-select_icon")
+      .item-main__content
+        .subtitle
+          価格（300〜9,999,999）
+        .content-price
+          .content-price__form
+            .content-price__form-left
+              = f.label :price do
+                販売価格
+              %span.form-require
+                必須
+            .item_price-input
+              %p.price
                 ¥
-              .price-textfield__input
-                = f.text_field :price, placeholder: "0", type: "number", id: "price-calc"
-          .price-box2
-            .price-label
-              %label 販売手数料（10%）
+              = f.number_field :price, id: 'price_calc',class: 'price_form-box', placeholder: '0'
+          .item_handling_charge
+            販売手数料（10%）
+            .right_price
+              -
             .right_bar
-          .price-box2
-            .price-label
-              %label 販売利益
-              -# 計算結果格納用フォーム
-            .right_bar_2
-          %hr.border
-          .buttons
-            = f.submit "編集する",  class: "sell-button"
-            = link_to "キャンセル", "#", onclick: "history.back(); return false;", class:"clear-button"
-          %h1.note-text
-            禁止されている
-            = link_to "行為", "#"
-            および
-            = link_to "出品物", "#"
-            を必ずご確認ください。
-            = link_to "偽ブランド品", "#"
-            や
-            = link_to "盗品物", "#"
-            などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
-            = link_to "加盟店規約", "#"
-            に同意したことになります。
+              ￥
+          .sell_profit
+            販売利益
+            .right-profit_price
+              -
+            .right-profit_bar
+              ￥
+          -# ボタン
+          .btn-box
+            = f.submit '出品する', class: 'btn-box__red'
+            = link_to root_path, class: 'btn-box__gray' do
+              もどる
+          .caution
+            %p.caution__text
+              禁止されている出品,行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売,は犯罪であり処罰される可能性があります。また、出品をもちまして,加盟店規約,に同意したことになります。
+
+
+
+
+-# .sell-main
+-#   .sell-main-board
+-#     .sell-main-board_#sub
+-#       .form
+-#         .formbox
+-#         = form_for @item do |f|
+-#           .form-box
+-#             .form-label
+-#               %label 出品画像
+-#               %span.must-section 必須
+-#               %span ※5枚まで
+-#           #image-box
+-#             #previews
+-#               - if @item.persisted?
+-#                 - @item.images.each_with_index do |image, i|
+-#                   = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+-#             = f.fields_for :images do |image|
+-#               .js-file_group{"data-index" => "#{image.index}"}
+-#                 = image.file_field :src, class: 'js-file'
+-#                 %br/
+-#                 %span.js-remove delete
+-#               - if @item.persisted?
+-#                 = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+-#               - if @item.persisted?
+-#                 .js-file_group{"data-index" => "#{@item.images.count}"}
+-#                   = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+-#                   .js-remove delete
+-#           %hr.border
+-#           %p.form-title
+-#             商品
+-#           .form-box
+-#             .form-label
+-#               %label 商品名
+-#               %span.must-section 必須
+-#             .form-textfield
+-#               .form-textfield__input
+-#                 = f.text_field :name, placeholder: "40文字まで", type: "text"
+-#           .form-box
+-#             .form-label
+-#               %label 商品の説明
+-#               %span.must-section 必須
+-#             .form-textfield
+-#               .form-textfield__input
+-#                 = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          ", rows: "7"
+-#               .form-textfield__count
+-#                 %span> 0/1000
+-#           %hr.border
+-#           %p.form-title
+-#             商品の詳細
+          -# .form-box
+          -#   .form-label
+          -#     %label カテゴリー
+          -#     %span.must-section 必須
+          -#   .form-select-category{id: "parent_wrapper"}
+          -#     .form-select-category__option
+          -#       %select{class: 'form-select__option-box', id: "parent_category", name: "item[category_id][]", data: {root: @category.root.id}}
+          -#         %option{value: ""} 選択してください
+          -#         - Category.where('ancestry IS NULL').each do |category|
+          -#           %option{value: "#{category.id}", class: "parent-category-box"} #{category.name}
+          -#   .form-select-category{id: "children_wrapper"}
+          -#     .form-select-category__option
+          -#       %select{class: 'form-select__option-box', id: "child_category", name: "item[category_id][]", data: {child: @category.parent.id}}
+          -#         %option{value: ""} 選択してください
+          -#         - @child_categories.each do |category|
+          -#           %option{value: "#{category.id}"} #{category.name}
+          -#   .form-select-category{id: "grandchildren_wrapper"}
+          -#     .form-select-category__option
+          -#       = f.collection_select :category_id, @grand_child, :id, :name, {prompt: "選択してください"}, class: 'form-select__option-box', id: 'parent_category-edit'
+-#           .form-box
+-#             .form-label
+-#               %label ブランド
+-#               %span.free-secton 任意
+-#             .form-textfield
+-#               = f.fields_for :brand do |brand|
+-#                 .form-textfield__input
+-#                 = brand.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default", type: "text"
+-#           .form-box
+-#             .form-label
+-#               %label 商品の状態
+-#               %span.must-section 必須
+-#             .form-select
+-#               .form-select__option
+-#                 = f.collection_select :condition_id, @condition_array, :id, :condition, {prompt: "選択してください"}, class: 'form-select__option-box', id: 'status'
+-#           %hr.border
+-#           %p.form-title
+-#             価格
+-#           .price-box
+-#             .price-label
+-#               %label 販売価格
+-#               %span.must-section 必須
+-#             .price-textfield
+-#               .pre
+-#                 ¥
+-#               .price-textfield__input
+-#                 = f.text_field :price, placeholder: "0", type: "number", id: "price-calc"
+-#           .price-box2
+-#             .price-label
+-#               %label 販売手数料（10%）
+-#             .right_bar
+-#           .price-box2
+-#             .price-label
+-#               %label 販売利益
+-#               -# 計算結果格納用フォーム
+-#             .right_bar_2
+-#           %hr.border
+-#           .buttons
+-#             = f.submit "編集する",  class: "sell-button"
+-#             = link_to "キャンセル", "#", onclick: "history.back(); return false;", class:"clear-button"
+-#           %h1.note-text
+-#             禁止されている
+-#             = link_to "行為", "#"
+-#             および
+-#             = link_to "出品物", "#"
+-#             を必ずご確認ください。
+-#             = link_to "偽ブランド品", "#"
+-#             や
+-#             = link_to "盗品物", "#"
+-#             などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+-#             = link_to "加盟店規約", "#"
+-#             に同意したことになります。

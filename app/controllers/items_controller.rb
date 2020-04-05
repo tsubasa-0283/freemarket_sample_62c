@@ -9,12 +9,7 @@ class ItemsController < ApplicationController
         @item = Item.new
         @item.images.new
         @item.build_brand
-        #セレクトボックスの初期値
         @category_parent_array = Category.where(ancestry: nil)
-        # データベースから親カテゴリーのみを抽出し、配列化
-        # Category.where(ancestry: nil).each do |parent|
-        #   @category_parent_array << parent.name
-        # end
     end
     # 親カテゴリーが選択された後に動くアクション
     def get_category_children
@@ -52,8 +47,8 @@ class ItemsController < ApplicationController
 
     def edit
       @category = @item.category
-      # @child_categories = Category.where(:ancestry = ?, "#{@category.parent.ancestry}")
-      # @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+      @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+      @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
       @condition_array = Condition.all
       @item.build_brand
     end
