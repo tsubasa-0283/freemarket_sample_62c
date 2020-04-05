@@ -7,7 +7,6 @@ class CardsController < ApplicationController
 
   def pay #payjpとCardのデータベース作成
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    #保管した顧客IDでpayjpから情報取得
     if params['payjp-token'].blank?
       redirect_to new_card_path
     else
