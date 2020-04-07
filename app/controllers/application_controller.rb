@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include SessionsHelper
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -25,7 +26,9 @@ class ApplicationController < ActionController::Base
       :first_name_kana,
       :last_name_kana,
       :tel,
-      :birth_date,
+      :birth_year,
+      :birth_month,
+      :birth_day,
       address_attributes: [
         :id,
         :address_first_name,
@@ -41,4 +44,12 @@ class ApplicationController < ActionController::Base
       ]
     ])
   end
+
+  # ログイン済みユーザーかどうか確認
+  # def logged_in_user
+  #   unless logged_in?
+  #     redirect_to new_user_session_path
+  #   end
+  # end
+
 end

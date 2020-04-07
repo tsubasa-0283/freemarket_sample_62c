@@ -1,0 +1,33 @@
+.logout {
+  width: 700px;
+  padding: 0 0 40px;
+  display: inline-block;
+}
+
+.logout-contents {
+  float: none;
+  width: 700px;
+  &__box {
+    margin: 0;
+    background: #fff;
+    &__red {
+      padding: 64px;
+      &__btn {
+        max-width: 320px;
+        margin: 0 auto;
+        &__submit {
+            display: block;
+            background-color: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+            line-height: 48px;
+            transition: all ease-out .3s;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            font-size: 14px;
+        }
+      }
+    }
+  }
+}

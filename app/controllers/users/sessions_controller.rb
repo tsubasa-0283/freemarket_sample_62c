@@ -1,27 +1,23 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def create
+    user = User.find_by(email: params[:session][:email].downcase)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      log_in user
+      binding.pry
+      redirect_to root_path
+      #後からログインユーザーとログインしていないユーザーの飛ばし先を分ける
+    # else
+    #   flash.now[:error] = "Invalid email/password combination "
+    #   render action: :step1
+    # end
+  end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def destroy
+    log_out if logged_in?
+    redirect_to root_path
+  end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

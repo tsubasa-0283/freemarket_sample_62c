@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200402203833) do
+ActiveRecord::Schema.define(version: 20200405235140) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "prefecture_id",           null: false
-    t.string   "city",                    null: false
+    t.string   "prefecture_id",           default: "0", null: false
+    t.string   "city",                                  null: false
     t.integer  "user_id"
-    t.integer  "post_number",             null: false
-    t.string   "address",                 null: false
-    t.string   "building",                null: false
-    t.string   "address_tel",             null: false
-    t.string   "address_last_name",       null: false
-    t.string   "address_first_name",      null: false
-    t.string   "address_last_name_kana",  null: false
-    t.string   "address_first_name_kana", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "post_number",                           null: false
+    t.string   "address",                               null: false
+    t.string   "building",                              null: false
+    t.string   "address_tel",                           null: false
+    t.string   "address_last_name",                     null: false
+    t.string   "address_first_name",                    null: false
+    t.string   "address_last_name_kana",                null: false
+    t.string   "address_first_name_kana",               null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -115,15 +115,21 @@ ActiveRecord::Schema.define(version: 20200402203833) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "nickname",           null: false
-    t.string "email",              null: false
-    t.string "encrypted_password", null: false
-    t.string "first_name",         null: false
-    t.string "last_name",          null: false
-    t.string "first_name_kana",    null: false
-    t.string "last_name_kana",     null: false
-    t.string "tel",                null: false
-    t.date   "birth_date",         null: false
+    t.string   "nickname",               null: false
+    t.string   "email",                  null: false
+    t.string   "encrypted_password",     null: false
+    t.string   "first_name",             null: false
+    t.string   "last_name",              null: false
+    t.string   "first_name_kana",        null: false
+    t.string   "last_name_kana",         null: false
+    t.string   "tel",                    null: false
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["encrypted_password"], name: "index_users_on_encrypted_password", unique: true, using: :btree
     t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree

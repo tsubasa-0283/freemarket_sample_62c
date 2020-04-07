@@ -12,9 +12,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :first_name_kana,        null: false
       t.string :last_name_kana,         null: false
       t.integer :tel,                   null: false
-      t.integer :birth_year            
-      t.integer :birth_month           
-      t.integer :birth_day      
+      t.integer :birth_year
+      t.integer :birth_month
+      t.integer :birth_day
     end
 
     add_index :users, :email,             unique: true

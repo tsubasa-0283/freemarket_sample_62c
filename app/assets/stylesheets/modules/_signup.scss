@@ -238,3 +238,16 @@
   }
 
 }
+// フォーム入力エラーのクラス
+.inp_error {
+  border: 1px;
+  solid: #F88A8A;
+}
+// エラーメッセージのクラス
+.error_m {
+  font-size: 15px;
+  font-weight: normal;
+  color: #FF4040;
+  display: block;
+  margin: 0;
+}
