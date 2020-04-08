@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'buyers/index'
+  get 'buyers/done'
+  get 'cards/new'
+  get 'cards/show'
+
   devise_for :users
   resources :toppages, only:[:index, :show, :new, :edit, :destroy] do
     collection do
@@ -20,10 +25,17 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items, except: :show
   resources :cards, only: [:new, :show, :destroy] do
     collection do
       post 'pay', to: 'cards#pay'
+    end
+  end
+  resources :items do
+    resources :buyers, only: [:index] do
+      collection do
+        get 'done', to: 'buyers#done'
+        post 'pay', to: 'buyers#pay'
+      end
     end
   end
 end

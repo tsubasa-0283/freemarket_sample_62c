@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
     def index
-        @items = Item.includes(:images).order('create_at DESC')
+        @items = Item.includes(:images).order('created_at DESC')
     end
 
     def new
