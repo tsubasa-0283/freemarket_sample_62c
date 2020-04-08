@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -22,6 +21,20 @@ Rails.application.routes.draw do
   end
 
   root "toppages#index"
+  get 'buyers/index'
+  get 'buyers/done'
+  get 'cards/new'
+  get 'cards/show'
+
+  devise_for :users
+  resources :toppages, only:[:index, :show, :new, :edit, :destroy] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  root "toppages#index"
+  get 'users/new'
 
   #mypage関連
   resources :users do
@@ -42,4 +55,17 @@ Rails.application.routes.draw do
   end
 
 
+  resources :cards, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
+    end
+  end
+  resources :items do
+    resources :buyers, only: [:index] do
+      collection do
+        get 'done', to: 'buyers#done'
+        post 'pay', to: 'buyers#pay'
+      end
+    end
+  end
 end

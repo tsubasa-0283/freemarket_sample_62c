@@ -8,9 +8,9 @@ class Item < ApplicationRecord
     belongs_to :category, optional: true
     belongs_to :condition
     belongs_to :brand, optional: true
-    belongs_to :size
+    belongs_to :size, optional: true
     belongs_to :postage
-    belongs_to :DeliveryDay
+    belongs_to :DeliveryDay, optional: true
     belongs_to_active_hash :prefecture
 
     # バリデーション
