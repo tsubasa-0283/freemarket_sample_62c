@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20200405235140) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "prefecture_id",                 null: false
-    t.string   "brand_id"
+    t.string   "brand_id",                      null: false
     t.text     "description",     limit: 65535, null: false
     t.integer  "seller_id",                     null: false
     t.integer  "category_id",                   null: false
