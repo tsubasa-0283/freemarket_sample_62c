@@ -12,16 +12,14 @@ class User < ApplicationRecord
   # バリデーション
 
   #step1
-  validates :nickname,                presence: true, length: {maximum: 20}, on: :save_step1_to_session
-  validates :email,                   presence: true, uniqueness: true, format: {with: VALID_EMAIL}, on: :save_step1_to_session
-  validates :password,                presence: true, length: {minimum: 6, maximum: 128}, on: :save_step1_to_session
-  validates :last_name,               presence: true, format: { with: kanji }, on: :save_step1_to_session
-  validates :first_name,              presence: true, format: { with: kanji }, on: :save_step1_to_session
-  validates :last_name_kana,          presence: true, format: { with: kana },  on: :save_step1_to_session
-  validates :first_name_kana,         presence: true, format: { with: kana }, on: :save_step1_to_session
-  validates :birth_year,           presence: true, on: :save_step1_to_session
-  validates :birth_month,          presence: true, on: :save_step1_to_session
-  validates :birth_day,            presence: true, on: :save_step1_to_session
+  validates :nickname,                         presence: true, length: {maximum: 20}, on: :save_step1_to_session
+  validates :email,                            presence: true, uniqueness: true, format: {with: VALID_EMAIL}, on: :save_step1_to_session
+  validates :password,                         presence: true, length: {minimum: 6, maximum: 128}, on: :save_step1_to_session
+  validates :last_name, :first_name,           presence: true, format: { with: kanji }, on: :save_step1_to_session
+  validates :last_name_kana, :first_name_kana, presence: true, format: { with: kana },  on: :save_step1_to_session
+  validates :birth_year,                       presence: true, on: :save_step1_to_session
+  validates :birth_month,                      presence: true, on: :save_step1_to_session
+  validates :birth_day,                        presence: true, on: :save_step1_to_session
 
   #STEP2
   validates :tel,                     presence: true, on: :save_step2_to_session
