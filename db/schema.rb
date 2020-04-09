@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20200405235140) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "prefecture_id",                 null: false
-    t.string   "brand_id",                      null: false
+    t.string   "brand_id"
     t.text     "description",     limit: 65535, null: false
     t.integer  "seller_id",                     null: false
     t.integer  "category_id",                   null: false
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20200405235140) do
     t.integer  "birth_year"
     t.integer  "birth_month"
     t.integer  "birth_day"
+    t.string   "prefecture_id"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at",             null: false
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 20200405235140) do
     t.index ["tel"], name: "index_users_on_tel", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "sizes"
   add_foreign_key "images", "items"
