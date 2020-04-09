@@ -3,12 +3,12 @@
 class Users::SessionsController < Devise::SessionsController
 
   def create
-    if  session[:user_id] 
+    if  session[:user_id]
       redirect_to root_path
-    else 
+    else
       session[:user_id] = params[:user_id]
-      render new_user_session_path 
-    end 
+      render new_user_session_path
+    end
   end
 
   def destroy
