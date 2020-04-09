@@ -1,0 +1,63 @@
+.contents
+  .signup-header
+    %h1
+      =link_to image_tag("logo.png"),"/"
+    .signup-bar
+  .main
+    .box
+      %h2.box-header
+        送付先情報
+      .box-form
+        -# = form_for(@user,  url: users_signup_done_path,html: {method: :"get"}) do |f| # url: {controller: signup_done_path, action: "done"}
+        = form_for(@user , url: { controller: 'users/registrations', action: 'create'}) do |f|
+          .box-form__content
+            = f.fields_for :address do |address|
+              .box-form__content__input
+                %label お名前
+                %span.red 必須
+                = address.text_field :address_last_name, class: 'form__input', placeholder: '例）山田'
+                %br/
+                = address.text_field :address_first_name, class: 'form__input', placeholder: '例）彩'
+                .box-form__content__input__message
+              .box-form__content__input
+                %label お名前カナ
+                %span.red 必須
+                = address.text_field :address_last_name_kana, class: 'form__input', placeholder: 'ヤマダ'
+                %br/
+                = address.text_field :address_first_name_kana, class: 'form__input', placeholder: 'アヤ'
+                .box-form__content__input_message
+              .box-form__content__input
+                %label 郵便番号
+                %span.red 必須
+                = address.text_field :post_number, class: 'form__input', placeholder: '例：1234567'
+                .box-form__content__input__message
+              .box-form__content__input
+                %label 都道府県
+                %span.red 必須
+                = address.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: 'content-select'})
+                = icon('fas', 'chevron-down', class: "content-select__icon")
+                .box-form__content__input__message
+              .box-form__content__input
+                %label 市区町村
+                %span.red 必須
+                = address.text_field :city, class: 'form__input', placeholder: '例：〇〇市〇〇町'
+                .box-form__content__input__message
+              .box-form__content__input
+                %label 番地
+                %span.red 必須
+                = address.text_field :address, class: 'form__input', placeholder: '例：〇〇丁目〇〇番地'
+                .box-form__content__input__message
+              .box-form__content__input
+                = address.label :building do
+                  マンション名やビル名、部屋番号
+                %span.bule
+                  任意
+                = address.text_field :building, class: 'form__input', placeholder: '例：〇〇ビル〇〇号室'
+                .box-form__content__input__message
+              .box-form__content__input
+                %label お届け先の電話番号
+                %span.bule 任意
+                = address.telephone_field :address_tel, class: 'form__input', placeholder: '例：08012345678'
+                .box-form__content__input__message
+          .signup
+            = f.submit '次へ進む', class: 'signup__btn'

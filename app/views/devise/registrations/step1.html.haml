@@ -1,0 +1,94 @@
+.contents
+  .signup-header
+    %h1
+      =link_to image_tag("logo.png"),"/"
+    .signup-bar
+  .main
+    .box
+      %h2.box-header
+        会員情報入力
+      .box-form
+        = form_for(@user, url: users_signup_sms_path, class: "input-main__form", html: {method: :"post"}) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .box-form__content
+            .box-form__content__input
+              %label ニックネーム
+              %span.red 必須
+              = f.text_field :nickname, class: 'box-form__input__nickname', placeholder: '例：フリマ太郎'
+              %span#nickname_error.error_m
+              .box-form__content__input__message
+            .box-form__content__input
+
+              %label メールアドレス
+              %span.red 必須
+              = f.email_field :email, class: 'box-form__input__email', placeholder: 'PC・携帯どちらでも可'
+              %span#email_error.error_m
+                -@user.errors.full_messages_for(:email).each do |message|
+                  %span#email_error__color
+                    = "この#{message}"
+              .box-form__content__input__message
+
+            .box-form__content__input
+              %label パスワード
+              %span.red 必須
+              = f.password_field :password, autocomplete: "new-password", class: 'box-form__input__pass', placeholder: '７文字以上の半角英数字'
+              %span#password_error.error_m
+              .box-form__content__input__message
+              -# = f.password_field :password_confirmation, autolomplete: "new-password", class: 'box-form__input__pass-repeat', placeholder: '(確認用)パスワード入力'
+              -# %span#repeat_error.error_m
+              -# .box-form__content__input__message
+
+            .box-form__description
+              本人確認
+            .box-form__content__input
+              %label お名前
+              %span.red 必須
+              .box-form__content__input__list
+                .box-form__content__input__list__name
+                  = f.text_field :last_name, class: 'box-form__input__last-name', placeholder: '例：山田'
+                  %span.box-form__input__error__last-name.error_m
+                .box-form__content__input__list__name
+                  = f.text_field :first_name, class: 'box-form__input__first-name', placeholder: '例：太郎'
+                  %span.box-form__input__error__first-name.error_m
+              .box-form__content__input__message
+
+            .box-form__content__input
+              %label お名前カナ
+              %span.red 必須
+              .box-form__content__input__list
+                .box-form__content__input__list__name
+                  = f.text_field :last_name_kana, class: 'box-form__input__last-name-kana', placeholder: '例：ヤマダ'
+                  %span.box-form__input__error__last-name-kana.error_m
+                .box-form__content__input__list__name
+                  = f.text_field :first_name_kana, class: 'box-form__input__first-name-kana', placeholder: '例：タロウ'
+                  %span.box-form__input__error__first-name-kana.error_m
+              .box-form__content__input__message
+
+            .box-form__content__input
+              %label 生年月日
+              %span.red 必須
+              %br
+              .box-form__content__input__list
+              .birthday-select
+                .select-wrap
+                  = icon('fas', 'chevron-down', class: "arrow-icon")
+                  = f.select :birth_year, [[2019,1],[2018,2],[2017,3],[2016,4],[2015,5],[2014,6],[2013,7],[2012,8],[2011,9],[2010,10],[2009,11],[2008,12],[2007,13],[2006,14],[2005,15],[2004,16],[2003,17],[2002,18],[2001,19],[2000,20]], {prompt: "--"}, {class: "select-wrap__year"}
+                  %span 年
+                  = icon('fas', 'chevron-down', class: "arrow-icon")
+                  = f.select :birth_month, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]], {prompt: "--"}, {class: "select-wrap__month"}
+                  %span 月
+                  = icon('fas', 'chevron-down', class: "arrow-icon")
+                  = f.select :birth_day, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12],[13,13],[14,14],[15,15],[16,16],[17,17],[18,18],[19,19],[20,20],[21,21],[22,22],[23,23],[24,24],[25,25],[26,26],[27,27],[28,28],[29,29],[30,30],[31,31]], {prompt: "--"}, {class: "select-wrap__date"}
+                  %span 日
+                  %span#birth.error_m
+              .box-form__content__input__message
+                .box-form__content__input__list__info
+                  %p ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+            .box-form__content__input
+              .box-form__content__input__center
+                %p 「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+          .signup
+            = f.submit '次へ進む', class: 'signup__btn'
+            .box-form__content__bottom_right
+              = link_to "#", class: "most_bottom_link" do
+                %p.most_bottom_link 本人情報の登録について >

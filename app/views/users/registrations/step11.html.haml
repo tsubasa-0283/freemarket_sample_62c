@@ -8,7 +8,7 @@
       %h2.box-header
         会員情報入力
       .box-form
-        = form_for '' do |f|
+        = form_for @user, url:step1_signup_index, method: :get do |f|
           .box-form__content
             .box-form__content__input
               %label ニックネーム
@@ -235,49 +235,12 @@
                     %option(value="31")31
                 %span.none 日
               .box-form__content__input__message
+                %p 「次へ進む」のボタンを押すことにより、
+                = link_to "#", class: "rule" do
+                  = "利用規約"
+                  に同意したものとみなします。
 
-            .box-form__description
-              送付先情報
-
-            .box-form__content__input
-              %label 郵便番号
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：1234567'
-              .box-form__content__input__message
-
-            .box-form__content__input
-              %label 都道府県
-              %span.red 必須
-              %br
-              .box-form__content__input__list
-                .box-form__content__input__list__prefectures
-                  = icon('fas', 'chevron-down', class: "arrow-icon")
-                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'input'
-              .box-form__content__input__message
-
-            .box-form__content__input
-              %label 市区町村
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：〇〇市〇〇町'
-              .box-form__content__input__message
-
-            .box-form__content__input
-              %label 番地
-              %span.red 必須
-              = f.text_field :content, class: 'form__input', placeholder: '例：〇〇丁目〇〇番地'
-              .box-form__content__input__message
-
-            .box-form__content__input
-              %label マンション名やビル名、部屋番号
-              %span.bule 任意
-              = f.text_field :content, class: 'form__input', placeholder: '例：〇〇ビル〇〇号室'
-              .box-form__content__input__message
-
-            .box-form__content__input
-              %label お届け先の電話番号
-              %span.bule 任意
-              = f.telephone_field :content, class: 'form__input', placeholder: '例：08012345678'
-              .box-form__content__input__message
-
-          .signup
-            = f.submit '新規登録', class: 'signup__btn'
+                = f.submit "次へ進む"
+                .input_mem_info__bottom_contents__bottom_form__middle_content
+                  = link_to "#", class: "about_register" do
+                    %p.about_register 本人情報の登録について
