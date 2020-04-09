@@ -1,0 +1,14 @@
+.notification {
+  font-size: 16px;
+  .notice {
+    background-color: lightblue;
+    color: white;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: rgb(243, 175, 49);
+    color: white;
+    text-align: center;
+  }
+}
