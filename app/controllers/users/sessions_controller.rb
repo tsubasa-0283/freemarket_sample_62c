@@ -3,7 +3,6 @@
 class Users::SessionsController < Devise::SessionsController
 
   def create
-    binding.pry
     if  session[:user_id]
       binding.pry
       redirect_to root_path
@@ -20,3 +19,4 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to root_path
   end
 end
+

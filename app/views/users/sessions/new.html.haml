@@ -3,7 +3,6 @@
     %h1
       =link_to image_tag("logo.png"),"#"
     .signup-bar
-
   .main
     .box
       %h2.box-header
@@ -12,7 +11,6 @@
       .signup-btn
         =link_to "新規会員登録",users_signup_path
       .box-form
-        -# = form_for(resource, as: resource_name, url: user_session_path(resource_name)) do |f|
         = form_for(:session, url: user_session_path, class: "input-main__form", html: {method: :"post"}) do |f|
           .box-form__content
             .box-form__content__input
