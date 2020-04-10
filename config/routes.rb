@@ -8,15 +8,15 @@ Rails.application.routes.draw do
     get 'users/signup', to: 'users/registrations#step1'
     post 'users/signup/sms', to: 'users/registrations#step2'
     post 'users/signup/address', to: 'users/registrations#step3'
-    get 'users/signup/done', to: 'users/registrations#done'
-
-  end
-
-  as :user do
+    post 'users/signup/create', to: 'users/registrations#create'
     get 'users/sign_in', to: 'devise/sessions#new'
     post 'users/sign_in', to: 'devise/sessions#create'
     delete 'users/sign_out', to: 'devise/sessions#destroy'
   end
+
+  # as :user do
+    
+  # end
 
   resources :toppages, only:[:index, :show, :new, :edit, :destroy] do
     collection do
