@@ -25,6 +25,7 @@ $(function(){
                             <option value="---" data-category="---">選択してください</option>
                             ${insertHTML}
                           <select>
+                          <i class='fas fa-chevron-down item-main__content-select_icon'></i>
                         </div>
                       </div>`;
     $('.form-select-category__option').append(childSelectHtml);
@@ -38,6 +39,7 @@ $(function(){
                                   <option value="---" data-category="---">選択してください</option>
                                   ${insertHTML}
                                 <select>
+                                <i class='fas fa-chevron-down item-main__content-select_icon'></i>
                               </div>
                             </div>`;
     $('.form-select-category__option').append(grandchildSelectHtml);

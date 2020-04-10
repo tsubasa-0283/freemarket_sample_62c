@@ -14,22 +14,24 @@
           %p.upload-box__text
             最大10枚までアップロードできます
             -# 画像アップロード部分
-          #image-box
-            #previews
-              - if @item.persisted?
-                - @item.images.each_with_index do |image, i|
-                  = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
-            = f.fields_for :images do |image|
-              .js-file_group{"data-index" => "#{image.index}"}
-                = image.file_field :src, class: 'js-file'
-                %br/
-                %span.js-remove 消去
-              - if @item.persisted?
-                = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-              - if @item.persisted?
-                .js-file_group{"data-index" => "#{@item.images.count}"}
-                  = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-                  .js-remove 消去
+          .item_dropbox
+            .image-box__container
+              #image-box
+                .js
+                  #previews
+                    - if @item.persisted?
+                      - @item.images.each_with_index do |image, i|
+                        = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+                = f.fields_for :images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    -# = image.file_field :src, class: 'js-file'
+                    %span.js-remove 消去
+                -# - if @item.persisted?
+                -#   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @item.persisted?
+                  .js-file_group{"data-index" => "#{@item.images.count}"}
+                    = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                    -# .js-remove 消去
           -# 商品名入力欄
       .item-main__content
         .item-main__content-form-group
@@ -54,24 +56,19 @@
             = f.label 'カテゴリー', class: 'listing-default__label'
             %span.form-require
               必須
-          .form-select-category{id: "parent_wrapper"}
-            .form-select-category__option
-              %select{class: 'form-select__option-box', id: "parent_category", name: "item[category_id][]", data: {root: @category.parent.parent.id}}
-                %option{value: ""} 選択してください
-                - Category.where('ancestry IS NULL').each do |category|
-                  %option{value: "#{category.id}", class: "parent-category-box"} #{category.name}
-          .form-select-category{id: "children_wrapper"}
-            .form-select-category__option
-              %select{class: 'form-select__option-box', id: "child_category", name: "item[category_id][]", data: {child: @category.parent.id}}
-                %option{value: ""} 選択してください
-                - @child_categories.each do |category|
-                  %option{value: "#{category.id}"} #{category.name}
-          .form-select-category{id: "grandchildren_wrapper"}
-            .form-select-category__option
-              = f.collection_select :category_id, @grand_child, :id, :name, {prompt: "選択してください"}, class: 'form-select__option-box', id: 'parent_category-edit'
-          -# .item-main__content-category
-          -#   = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, class: 'item-main__content-select-default', id: 'parent_category'
-          -#   = icon('fas', 'chevron-down', class: "item-main__content-select-default__icon")
+          #parent_wrapper.item-main__content-category
+            %select{class: 'item-main__content-select-default', id: "parent_category", name: "item[category_id][]", data: {root: @category.parent.parent.id}}
+              %option{value: ""} 選択してください
+              - Category.where('ancestry IS NULL').each do |category|
+                %option{value: "#{category.id}", class: "parent-category-box"} #{category.name}
+          #children_wrapper.item-main__content-category
+            %select{class: 'item-main__content-select-default', id: "child_category", name: "item[category_id][]", data: {child: @category.parent.id}}
+              %option{value: ""} 選択してください
+              - @child_categories.each do |category|
+                %option{value: "#{category.id}"} #{category.name}
+          #grandchildren_wrapper.item-main__content-category
+            = f.collection_select :category_id, @grand_child, :id, :name, {prompt: "選択してください"}, class: 'item-main__content-select-default', id: 'parent_category-edit'
+            -# = icon('fas', 'chevron-down', class: "item-main__content-select-default__icon")
         .item-main__content-form-group
           .item-main__content-head
             = f.label :brand_id do

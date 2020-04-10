@@ -5,7 +5,7 @@ $(function() {
                       <input class="js-file" type="file"
                       name="item[images_attributes][${num}][picture]"
                       id="item_images_attributes_${num}_picture"><br>
-                      <div class="js-remove">delete</div>
+                      <div class="js-remove">消去</div>
                     </div>`;
       return html;
     }
@@ -72,3 +72,4 @@ $(function() {
         $('img.mainimage.'+className[1]).attr('src',defaultImage);
     });
   });
+  

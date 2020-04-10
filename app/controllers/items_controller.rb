@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
     end
 
     def update
-      if @item.update!(item_params)
+      if @item.update(item_params)
         redirect_to root_path, notice: "編集しました"
       else
         redirect_to edit_item_path, alert: "必須項目を入力してください"
