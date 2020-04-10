@@ -100,7 +100,8 @@
         =link_to "新規投稿商品", '#'
       
       .productLists
-        - @items.each do |item|
+        -# - if @items.present?
+        -# - @items.each do |item|
           .productList
             =link_to '#'
             .productList--img
@@ -118,8 +119,7 @@
                       = icon('fas','star')
                 %p（税込）
 
-              
-            
+
   .bland
     %h2.blandHead ピックアップブランド
     .products 
