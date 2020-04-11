@@ -38,7 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       #ここでidをsessionに入れることでログイン状態に持っていける
       session[:user_id] = @user.id
-      binding.pry
       redirect_to root_path
     else
       flash.now[:alert] = @user.errors.full_messages
@@ -49,7 +48,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def done
     #ログイン状態を保持する記述
     # sign_in User.find(session[:user_id]) unless user_signed_in?
-    binding.pry
     redirect_to root_path
   end
 
