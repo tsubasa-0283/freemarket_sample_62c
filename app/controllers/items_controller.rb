@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
         end
       end
 
-      format.js{rnder ajax_redirect_to(item_path(@item))}
+      format.js{render ajax_redirect_to(item_path(@item))}
 
       else
         flash[:alert] = "未入力項目があります"
