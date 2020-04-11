@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   end
 
   as :user do
-    get 'users/sign_in', to: 'devise/sessions#new'
-    post 'users/sign_in', to: 'devise/sessions#create'
-    delete 'users/sign_out', to: 'devise/sessions#destroy'
+    get 'users/sign_in', to: 'users/sessions#new'
+    post 'users/sign_in', to: 'users/sessions#create'
+    delete 'users/sign_out', to: 'users/sessions#destroy'
   end
 
   resources :toppages, only:[:index, :show, :new, :edit, :destroy] do

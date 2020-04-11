@@ -4,4 +4,4 @@
       .logout-contents__box__red
         .logout-contents__box__red__btn
           %button.logout-contents__box__red__btn__submit
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", users_sign_out_path, method: :delete
