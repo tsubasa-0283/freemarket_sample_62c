@@ -4,11 +4,14 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user
+    if user 
+      session[:user_id] = session[:user_id]
+      binding.pry
       redirect_to root_path
     else
       session[:user_id] = params[:user_id]
-      render :new
+      binding.pry
+      render new_user_session_path
     end
   end
 
