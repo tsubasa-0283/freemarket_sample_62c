@@ -3,9 +3,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def destroy
-  end
-
   def create
   end
 end

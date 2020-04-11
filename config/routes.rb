@@ -8,14 +8,14 @@ Rails.application.routes.draw do
     get 'users/signup', to: 'users/registrations#step1'
     post 'users/signup/sms', to: 'users/registrations#step2'
     post 'users/signup/address', to: 'users/registrations#step3'
-    get 'users/signup/done', to: 'users/registrations#done'
+    post 'users/signup/create', to: 'users/registrations#create'
 
   end
 
   as :user do
-    get 'users/sign_in', to: 'devise/sessions#new'
-    post 'users/sign_in', to: 'devise/sessions#create'
-    delete 'users/sign_out', to: 'devise/sessions#destroy'
+    get 'users/sign_in', to: 'users/sessions#new'
+    post 'users/sign_in', to: 'users/sessions#create'
+    delete 'users/sign_out', to: 'users/sessions#destroy'
   end
 
   resources :toppages, only:[:index, :show, :new, :edit, :destroy] do
