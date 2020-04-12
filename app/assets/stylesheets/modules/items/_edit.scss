@@ -1,0 +1,13 @@
+#previews {
+  display: flex;
+}
+.js {
+  display: flex;
+  .js-file_group {
+    width: auto;
+    .js-file {
+      width: 90px;
+      margin: 5px;
+    }
+  }
+}
