@@ -8,13 +8,8 @@ class ItemsController < ApplicationController
     def new
         @item = Item.new
         @item.images.new
-
-        #セレクトボックスの初期値
+        @item.build_brand
         @category_parent_array = Category.where(ancestry: nil)
-        # データベースから親カテゴリーのみを抽出し、配列化
-        # Category.where(ancestry: nil).each do |parent|
-        #   @category_parent_array << parent.name
-        # end
     end
     # 親カテゴリーが選択された後に動くアクション
     def get_category_children
@@ -42,7 +37,6 @@ class ItemsController < ApplicationController
 
     def create
       @item = Item.new(item_params)
-      # @item.status = 0
       @item.seller_id = "1"
       if @item.save
         redirect_to root_path, notice: "出品しました"
@@ -52,40 +46,18 @@ class ItemsController < ApplicationController
     end
 
     def edit
+      @category = @item.category
+      @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+      @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+      @condition_array = Condition.all
+      @item.build_brand
     end
 
     def update
-      @item = Item.find(params[:id])
-      @images = @item.images
-
-      # 登録画像のidの配列を生成
-      ids = @item.images.map{|image| image.id}
-      # 登録済み画像のうち、編集後もまだ残っている画像のidの配列を生成する（文字列から数値に変換する）
-      exist_ids = registered_images_params[:ids].map[&:to_i]
-      # 登録済み画像が残っていない場合、配列を空にする
-      exist_ids.clear if exist_ids[0] == 0
-
-      if(exist_ids.length != 0 || new_image_params[:images][0] != "") && @item.update!(item_update_params)
-        
-        # 登録済み画像のうち削除ボタンを押した画像を削除する
-        delete_ids = ids - exist_ids
-        delete_ids each do |id|
-          @item.images.find(id).destroy
-        end
-      end
-
-      # 新規登録画像があれば保存する
-      unless new_image_params[:images][0] == ""
-        new_image_params[:images].each do |image|
-          @item.images.ceate(src: image, item_id: @item_id)
-        end
-      end
-
-      format.js{render ajax_redirect_to(item_path(@item))}
-
+      if @item.update(item_params)
+        redirect_to root_path, notice: "編集しました"
       else
-        flash[:alert] = "未入力項目があります"
-        render :edit
+        redirect_to edit_item_path, alert: "必須項目を入力してください"
       end
     end
 
@@ -109,10 +81,11 @@ class ItemsController < ApplicationController
 
     def set_item
       @item = Item.find(params[:id])
+      @images = @item.images
     end
 
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, :brand_id, images_attributes: [:src] ).merge(seller_id: "1")
+      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, brand_attributes: [:id,:name], images_attributes: [:src, :_destroy, :id] ).merge(seller_id: "1")
     end
 
     def item_update_params
@@ -130,5 +103,4 @@ class ItemsController < ApplicationController
     def set_category
       @category_parent_array = Category.where(ancestry: nil)
     end
-
-    
+end
