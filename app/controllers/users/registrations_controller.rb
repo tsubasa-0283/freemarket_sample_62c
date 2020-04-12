@@ -38,6 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       #ここでidをsessionに入れることでログイン状態に持っていける
       session[:user_id] = @user.id
+      # bypass_sign_in(user)
       redirect_to root_path
     else
       flash.now[:alert] = @user.errors.full_messages
