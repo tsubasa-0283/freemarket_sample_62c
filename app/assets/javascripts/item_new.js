@@ -28,7 +28,7 @@ $(function(){
                 var html = `<div class='item-image' data-image="${file.src}">
                                 <div class=' item-iamge__content'>
                                     <div class='item-image__content--icon'>
-                                        <img src=${src} width="114" height="80" >
+                                        <img src=${src} width="100" height="100" >
                                     </div>
                                 </div>
                                 <div class='item-image__operetion'>

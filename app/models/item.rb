@@ -8,6 +8,7 @@ class Item < ApplicationRecord
     belongs_to :category, optional: true
     belongs_to :condition
     belongs_to :brand, optional: true
+    accepts_nested_attributes_for :brand
     belongs_to :size, optional: true
     belongs_to :postage
     belongs_to :DeliveryDay, optional: true

@@ -9,7 +9,7 @@ $(function(){
         var childSelectHtml = '';
         childSelectHtml = `<div class='item-main__content-select__added' id= 'children_wrapper'>
                             <div class='item-main__content-select'>
-                                <select class="item-main__content-select-default" id="child_category" name="category_id">
+                                <select class="item-main__content-select-default" id="child_category" name="item[category_id]">
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                 <select>
@@ -23,7 +23,7 @@ $(function(){
         var grandchildSelectHtml = '';
         grandchildSelectHtml = `<div class='item-main__content-select__added' id= 'grandchildren_wrapper'>
                                 <div class='item-main__content-select'>
-                                    <select class="item-main__content-select-default" id="grandchild_category" name="category_id">
+                                    <select class="item-main__content-select-default" id="grandchild_category" name="item[category_id]">
                                         <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                     <select>
@@ -55,13 +55,11 @@ $(function(){
                 appendChildrenBox(insertHTML);
             })
             .fail(function(){
-                alert('カテゴリー取得に失敗しました');
+                $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
+                $('#grandchildren_wrapper').remove();
+                $('#size_wrapper').remove();
+                $('#brand_wrapper').remove();
             })
-        }else{
-            $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
-            $('#grandchildren_wrapper').remove();
-            $('#size_wrapper').remove();
-            $('#brand_wrapper').remove();
         }
     });
     // 子カテゴリー選択後のイベント
@@ -76,7 +74,7 @@ $(function(){
             })
             .done(function(grandchildren){
                 if (grandchildren.length != 0) {
-                    $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+                    $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
                     $('#size_wrapper').remove();
                     $('#brand_wrapper').remove();
                     var insertHTML = '';
@@ -140,10 +138,6 @@ $(function(){
                     appendSizeBox(insertHTML);
                 }
             })
-            // その他カテゴリーを選択した際にも出てしまうためコメントアウトしてます。
-            // .fail(function (){
-            //     alert('サイズ取得に失敗しました');
-            // })
         }else{
             $('#size_wrapper').remove(); //孫カテゴリーが初期値になった時、サイズ欄以下を削除する
             $('#brand-wrapper').remove();

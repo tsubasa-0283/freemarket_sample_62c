@@ -128,15 +128,6 @@
             line-height: 1.4em;
             margin-bottom: 24px;
             position: relative;
-            &_icon {
-                position: absolute;
-                pointer-events: none;
-                right: 330px;
-                top:  1012px;
-                z-index: 3;
-                color: #888;
-                font-size: 16px;
-            }
         }
         &-select {
             width: 100%;
@@ -168,6 +159,15 @@
                 -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
                 appearance: none; /* 標準のスタイルを無効にする */
                 z-index: 2;
+                &_icon {
+                    position: absolute;
+                    pointer-events: none;
+                    right: 330px;
+                    top:  1012px;
+                    z-index: 3;
+                    color: #888;
+                    font-size: 16px;
+                }
             }
             .fa-chevron-select {
                 bottom: 0;
