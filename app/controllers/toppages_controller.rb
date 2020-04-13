@@ -1,6 +1,7 @@
 class ToppagesController < ApplicationController
+  before_action :authenticate_user!
+ 
   def index
-
     @parents = []
     Category.where(ancestry: nil).each do |parent|
       @parents << parent.name
