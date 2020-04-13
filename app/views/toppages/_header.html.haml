@@ -31,9 +31,15 @@
           ブランド
           .brandNone
       %ul.right
-        %li.right__login
-          =link_to "ログイン", new_user_session_path, class: "right__none"
-        %li.right__signup
-          =link_to "新規会員登録", users_signup_path, class: "right__none"
+        - if user_signed_in?
+          %li.right__login
+            = link_to "マイページ", "#", class: "right__none" 
+          %li.right__signup
+            = link_to "ログアウト", "#", class: "right__none" 
+        - else
+          %li.right__login
+            =link_to "ログイン", new_user_session_path, class: "right__none"
+          %li.right__signup
+            =link_to "新規会員登録", users_signup_path, class: "right__none"
 
 
