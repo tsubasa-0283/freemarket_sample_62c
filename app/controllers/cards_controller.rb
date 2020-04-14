@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
+
   def new
-    card = Card.(user_id: current_user.id)
-    redirect_to card_path(current_user.id) 
+    card = Card.where(user_id: current_user.id)
+    redirect_to card_path(current_user.id) if card.exists? 
   end
 
 

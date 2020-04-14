@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   require 'payjp'
   before_action :set_card, :set_item
+  before_action :authenticate_user!
 
   def index
     if @card.blank?
@@ -13,6 +14,8 @@ class BuyersController < ApplicationController
   end
 
   def pay
+    if current_user.id == @item.seller_id or @item.buyer_id.present?
+      redirect_to root_path
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       :amount => @item.price,
