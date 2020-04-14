@@ -23,6 +23,8 @@ class BuyersController < ApplicationController
   end
 
   def done
+    @item_buyer = Item.find(params[:item_id])
+    @item_buyer.update( buyer_id: current_user.id)
   end
 
   private
