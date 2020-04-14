@@ -77,4 +77,6 @@ Rails.application.routes.draw do
       end
     end
   end
+  get "mypages/index"
+  get "mypages/logout"
 end
