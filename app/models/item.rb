@@ -13,6 +13,7 @@ class Item < ApplicationRecord
     belongs_to :postage
     belongs_to :DeliveryDay, optional: true
     belongs_to_active_hash :prefecture
+    belongs_to :user
 
     # バリデーション
     validates :name,                presence: true
