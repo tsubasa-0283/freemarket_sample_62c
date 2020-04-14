@@ -77,6 +77,9 @@ Rails.application.routes.draw do
       end
     end
   end
-  get "mypages/index"
-  get "mypages/logout"
+  resources :mypages, only: [:index] do
+    collection do
+      get 'logout', to: 'mypages#logout'
+    end
+  end
 end

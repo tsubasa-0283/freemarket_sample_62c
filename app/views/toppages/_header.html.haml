@@ -33,7 +33,7 @@
       %ul.right
         - if user_signed_in?
           %li.right__login
-            = link_to "マイページ", mypages_index_path, class: "right__none" 
+            = link_to "マイページ", mypages_path, class: "right__none" 
           %li.right__signup
             = link_to "ログアウト", "#", class: "right__none" 
         - else

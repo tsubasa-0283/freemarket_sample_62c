@@ -2,7 +2,7 @@
   .my-side__lists
     %ul.lists-items
       %li
-        = link_to mypages_index_path do
+        = link_to mypages_path do
           マイページ
           = icon 'fas', 'chevron-right'
       %li
@@ -84,7 +84,7 @@
           発送元・お届け先住所変更
           = icon 'fas', 'chevron-right'
       %li
-        = link_to new_card_path do
+        = link_to card_path(current_user.id) do
           お支払い方法
           = icon 'fas', 'chevron-right'
       %li
@@ -100,6 +100,6 @@
           電話番号の確認
           = icon 'fas', 'chevron-right'
       %li
-        = link_to mypages_logout_path do
+        = link_to logout_mypages_path do
           ログアウト
           = icon 'fas', 'chevron-right'

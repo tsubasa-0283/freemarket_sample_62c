@@ -4,7 +4,7 @@
     = render "mypages/my-side"
     .my-logout
       .my-logout__btn
-        = link_to logout_users_path, method: 'delete', class: "logout-btn" do
+        = link_to users_sign_out_url, method: 'delete', class: "logout-btn" do
           ログアウト
 .footer
   = render "toppages/footer"
