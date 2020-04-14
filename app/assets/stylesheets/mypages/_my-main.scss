@@ -1,0 +1,108 @@
+.my-main{
+  width: 700px;
+  &__user{
+    background: image-url("my_back.png");
+    height: 200px;
+    padding: 20px;
+    position: relative;
+    .user-menu{
+      text-align: center;
+      position: absolute;
+      top: 25%;
+      left: 0;
+      right: 0;
+      color: #333;
+      text-decoration: none;
+      .my-main__user__name{
+        font-weight: bold;
+        font-size: large;
+      }
+      .my-main__user__items{
+        text-align: center;
+      }
+    }
+  }
+  .my-main__user__switch{
+  display: flex;
+  text-align: center;
+  line-height: 72px;
+    .switch-nav{
+    font-size: 16px;
+    font-weight: bold;
+    width: 50%;
+    background-color: white;
+    }
+    #switch{
+      border-top: 2px solid #57CACE;
+    }
+    #switch2{
+      background-color: #eeeeee;
+    }
+  }
+  &__menu{
+    figure{
+      float: left;
+    }
+      .MYtime{
+        i{
+          display: inline-block;
+          color: #888;
+        }
+    }
+    i{
+      float: right;
+    }
+  }
+  &__items{
+    font-size: 16px;
+    margin-top: 40px;
+    line-height: 72px;
+    background-color: white;
+    padding: 0 16px;
+  }
+}
+
+.lists-items{
+  li{
+    border-top: 1px solid #eeeeee;
+    background-color: white;
+    padding: 16px;
+    position: relative;
+    a{
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      figure{
+        float: left;
+      }
+      .MYcontents{
+        margin: 0 40px 0 68px;
+      }
+      .fas-right{
+        color: gray;
+        position: absolute;
+        top: 45%;
+        right: 16px;
+      }
+    }
+    .user-list{
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center
+    }
+  }
+  .deal-inform{
+    font-size: xx-large;
+    text-align: center;
+    padding: 20px  0;
+    .deal-message{
+      font-size: large;
+      color: grey;
+
+    }
+  }
+}

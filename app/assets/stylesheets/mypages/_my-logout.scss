@@ -1,0 +1,17 @@
+.my-logout{
+  background-color: white;
+  height: 180px;
+  width: 700px;
+  padding: 60px 0;
+  &__btn{
+    text-align: center;
+    line-height: 48px;
+    background-color: #57CACE;
+    width: 320px;
+    margin: 0 auto;
+    .logout-btn{
+      color: white;
+      text-decoration: none;
+      }
+  }
+}

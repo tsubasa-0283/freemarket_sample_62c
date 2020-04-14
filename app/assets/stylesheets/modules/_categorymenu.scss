@@ -1,11 +1,9 @@
 .parent__tree {
   z-index: 1;
   background-color: #fff;
-  box-shadow: 0 3px 3px 0 cadetblue;
   font-size: 12px;
   display: none;
   padding: 2px;
-  height: 560px;
   width: auto;
   position: absolute;
   cursor: pointer;
@@ -28,11 +26,9 @@
 }
 .children__tree{
   background-color: #fff;
-  box-shadow: 0 3px 3px 0 cadetblue;
   font-size: 12px;
   display: none;
   padding: 2px;
-  height: 560px;
   width: auto;
   position: absolute;
   top: 0;
@@ -57,11 +53,9 @@
 }
 .grandchildren__tree {
   background-color: #fff;
-  box-shadow: 0 3px 3px 0 cadetblue;
   font-size: 12px;
   display: none;
   padding: 2px;
-  height: 560px;
   width: auto;
   position: absolute;
   top: 0;

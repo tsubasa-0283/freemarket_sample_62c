@@ -1,0 +1,105 @@
+.my-side
+  .my-side__lists
+    %ul.lists-items
+      %li
+        = link_to mypages_path do
+          マイページ
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          お知らせ
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          やることリスト
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          いいね!一覧
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          出品する
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          出品した商品-出品中
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          出品した商品-取引中
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          出品した商品-売却済
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          購入した商品-取引中
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          購入した商品-過去の取引
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          ニュース一覧
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          評価一覧
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          ガイド
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          お問い合わせ
+          = icon 'fas', 'chevron-right'
+  .my-side__mid
+    .my-side__mid__nav
+      フリペイ
+    .my-side__mid__items
+    %ul.lists-items
+      %li
+        = link_to "#" do
+          売り上げ・振り込み申請
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          ポイント
+          = icon 'fas', 'chevron-right'
+  .my-side__btm
+    .my-side__btm__nav
+      設定
+    .my-side__btm__config
+    %ul.lists-items
+      %li
+        = link_to "#" do
+          プロフィール
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          発送元・お届け先住所変更
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to card_path(current_user.id) do
+          お支払い方法
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          メール/パスワード
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          本人情報
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to "#" do
+          電話番号の確認
+          = icon 'fas', 'chevron-right'
+      %li
+        = link_to logout_mypages_path do
+          ログアウト
+          = icon 'fas', 'chevron-right'

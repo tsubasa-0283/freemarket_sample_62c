@@ -7,12 +7,10 @@ class Users::SessionsController < Devise::SessionsController
     if user 
       session[:user_id] = user.id
       bypass_sign_in(user)
-
       flash[:alert] = "ログインしました"
       redirect_to root_path
     else
       session[:user_id] = params[:user_id]
-    
       flash[:alert] = "ログアウトしました"
       render new_user_session_path
     end
@@ -23,7 +21,6 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     session.delete(:user_id)                                                    # セッションのuser_idを削除する
     @current_user = nil     
-
     redirect_to root_path
   end
 end
