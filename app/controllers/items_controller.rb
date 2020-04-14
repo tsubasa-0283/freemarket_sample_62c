@@ -60,9 +60,18 @@ class ItemsController < ApplicationController
         redirect_to edit_item_path, alert: "必須項目を入力してください"
       end
     end
-
+# 商品詳細表示
     def show
       render :index unless user_signed_in? && current_user.id == @item.id
+      @item = Item.find(params[:id])
+      @user = User.find(@item[:seller_id])
+      @box = Item.order("RAND()").limit(6)
+      @grandchild = Category.find(@item[:category_id])
+      @child = @grandchild.parent
+      @parent = @child.parent
+      @brand = Brand.find(@item[:brand_id])
+      @delivery = Delivery.find(@item[:delivery_day_id])
+      @address = Prefecture.find(@item[:prefecture_id])
     end
 
     def destroy
@@ -85,7 +94,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, brand_attributes: [:id,:name], images_attributes: [:src, :_destroy, :id] ).merge(seller_id: current_user.id)
+      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, :seller_id, :buyer_id, brand_attributes: [:id,:name], images_attributes: [:src, :_destroy, :id] ).merge(user_id: current_user.id, seller_id: current_user.id)
     end
 
     def item_update_params

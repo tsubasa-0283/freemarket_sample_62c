@@ -2,6 +2,8 @@ class Item < ApplicationRecord
 
     # アソシエーション
     extend ActiveHash::Associations::ActiveRecordExtensions
+    belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id', optional: true
+    belongs_to :seller, class_name: 'User', foreign_key: 'seller_id', optional: true
     has_many :likes, dependent: :destroy
     has_many :images
     accepts_nested_attributes_for :images, allow_destroy: true

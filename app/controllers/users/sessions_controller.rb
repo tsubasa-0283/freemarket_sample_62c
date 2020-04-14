@@ -11,7 +11,6 @@ class Users::SessionsController < Devise::SessionsController
       redirect_to root_path
     else
       session[:user_id] = params[:user_id]
-      flash[:alert] = "ログアウトしました"
       render new_user_session_path
     end
   end
@@ -21,6 +20,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     session.delete(:user_id)                                                    # セッションのuser_idを削除する
     @current_user = nil     
+    flash[:alert] = "ログアウトしました"
     redirect_to root_path
   end
 end
