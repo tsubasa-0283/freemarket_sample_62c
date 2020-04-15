@@ -7,7 +7,7 @@
 @import "modules/footer";
 @import "modules/signup";
 @import "modules/login";
-@import "./deteils";
+@import "./show";
 @import "modules/items/new";
 @import "modules/items/edit";
 @import "modules/done";
@@ -18,3 +18,9 @@
 @import "cards/show";
 @import "buyers/index";
 @import "buyers/done";
+@import "mypages/my-contents";
+@import "mypages/my-main";
+@import "mypages/my-side";
+@import "mypages/my-logout";
+
+

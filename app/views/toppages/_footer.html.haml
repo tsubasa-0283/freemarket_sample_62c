@@ -28,4 +28,8 @@
   .exhibitionBtn
     .exhibitionBtn__text 
       %span 出品する
-      =link_to image_tag('icon_camera.png', size: "54x54" ), new_item_path
+      - if user_signed_in?
+        =link_to image_tag('icon_camera.png', size: "54x54" ), new_item_path
+      - else
+        =link_to image_tag('icon_camera.png', size: "54x54" ), new_user_session_path
+
