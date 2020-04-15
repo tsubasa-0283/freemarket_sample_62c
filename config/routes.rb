@@ -63,6 +63,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :items do
+    collection do
+      get 'items/show', to: 'items#show'
+    end
+  end
+
 
   resources :cards, only: [:new, :show, :destroy] do
     collection do

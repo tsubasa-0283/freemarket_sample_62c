@@ -75,8 +75,8 @@ class ItemsController < ApplicationController
       @smallcategory = Category.find(@item.category_id)
       @category = Category.find(Category.find(@item.category_id)) unless Category.find(@item.category_id)
       @bigcategory = Category.find(Category.find(@item.category_id))
-      binding.pry
       @size = Size.find(@item.size_id)
+      binding.pry
       # @brand = Brand.find(@item.brand_id)
       # @delivery = Delivery.find(@item.delivery_day_id)
       # @address = Prefecture.find(@item.prefecture_id)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200414203442) do
+ActiveRecord::Schema.define(version: 20200415122357) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "prefecture_id",           default: "0", null: false
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20200414203442) do
   end
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20200414203442) do
     t.string   "buyer_id"
     t.string   "size_id"
     t.integer  "user_id",                       null: false
+    t.integer  "address_id"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["condition_id"], name: "index_items_on_condition_id", using: :btree
     t.index ["delivery_day_id"], name: "index_items_on_delivery_day_id", using: :btree
@@ -114,9 +115,9 @@ ActiveRecord::Schema.define(version: 20200414203442) do
   end
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "size",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "size",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "ancestry"
     t.index ["ancestry"], name: "index_sizes_on_ancestry", using: :btree
   end
