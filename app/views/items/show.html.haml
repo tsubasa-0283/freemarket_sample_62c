@@ -37,26 +37,33 @@
               %tr
                 %th カテゴリー
                 %td 
-                  .item_category
-                    .item_category_top
-                    %span
-                      = @item.category_id
+                  = link_to  '/' do
+                    = @bigcategory.name
+                　- if @category.present?
+                -#     = link_to '/' do
+                -#       .itembuy-table-sub
+                -#       %i.fas.fa-chevron-right
+                -#       = @category.name
+                -# = link_to '/' do
+                  .itembuy-table-sub
+                    %i.fas.fa-chevron-right
+                    = @smallcategory.name
               %tr
                 %th ブランド
                 %td
-                  = @item.brand_id
+                -#   = @brand.name
               %tr
                 %th 商品サイズ
                 %td
-                  = @item.size_id
+                  = @size.size
               %tr
                 %th 商品の状態
                 %td
-                  = @item.condition_id
+                  = @condition.condition
               %tr
                 %th 配送料の負担
                 %td
-                  = @item.postage_id
+                  = @postage.delivery_charge
               %tr
                 %th 配送料の方法
                 %td
@@ -64,11 +71,11 @@
               %tr
                 %th 発送元の地域
                 %td
-                  = @item.prefecture_id
+                  = @prefecture.prefecture
               %tr
                 %th 発送日の目安
                 %td
-                  = @item.delivery_day_id
+                  = @delivery_days.delivery_day_id
           .price-box
             %span.price-box__text
               ¥
@@ -154,7 +161,7 @@
             .item-show__box__name
               = link_to "", class: "item-show-text-link" do
                 = @grandchild.name
-                -# = @parent.name
+                = @bigcategory.name
                 その他の商品
             .item-show__list
               %ul
