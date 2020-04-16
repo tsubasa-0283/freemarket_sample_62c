@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
-    before_action :confirmation, only: [:new]
+    before_action :confirmation, only: [:new, :edit]
 
     def index
         @items = Item.includes(:images).order('created_at DESC')
@@ -105,7 +105,7 @@ class ItemsController < ApplicationController
     # ログイン状態の確認
     def confirmation  #ログインしていない場合ははユーザー登録に移動
       unless user_signed_in?
-        redirect_to(user_session_path)
+        redirect_to user_session_path, alert: "ログインしてください"
       end
     end
 

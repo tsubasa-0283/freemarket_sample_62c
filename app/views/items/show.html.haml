@@ -1,170 +1,194 @@
 .wrapper
   = render 'toppages/header'
-  .main
-    .item__details
-      %h2.item__details__name
-        = @item.name
-      .item__details__main__content
-        .item__details__main__content__box
-          .main_photo
-            .photos
-              = image_tag "#{@item.images[0].src}", class: "photos"
-              - if @item.buyer_id
-                .show-soldout
-                .show-soldout__text
-                  SOLD
-            .small_photos
-              - @images.each do |image|
-                = image_tag image.src.to_s, class: "small_photo"            
-          %table
-            %tbody
-              %tr
-                %th 出品者
-                %td
-                  .seller_name
-                    = link_to "", class:"name" do
-                      = @user.nickname
-                  .user_rating
-                    .item-user-raitings
-                    %i.fas.fa-laugh
-                    %span 131
-                    .item_user_raitings
-                    %i.fas.fa-meh
-                    %span 3
-                    .item_user_raitings
-                    %i.fas.fa-frown
-                    %span 1
-              %tr
-                %th カテゴリー
-                %td 
-                  = link_to  '/' do
-                    = @bigcategory.name
-                - if @category.present?
-                  = link_to '/' do
-                    .itembuy-table-sub
-                    %i.fas.fa-chevron-right
-                    = @category.name
-                  = link_to '/' do
-                    .itembuy-table-sub
-                    %i.fas.fa-chevron-right
-                    = @smallcategory.name
-              %tr
-                %th ブランド
-                %td
-                  = @brand.name
-              %tr
-                %th 商品サイズ
-                %td
-                  = @size.size
-              %tr
-                %th 商品の状態
-                %td
-                  = @condition.condition
-              %tr
-                %th 配送料の負担
-                %td
-                  = @postage.delivery_charge
-              %tr
-                %th 配送料の方法
-                %td
-                  = @item.postage_id
-              %tr
-                %th 発送元の地域
-                %td
-                  = @address.name
-              %tr
-                %th 発送日の目安
-                %td
-                  = @delivery.day
-          .price-box
-            %span.price-box__text
-              ¥
-            %span.price-box__price
-              = @item.price.to_s(:delimited, delimiter: ',')
-            %span.price-box__text
-              円
-            %span.price-box__tax
-              (税込)
-            %span.price-box__fee
-              送料込み
-
-              - if user_signed_in?
-                - if current_user.id == @item.seller_id
-                  = link_to '編集画面に進む', edit_item_path(@item), class: "item-edit-btn", method: :get
-                  = link_to '削除する', items_path(@item), class: "item-delete-btn" ,method: :delete
-                - else
-                  = link_to item_buyers_path, class: "item-buy-btn", method: :get do
-                    購入画面に進む
-              - else
-                = link_to user_session_path, class: "item-buy-btn", method: :get do
-                  購入画面に進む
-          .item-description
-            %p.item-description__inner
-              = @item.description
-
-          .button-content
-            .button-content__left
-              .button-like
-                %i.far.fa-heart
-                = link_to "#", class: "button-like__text" do
-                  いいね！ 0
-              .button-report
-                %i.far.fa-flag
-                = link_to "#", class: "button-report__text" do
+  %section
+  .item__details
+    %h2.item__details__name
+      = @item.name
+    .item__details__main-content
+      .item__details__main-content__box
+        .main_photo
+          .photos
+            = image_tag "#{@item.images[0].src}", class: "photos"
+            - if @item.buyer_id
+              .show-soldout
+              .show-soldout__text
+                SOLD
+          .small_photos
+            - @images.each do |image|
+              = image_tag image.src.to_s, class: "small_photo"  
+              -# テーブルの詳細          
+        %table.item_detail_table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                .seller_name
+                  = link_to "", class:"name" do
+                    = @user.nickname
+                .user_rating
+                  .item-user-raitings
+                  %i.fas.fa-laugh
+                  %span 131
+                  .item_user_raitings
+                  %i.fas.fa-meh
+                  %span 3
+                  .item_user_raitings
+                  %i.fas.fa-frown
+                  %span 1
+            %tr
+              %th カテゴリー
+              %td 
+                = link_to  '/' do
+                  = @bigcategory.name
+                  %br
+                = link_to '/' do
+                  %i.fas.fa-chevron-right
+                  = @category.name
+                  %br
+                = link_to '/' do
+                  %i.fas.fa-chevron-right
+                  = @smallcategory.name
+            %tr
+              %th ブランド
+              %td
+                = @brand.name
+            %tr
+              %th 商品サイズ
+              %td
+                = @size.size
+            %tr
+              %th 商品の状態
+              %td
+                = @condition.condition
+            %tr
+              %th 配送料の負担
+              %td
+                = @postage.delivery_charge
+            %tr
+              %th 配送料の方法
+              %td
+                = @item.postage_id
+            %tr
+              %th 発送元の地域
+              %td
+                = @address.name
+            %tr
+              %th 発送日の目安
+              %td
+                = @delivery.day
+                -# 価格
+      .item_price_box
+        %span.item_price
+          = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
+        %span.item_tax
+          (税込)
+        %span.item_shipping_fee
+          送料込み
+          -# ここから
+      .item-buy-btn
+        -# -if @item.buyer_id != nil
+        -#   = link_to ‘売り切れました‘, root_path, class: “item-buy-btn”
+        -# -elsif user_signed_in?
+      
+        -#   -if @item.seller_id == current_user.id
+        -#     = link_to '編集画面に進む', edit_item_path(params[:id]), class:“item-buy-btn__destroy”
+        -#     %span or
+        -#     = link_to '削除する', edit_item_path(params[:id]), class:“item-buy-btn__destroy”,method: :delete
+        -#   - elsif @item.buyer_id == nil
+        -#     = link_to ‘購入画面に進む‘,item_buyers_path(@item), class: “item-buy-btn”
+        -#   - else
+        -#     = link_to ‘ログインして購入‘, new_user_session_path, class: “item-buy-btn”
+        -#     %span or
+        -#     = link_to ‘新規会員登録して購入’, new_user_registration_path, class: “item-buy-btn”
+        
+        
+          -# ここまで
+        -# - if user_signed_in?
+        -#   - if current_user.id == @item.seller_id
+        -#     = link_to '編集画面に進む', edit_item_path(@item), class: "item-edit-btn", method: :get
+        -#     = link_to '削除する', items_path(@item), class: "item-delete-btn" ,method: :delete
+        -#   - else
+        -#     = link_to item_buyers_path, class: "item-buy-btn", method: :get do
+        -#       購入画面に進む
+        -# - else
+        -#   = link_to user_session_path, class: "item-buy-btn", method: :get do
+        -#     購入画面に進む
+        .item-description
+          = @item.description
+          .item_button_container
+            .item_button
+              .item_button__left
+                .fas.fa-heart
+                  いいね
+              .item_button__right
+                .fas.fa-flag
                   不適切な商品の報告
-        
-            = link_to "#", class: "button-content__right" do
-              %i.fas.fa-lock
-                安心・安全への取り組み
-    
-    .item-comment-message
-      .item-comment-message__box
+            .item_text
+              .fas.fa-unlock-alt
+                あんしん・あんぜんへの取り組み
+
+  -# コメント部分
+  %section
+  .message_container
+    .message_content
+      .message_items
         %form.message-content-form
-          %p
-            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea.message-content-form-box__text
+        .message-user
+          .fas.fa-user-cirle
+          .message_user-text
+          .message_icon
+            .message_icon_left
+              .icon-time
+                %i.far.fa-clock
+            .message_icon_right
+              %i.far.fa-flag
+      
+      .message_content__box
+        .message_content__box__form
+        %p.attention
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .message_content__box__form
         .message-submit
-          .message-submit__btn-gray
-            コメントする
-        
-        .next_or_back
-          .previous_product.items-link_to
-            < 前の商品
-          .next_product.items-link_to
-            次の商品 >
-        
-        .item-show-sns-box
-          = link_to "http://www.facebook.com/share.php?", class: "item-show-facebook" do
-            %i.fab.fa-facebook-square
-              .item-show-facebook-icon
+        .message-submit__btn-gray
+          コメントする
+      
+    .next_or_back
+      .previous_product.items-link_to
+        < 前の商品
+      .next_product.items-link_to
+        次の商品 >
 
-          = link_to "http://www.twitter.com/share?ref_src=twsrc%5Etfw", class: "item-show-twitter" do
-            %i.fab.fa-twitter-square
-              .item-show-twitter-icon
+        -# SNS共有
+      -# .item-snsbox
+      -#   .sns
+      -#     .facebook
+      -#     %a.fab.fa-facebook-square{hfref: "http://www.facebook.com/share.php?" }
 
-          = link_to "http://www.pinterest.jp/pin/create/button/?", class: "item-show-pinterest" do
-            %i.fab.fa-pinterest-square
-              .item-show-pinterest-icon
+      -#     .twitter
+      -#     %a.fab.fa-twitter-square{hfref: "http://www.twitter.com/share?ref_src=twsrc%5Etfw" }
 
-        .item-show
-          .item-show__box
-            .item-show__box__name
-              = link_to "", class: "item-show-text-link" do
-                = @user.nickname
-                その他の出品
-            .ietm-show__list
-              %ul
-            -#   = render partial: "shared/photobox", collection: @box, as: "box"
+      -#     .line
+      -#     %a.fab.fa-pinterest-square{href: "http://www.pinterest.jp/pin/create/button/?" }
 
-        .item-show
-          .item-show__box
-            .item-show__box__name
-              = link_to "", class: "item-show-text-link" do
-                -# = @grandchild.name
-                -# = @bigcategory.name
-                その他の商品
-            .item-show__list
-              %ul
-                -# = render partial: "shared/photobox", collection: @box, as: "box"
+      -# .item-show
+      -#   .item-show__box
+      -#     .item-show__box__name
+      -#       = link_to "", class: "item-show-text-link" do
+      -#         = @user.nickname
+      -#         その他の出品
+      -#     .ietm-show__list
+      -#       %ul
+      -#     -#   = render partial: "shared/photobox", collection: @box, as: "box"
 
+      -# .item-show
+      -#   .item-show__box
+      -#     .item-show__box__name
+      -#       = link_to "", class: "item-show-text-link" do
+      -#         -# = @grandchild.name
+      -#         -# = @bigcategory.name
+      -#         その他の商品
+      -#     .item-show__list
+      -#       %ul
+      -#         -# = render partial: "shared/photobox", collection: @box, as: "box"
+  %section
     = render 'toppages/footer'

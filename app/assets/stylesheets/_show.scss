@@ -21,17 +21,22 @@
     word-wrap: break-word;
     line-height: 1.4;
   }
-    &__main_content {
+    &__main-content {
       margin: 16px 0 0;
-      &_box {
+      &__box {
       background: white;
       height: 450px;
       padding: 10px;
       display: flex;
       justify-content: space-between;
       .main_photo {
-        padding-right: 8px;
+
+        position: relative;
+        height: 420px;
+        width: 300px;
+      }
         .photos {
+          // background-image: url(/images/item_sample.jpg);
           background-size: cover;
           width: 300px;
           height: 300px;
@@ -46,6 +51,7 @@
           position: relative;
           flex-wrap: wrap;
           .small_photo {
+            // background-image: url(/images/item_sample_small.jpg);
             background-size: cover;
             height: 60px;
             width: 60px;
@@ -105,8 +111,8 @@
         }
       }      
     }
-  }
 }
+
 
 
 // アイテム詳細テーブル(right)
@@ -114,6 +120,8 @@ table.item_detail_table {
   float: right;
   height: 380px;
   width: 300px;
+  margin-left: 15px;
+
   th, td {
     border: 1px solid  #f7efef;
     padding: 9px;
@@ -126,26 +134,34 @@ table.item_detail_table {
       padding-bottom:5px;
     }
   }
-}
-// ユーザー評価
-.user_rating {
-  display: flex;
-  align-items:center;
-  .item_user_ratings{
-    height:25px;
+
+  td {
+    background-color:   #fcf8f8;
+    .itembuy-table-sub {
+      padding-bottom:5px;
+    }
   }
-}
+
+  // ユーザー評価
+  .user_rating {
+    display: flex;
+    align-items:center;
+    .item_user_ratings{
+      height:25px;
+    }
+  }
 
 
-// 評価アイコン
-.fa-laugh{
-  color: #ef5185;
-}
-.fa-meh{
-  color: #fba933;
-}
-.fa-frown{
-  color: #6ab5d8;
+  // 評価アイコン
+  .fa-laugh{
+    color: #ef5185;
+  }
+  .fa-meh{
+    color: #fba933;
+  }
+  .fa-frown{
+    color: #6ab5d8;
+  }
 }
 
 // 商品価格
@@ -250,20 +266,19 @@ table.item_detail_table {
   background: white;
   .message_items {
     margin: 1.5em 0 0;
-    height:60px;
   }
 }
 
-.message_body {
-  float: right;
+.message-user {
+  // float: right;
   position: relative;
-  width: calc(100% - 56px);
+  //width: calc(100% - 56px);
   padding: 5px;
   background: #eef0f4;
   border-radius: 15px;
   line-height: 1.5;
   word-break: break-all;
-  height:80px;
+  //height:80px;
   display: flex;
   &__text{
     padding: 5px;
@@ -344,7 +359,7 @@ table.item_detail_table {
     padding:50px;
     margin-right: 5px;
     border-radius: 10px;
-    i{
+    a{
       margin-right: 10px;
       border-radius: 10px;
     }
@@ -433,4 +448,39 @@ ul.home {
 li.item_name  {
   font-size: 13px;
   list-style: none;
+}
+
+.sold_2{
+  z-index: 10;
+  font-size: 30px;
+  position: relative;
+  color: white;
+  background-color: red;
+  width: 300px;
+  margin-top: 120px;
+  text-align: center;
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+   -ms-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+       transform: rotate(-20deg);
+}
+
+.photos_box{
+  position: absolute;
+  top: 0px;
+}
+
+.edit_mypage__content_sold{
+  margin-top: 100px;
+}
+
+.btn-default{
+  text-decoration: none;
+  color: black;
+}
+
+.btn-default2{
+  text-decoration: none;
+  color: white;
 }
