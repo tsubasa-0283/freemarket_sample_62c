@@ -1,5 +1,7 @@
 class Address < ApplicationRecord
     extend ActiveHash::Associations::ActiveRecordExtensions
+    belongs_to_active_hash :prefecture
+    belongs_to_active_hash :shippingday
 
     kanji = /\A[一-龥]+\z/
     kana = /\A([ァ-ン]|ー)+\z/
