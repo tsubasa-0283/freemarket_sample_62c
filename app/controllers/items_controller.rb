@@ -75,8 +75,8 @@ class ItemsController < ApplicationController
         @user = User.find(@item.seller_id)
         @box = Item.order("RAND()").limit(6)
         @smallcategory = Category.find(@item.category_id)
-        @category = Category.find(Category.find(@item.category_id)) unless Category.find(@item.category_id)
-        @bigcategory = Category.find(Category.find(@item.category_id))
+        @category = @smallcategory.parent # unless Category.find(@item.category_id)
+        @bigcategory = @category.parent
         @size = Size.find(@item.size_id)
         @brand = Brand.find(@item.brand_id)
         @delivery = DeliveryDay.find(@item.delivery_day_id)
