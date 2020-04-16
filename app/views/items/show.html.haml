@@ -1,62 +1,170 @@
 .wrapper
   = render 'toppages/header'
   .main
-    .showMain
-      .contentLeftqq
-      .contentRight
-        .topContent
-          .itemBox
-            %h2.itemBox__name product3
-            .itemBox__body
+    .item__details
+      %h2.item__details__name
+        = @item.name
+      .item__details__main__content
+        .item__details__main__content__box
+          .main_photo
+            .photos
+              = image_tag "#{@item.images[0].src}", class: "photos"
+              - if @item.buyer_id
+                .show-soldout
+                .show-soldout__text
+                  SOLD
+            .small_photos
+              - @images.each do |image|
+                = image_tag image.src.to_s, class: "small_photo"            
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td
+                  .seller_name
+                    = link_to "", class:"name" do
+                      = @user.nickname
+                  .user_rating
+                    .item-user-raitings
+                    %i.fas.fa-laugh
+                    %span 131
+                    .item_user_raitings
+                    %i.fas.fa-meh
+                    %span 3
+                    .item_user_raitings
+                    %i.fas.fa-frown
+                    %span 1
+              %tr
+                %th カテゴリー
+                %td 
+                  = link_to  '/' do
+                    = @bigcategory.name
+                - if @category.present?
+                  = link_to '/' do
+                    .itembuy-table-sub
+                    %i.fas.fa-chevron-right
+                    = @category.name
+                  = link_to '/' do
+                    .itembuy-table-sub
+                    %i.fas.fa-chevron-right
+                    = @smallcategory.name
+              %tr
+                %th ブランド
+                %td
+                  = @brand.name
+              %tr
+                %th 商品サイズ
+                %td
+                  = @size.size
+              %tr
+                %th 商品の状態
+                %td
+                  = @condition.condition
+              %tr
+                %th 配送料の負担
+                %td
+                  = @postage.delivery_charge
+              %tr
+                %th 配送料の方法
+                %td
+                  = @item.postage_id
+              %tr
+                %th 発送元の地域
+                %td
+                  = @address.name
+              %tr
+                %th 発送日の目安
+                %td
+                  = @delivery.day
+          .price-box
+            %span.price-box__text
+              ¥
+            %span.price-box__price
+              = @item.price.to_s(:delimited, delimiter: ',')
+            %span.price-box__text
+              円
+            %span.price-box__tax
+              (税込)
+            %span.price-box__fee
+              送料込み
+
+              - if user_signed_in?
+                - if current_user.id == @item.seller_id
+                  = link_to '編集画面に進む', edit_item_path(@item), class: "item-edit-btn", method: :get
+                  = link_to '削除する', items_path(@item), class: "item-delete-btn" ,method: :delete
+                - else
+                  = link_to item_buyers_path, class: "item-buy-btn", method: :get do
+                    購入画面に進む
+              - else
+                = link_to user_session_path, class: "item-buy-btn", method: :get do
+                  購入画面に進む
+          .item-description
+            %p.item-description__inner
+              = @item.description
+
+          .button-content
+            .button-content__left
+              .button-like
+                %i.far.fa-heart
+                = link_to "#", class: "button-like__text" do
+                  いいね！ 0
+              .button-report
+                %i.far.fa-flag
+                = link_to "#", class: "button-report__text" do
+                  不適切な商品の報告
+        
+            = link_to "#", class: "button-content__right" do
+              %i.fas.fa-lock
+                安心・安全への取り組み
+    
+    .item-comment-message
+      .item-comment-message__box
+        %form.message-content-form
+          %p
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.message-content-form-box__text
+        .message-submit
+          .message-submit__btn-gray
+            コメントする
+        
+        .next_or_back
+          .previous_product.items-link_to
+            < 前の商品
+          .next_product.items-link_to
+            次の商品 >
+        
+        .item-show-sns-box
+          = link_to "http://www.facebook.com/share.php?", class: "item-show-facebook" do
+            %i.fab.fa-facebook-square
+              .item-show-facebook-icon
+
+          = link_to "http://www.twitter.com/share?ref_src=twsrc%5Etfw", class: "item-show-twitter" do
+            %i.fab.fa-twitter-square
+              .item-show-twitter-icon
+
+          = link_to "http://www.pinterest.jp/pin/create/button/?", class: "item-show-pinterest" do
+            %i.fab.fa-pinterest-square
+              .item-show-pinterest-icon
+
+        .item-show
+          .item-show__box
+            .item-show__box__name
+              = link_to "", class: "item-show-text-link" do
+                = @user.nickname
+                その他の出品
+            .ietm-show__list
               %ul
-                %li
-                  =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
-                %ul
-                  %li
-                    =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
-                  %li
-                    =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png")
-                  %li
-                    =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png")
+            -#   = render partial: "shared/photobox", collection: @box, as: "box"
 
-            .itemBox_price
-            .itemDetail 
-            .table
-              %table
-                %tr
-                  %th 出品者
-                  %td hoge
-                %tr
-                  %th カテゴリー
-                  %td 
-                    =link_to "べビー・キッズ","/"
-                    %br
-                    =link_to "べビー服（男女兼用）~９５cm","/"
-                    %br
-                    =link_to "アウター","/"
-                %tr
-                  %th ブランド
-                  %td 
-                %tr
-                  %th 商品サイズ
-                  %td
-                %tr
-                  %th 商品の状態
-                  %td 未使用に近い
-                %tr
-                  %th 配送料の負担
-                  %td 送料込み（出品者負担）
-                %tr
-                  %th 配送元の地域
-                  %td
-                    =link_to "岩手県","/"
-                %tr
-                  %th 配送日の目安
-                  %td 4-7日で発送
-            .optionalArea
-          .conmmentBox
-        %ul.links
+        .item-show
+          .item-show__box
+            .item-show__box__name
+              = link_to "", class: "item-show-text-link" do
+                -# = @grandchild.name
+                -# = @bigcategory.name
+                その他の商品
+            .item-show__list
+              %ul
+                -# = render partial: "shared/photobox", collection: @box, as: "box"
 
-        .relatedItems          
-
-  = render 'toppages/footer'
+    = render 'toppages/footer'

@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
+    before_action :confirmation, only: [:new]
+
     def index
         @items = Item.includes(:images).order('created_at DESC')
     end
@@ -61,12 +63,35 @@ class ItemsController < ApplicationController
       end
     end
 
+    # 子カテゴリー
+    def category_children
+      children = Category.find(params[:name]).name
+      @category_children = Category.find_by(name: children, ancestry: nil ).children
+    end
+
+# 商品詳細表示
     def show
-      render :index unless user_signed_in? && current_user.id == @item.id
+      if user_signed_in?
+        @item = Item.find(params[:id])
+        @user = User.find(@item.seller_id)
+        @box = Item.order("RAND()").limit(6)
+        @smallcategory = Category.find(@item.category_id)
+        @category = @smallcategory.parent # unless Category.find(@item.category_id)
+        @bigcategory = @category.parent
+        @size = Size.find(@item.size_id)
+        @brand = Brand.find(@item.brand_id)
+        @delivery = DeliveryDay.find(@item.delivery_day_id)
+        @address = Prefecture.find(@item.prefecture_id)
+        @condition = Condition.find(@item.condition_id)
+        @postage = Postage.find(@item.postage_id)
+        # binding.pry
+      else
+        render index
+      end
     end
 
     def destroy
-      if user_signed_in? && current_user.id == @item.id
+      if user_signed_in? && current_user.id == @user.id
         if @item.destroy
           redirect_to root_path, notice: "削除しました"
         else
@@ -77,6 +102,16 @@ class ItemsController < ApplicationController
       end
     end
 
+    # ログイン状態の確認
+    def confirmation  #ログインしていない場合ははユーザー登録に移動
+      unless user_signed_in?
+        redirect_to(user_session_path)
+      end
+    end
+
+
+
+
     private
 
     def set_item
@@ -85,7 +120,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, brand_attributes: [:id,:name], images_attributes: [:src, :_destroy, :id] ).merge(seller_id: current_user.id)
+      params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :prefecture_id, :condition_id, :delivery_day_id, :postage_id, :seller_id, :buyer_id, brand_attributes: [:id,:name], images_attributes: [:src, :_destroy, :id] ).merge(user_id: current_user.id, seller_id: current_user.id)
     end
 
     def item_update_params
@@ -103,4 +138,5 @@ class ItemsController < ApplicationController
     def set_category
       @category_parent_array = Category.where(ancestry: nil)
     end
+
 end

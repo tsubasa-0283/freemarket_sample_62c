@@ -11,17 +11,17 @@ class Users::SessionsController < Devise::SessionsController
       redirect_to root_path
     else
       session[:user_id] = params[:user_id]
-      flash[:alert] = "ログアウトしました"
       render new_user_session_path
     end
   end
 
-  
-
   def destroy
-    session.delete(:user_id)                                                    # セッションのuser_idを削除する
-    @current_user = nil     
-    redirect_to root_path
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    set_flash_message! :notice, :signed_out if signed_out
+    yield if block_given?
+    respond_to_on_destroy
   end
+    
+    
 end
 

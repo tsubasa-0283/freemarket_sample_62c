@@ -5,63 +5,432 @@
     vertical-align: bottom;
   }
 }
-.showMain {
-  padding: 40px;
-  margin: auto;
-  .contentRight {
-    width: 700px;
-    margin: 0 auto;
-    .topContent {
-      text-align: center;
-      .itemBox {
-        background-color: #fff;
-        padding: 24px 40px 40px;
-        &__name {
-          text-align: center;
-          font-weight: bold;
-          font-size: 24px;
-        
+// アイテム詳細image
+.item__details {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 5px;
+  background: white;
+  padding: 24px 40px;
+  &__name{
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.4;
+  }
+    &__main_content {
+      margin: 16px 0 0;
+      &_box {
+      background: white;
+      height: 450px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      .main_photo {
+        padding-right: 8px;
+        .photos {
+          background-size: cover;
+          width: 300px;
+          height: 300px;
         }
-        &__body {
-          margin: 16px 0 0;
-          ul{
-            ul{
-              display:flex;
-              justify-content: center;
-              margin-top: 10px;
-              li{
-                margin-right: 10px;
-              }
+        .small_photos {
+          background: #ecebeb;
+          height: 120px;
+          width: 300px;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          position: relative;
+          flex-wrap: wrap;
+          .small_photo {
+            background-size: cover;
+            height: 60px;
+            width: 60px;
+            }
+          .small_photo2 {
+            background-size: cover;
+            height: 60px;
+            width: 60px;
+          }
+          .small_photo3 {
+            background-size: cover;
+            height: 60px;
+            width: 60px;
+          }
+          .small_photo4 {
+            background-size: cover;
+            height: 60px;
+            width: 60px;
+          }
+          .small_photo5 {
+            background-size: cover;
+            height: 60px;
+            width: 60px;
+          }
+          .small_photos2{
+            position: absolute;
+            height: 60px;
+            width: 300px;
+            bottom: 0;
+            display: flex;
+            .small_photo6{
+              background-size: cover;
+              height: 60px;
+              width: 60px;
+            }
+            .small_photo7{
+              background-size: cover;
+              height: 60px;
+              width: 60px;
+            }
+            .small_photo8{
+              background-size: cover;
+              height: 60px;
+              width: 60px;
+            }
+            .small_photo9{
+              background-size: cover;
+              height: 60px;
+              width: 60px;
+            }
+            .small_photo10{
+              background-size: cover;
+              height: 60px;
+              width: 60px;
             }
           }
         }
-        .table {
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            tr {
-              font-size: 14px;
-              th {
-                border: solid 1px #dedede;
-                width: 20%;
-                padding: 8px;
-                text-align: center;
-                background-color:#eee;
-              }
-              td {
-                border: solid 1px #dedede;
-                padding: 0.5em;
-                text-align: left;
-                padding: 15px;
-                a {
-                  color: #3CCACE;
-                  text-decoration: none;
-                }
-              }              
-            }
-          }
-        }
-    }
+      }      
     }
   }
+}
+
+
+// アイテム詳細テーブル(right)
+table.item_detail_table {
+  float: right;
+  height: 380px;
+  width: 300px;
+  th, td {
+    border: 1px solid  #f7efef;
+    padding: 9px;
+    font-size: 14px;
+    display: table-cell;
+  }
+  th {
+    background-color:   #fcf8f8;
+    .seller_name{
+      padding-bottom:5px;
+    }
+  }
+}
+// ユーザー評価
+.user_rating {
+  display: flex;
+  align-items:center;
+  .item_user_ratings{
+    height:25px;
+  }
+}
+
+
+// 評価アイコン
+.fa-laugh{
+  color: #ef5185;
+}
+.fa-meh{
+  color: #fba933;
+}
+.fa-frown{
+  color: #6ab5d8;
+}
+
+// 商品価格
+.item_price_box {
+  margin: 24px 0 0;
+  text-align: center;
+  .item_price {
+    margin: 0 5px 0 0;
+    font-size: 50px;
+  }
+  .item_tax {
+    font-size: 10px;
+  }
+}
+
+// 購入ボタン
+.item_buy_btn {
+  margin:16px 30px;
+  border-radius: 5px;
+  height:50px;
+  background-color:#ea352d;
+  display: block;
+  font-size: 20px;
+  color: #fff;
+  line-height: 56px;
+  text-align: center;
+  font-weight: 600;
+}
+// 発送お知らせメッセージ
+.shipping_note_message {
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 12px;
+  text-align: center;
+}
+// 商品説明
+.item_description{
+  white-space: pre-wrap;
+  margin:10px 30px;
+}
+
+// いいね・不適切な報告
+.item_button_container{
+  padding-top:20px;
+  height: 60px;
+  display:flex;
+  justify-content: space-around;
+  .item_text {
+    line-height: 10px;
+  }
+  .item_button{
+    display: flex;
+    float: left;
+    &__left {
+      display: flex;
+      padding: 8px;
+      width:80px;
+      height:30px;
+      border-radius: 40px;
+      border: 1px solid #ea352d;
+      padding: 8 16;
+    }
+    &__right {
+      margin-left: 5px;
+      padding: 8px;
+      display: flex;
+      background-color: #F5F5F5;
+      height:30px;
+      border-radius: 40px;
+      border: solid  1px #F5F5F5;
+    }
+  }
+}
+
+
+// いいねアイコン
+.fa-heart{
+  color: red;
+  align-items:center;
+  margin:1px;
+  font-size: 13px;
+  font-weight: lighter;
+}
+.fa-flag {
+  font-weight: lighter;
+  color: rgb(12, 12, 12);
+  align-items:center;
+  margin:1px;
+  font-size: 13px;
+}
+.fa-unlock-alt {
+  float:right;
+  font-size: 10px;
+  color: blue;
+}
+
+// 取引メッセージコンテンツ
+.message_content {
+  width: 700px;
+  margin: 0 auto;
+  padding: 24px 40px;
+  background: white;
+  .message_items {
+    margin: 1.5em 0 0;
+    height:60px;
+  }
+}
+
+.message_body {
+  float: right;
+  position: relative;
+  width: calc(100% - 56px);
+  padding: 5px;
+  background: #eef0f4;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+  height:80px;
+  display: flex;
+  &__text{
+    padding: 5px;
+  }
+}
+.message_icon {
+  display:flex;
+  justify-content: space-between;
+}
+// アイコン
+.fa-user-circle{
+  font-size: 30px;
+}
+.far.fa-flag {
+  font-size: 15px;
+  float: right;
+}
+
+
+.message_content__box{
+  background: white;
+  width: 100%;
+  margin: 0 auto;
+  &__form{
+    padding-top: 20px;
+    margin: 8px;
+
+    p.attention{
+      width: 100%;
+      font-size: 14px;
+      background:#fff6de;
+      margin: 20px 0;
+      text-align: left;
+    }
+    &__textarea{
+      width: 100%;
+      min-height: 104px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background:#fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    &__submit{
+      padding: 10px;
+      width: 100%;
+      margin: 8px 0 0;
+      font-size: 16px;
+      text-align: center;
+      background: #aaa;
+      border: 1px solid #aaa;
+      color: #fff;
+    }
+  }
+}
+
+.next_or_back {
+  display: flex;
+  line-height: 50px;
+  justify-content: space-between;
+  width: 675px;
+  margin: 0 auto;
+  height: 30px;
+}
+
+// SNS
+.item-snsbox{
+  width: 700px;
+  margin: 20px auto;
+  height: 136px;
+  line-height: 150px;
+  background: white;
+  margin-bottom: 48px;
+  .sns{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    padding:50px;
+    margin-right: 5px;
+    border-radius: 10px;
+    i{
+      margin-right: 10px;
+      border-radius: 10px;
+    }
+  }
+}
+// SNSアイコン
+.fa-facebook-square {
+  background-color: #fff;
+  color: #385185;
+}
+.fa-twitter-square {
+  background-color: #fff;
+  color: #5d9dc9;
+}
+.fa-pinterest-square {
+  background-color: #fff;
+  color: #aa262a;
+}
+.fa-line{
+  background-color: #fff;
+  color: #00c137;
+}
+
+
+.items_show{
+  width: 700px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  .item_show__name{
+    font-size: 22px;
+    margin: 24px 0 8px;
+  }
+  .item_show__list{
+    width: 100%;
+    &__box{
+      width: 220px;
+      height: 350px;  
+      object-fit: cover;
+      background:white;
+      &__image {
+        background-image: url(/images/item_sample.jpg);
+        background-size: cover;
+        width: 220px;
+        height: 220px;
+      }
+      &__detail {
+        background-color: white;
+        margin: 10px;
+        height: 150px;
+        font-weight: 400;
+        height: 3em;
+        line-height: 1.5;
+      }
+      &__container {
+        background-color: white;
+        margin: 10px;
+        height: 30px;
+        font-weight: 400;
+        height: 3em;
+        line-height: 1.5;
+        &__price{
+          display: inline;
+          font-size: 16px;
+        }
+        .fa-heart{
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+.item_bread_crumbs{
+  // height: 40px;
+  border-top: 1px solid rgb(196, 193, 193);
+  background: #f5f5f5;
+  display: flex;
+}
+ul.home {
+  line-height: 10px;
+  width: 700px;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
+li.item_name  {
+  font-size: 13px;
+  list-style: none;
 }
