@@ -15,15 +15,6 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
-  
-
-  # def destroy
-  #   session.delete(:user_id)                                                    # セッションのuser_idを削除する
-  #   @current_user = nil     
-  #   flash[:alert] = "ログアウトしました"
-  #   binding.pry
-  #   redirect_to root_path
-  # end
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     set_flash_message! :notice, :signed_out if signed_out
