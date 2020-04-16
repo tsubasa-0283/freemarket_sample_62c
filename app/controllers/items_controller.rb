@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
+    before_action :confirmation, only: [:new]
 
     def index
         @items = Item.includes(:images).order('created_at DESC')
@@ -83,14 +84,14 @@ class ItemsController < ApplicationController
         @address = Prefecture.find(@item.prefecture_id)
         @condition = Condition.find(@item.condition_id)
         @postage = Postage.find(@item.postage_id)
-        binding.pry
+        # binding.pry
       else
         render index
       end
     end
 
     def destroy
-      if user_signed_in? && current_user.id == @item.id
+      if user_signed_in? && current_user.id == @user.id
         if @item.destroy
           redirect_to root_path, notice: "削除しました"
         else
@@ -100,6 +101,16 @@ class ItemsController < ApplicationController
         redirect_to  new_user_session_path
       end
     end
+
+    # ログイン状態の確認
+    def confirmation  #ログインしていない場合ははユーザー登録に移動
+      unless user_signed_in?
+        redirect_to(user_session_path)
+      end
+    end
+
+
+
 
     private
 
