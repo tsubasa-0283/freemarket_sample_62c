@@ -1,8 +1,10 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
+
   def new
-    card = Card.(user_id: current_user.id)
-    redirect_to card_path(current_user.id) 
+    @parents = Category.order("id ASC").limit(13)
+    card = Card.where(user_id: current_user.id)
+    redirect_to card_path(current_user.id) if card.exists? 
   end
 
 
@@ -37,6 +39,7 @@ class CardsController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
+    @parents = Category.order("id ASC").limit(13)
     card = Card.find_by(user_id: current_user.id)
     if card.blank?
       redirect_to new_card_path 
