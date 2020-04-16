@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20200415122357) do
   end
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20200415122357) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "prefecture_id",                 null: false
-    t.string   "brand_id"
+    t.string   "brand_id",                      null: false
     t.text     "description",     limit: 65535, null: false
     t.integer  "seller_id",                     null: false
     t.integer  "category_id",                   null: false
@@ -115,9 +115,9 @@ ActiveRecord::Schema.define(version: 20200415122357) do
   end
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "size",       default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "size",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "ancestry"
     t.index ["ancestry"], name: "index_sizes_on_ancestry", using: :btree
   end
