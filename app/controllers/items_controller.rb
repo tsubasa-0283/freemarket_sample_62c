@@ -1,11 +1,7 @@
 class ItemsController < ApplicationController
     before_action :set_item, only:[:destroy, :show, :edit, :update]
     before_action :set_category
-    before_action :set_condition, only: [:show, :edit]
-    before_action :set_prefecture, only: [:show, :edit]
-    before_action :set_brand, only: [:show, :edit]
-    before_action :set_delivery, only: [:show, :edit]
-    before_action :set_user, only: [:show, :edit]
+
     def index
         @items = Item.includes(:images).order('created_at DESC')
     end
@@ -66,20 +62,31 @@ class ItemsController < ApplicationController
       end
     end
 
+    # 子カテゴリー
+    def category_children
+      children = Category.find(params[:name]).name
+      @category_children = Category.find_by(name: children, ancestry: nil ).children
+    end
+
 # 商品詳細表示
     def show
-      render :index unless user_signed_in? && current_user.id == @item.id
-      @item = Item.find(params[:id])
-      @user = User.find(@item.seller_id)
-      @box = Item.order("RAND()").limit(6)
-      @smallcategory = Category.find(@item.category_id)
-      @category = Category.find(Category.find(@item.category_id)) unless Category.find(@item.category_id)
-      @bigcategory = Category.find(Category.find(@item.category_id))
-      @size = Size.find(@item.size_id)
-      binding.pry
-      # @brand = Brand.find(@item.brand_id)
-      # @delivery = Delivery.find(@item.delivery_day_id)
-      # @address = Prefecture.find(@item.prefecture_id)
+      if user_signed_in?
+        @item = Item.find(params[:id])
+        @user = User.find(@item.seller_id)
+        @box = Item.order("RAND()").limit(6)
+        @smallcategory = Category.find(@item.category_id)
+        @category = Category.find(Category.find(@item.category_id)) unless Category.find(@item.category_id)
+        @bigcategory = Category.find(Category.find(@item.category_id))
+        @size = Size.find(@item.size_id)
+        @brand = Brand.find(@item.brand_id)
+        @delivery = DeliveryDay.find(@item.delivery_day_id)
+        @address = Prefecture.find(@item.prefecture_id)
+        @condition = Condition.find(@item.condition_id)
+        @postage = Postage.find(@item.postage_id)
+        binding.pry
+      else
+        render index
+      end
     end
 
     def destroy
@@ -119,33 +126,6 @@ class ItemsController < ApplicationController
 
     def set_category
       @category_parent_array = Category.where(ancestry: nil)
-    end
-
-     # ユーザー情報
-    def set_user
-      @user = User.find(@item.seller_id)
-    end
-
-     # ブランド情報
-    def set_brand
-      @brand = Brand.find(@item.brand_id)
-    end
-
-    # 商品状態
-    def set_condition
-      @condition = Condition.find(@item.condition_id)
-    end
-
-    # 配送元地域
-    def set_prefecture
-      @prefecture = Prefecture.find(@item.prefecture_id)
-    end
-
-    # 発送日目安、配送方法、配送料の負担
-    def set_delivery
-      @postage = Postage.find(@item.postage_id)
-      # @delivery_way = DeliveryWay.find(@product.delivery_way_id)
-      @delivery_days = DeliveryDay.find(@item.delivery_day_id)
     end
 
 end

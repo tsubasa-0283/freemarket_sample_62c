@@ -21,6 +21,7 @@ class Users::SessionsController < Devise::SessionsController
     session.delete(:user_id)                                                    # セッションのuser_idを削除する
     @current_user = nil     
     flash[:alert] = "ログアウトしました"
+    binding.pry
     redirect_to root_path
   end
 end

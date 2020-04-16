@@ -9,11 +9,11 @@ class Item < ApplicationRecord
     accepts_nested_attributes_for :images, allow_destroy: true
     belongs_to :category, optional: true
     belongs_to :address, optional: true
-    belongs_to :condition
+    belongs_to :condition, optional: true
     belongs_to :brand, optional: true
     accepts_nested_attributes_for :brand
     belongs_to :size, optional: true
-    belongs_to :postage
+    belongs_to :postage, optional: true
     belongs_to :DeliveryDay, optional: true
     belongs_to_active_hash :prefecture
 

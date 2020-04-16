@@ -39,19 +39,19 @@
                 %td 
                   = link_to  '/' do
                     = @bigcategory.name
-                　- if @category.present?
-                -#     = link_to '/' do
-                -#       .itembuy-table-sub
-                -#       %i.fas.fa-chevron-right
-                -#       = @category.name
-                -# = link_to '/' do
-                  .itembuy-table-sub
+                - if @category.present?
+                  = link_to '/' do
+                    .itembuy-table-sub
+                    %i.fas.fa-chevron-right
+                    = @category.name
+                  = link_to '/' do
+                    .itembuy-table-sub
                     %i.fas.fa-chevron-right
                     = @smallcategory.name
               %tr
                 %th ブランド
                 %td
-                -#   = @brand.name
+                  = @brand.name
               %tr
                 %th 商品サイズ
                 %td
@@ -71,11 +71,11 @@
               %tr
                 %th 発送元の地域
                 %td
-                  = @prefecture.prefecture
+                  = @address.name
               %tr
                 %th 発送日の目安
                 %td
-                  = @delivery_days.delivery_day_id
+                  = @delivery.day
           .price-box
             %span.price-box__text
               ¥
@@ -160,8 +160,8 @@
           .item-show__box
             .item-show__box__name
               = link_to "", class: "item-show-text-link" do
-                = @grandchild.name
-                = @bigcategory.name
+                -# = @grandchild.name
+                -# = @bigcategory.name
                 その他の商品
             .item-show__list
               %ul
