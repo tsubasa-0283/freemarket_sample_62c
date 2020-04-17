@@ -52,10 +52,10 @@
               %th ブランド
               %td
                 = @brand.name
-            %tr
-              %th 商品サイズ
-              %td
-                = @size.size
+            -# %tr
+            -#   %th 商品サイズ
+            -#   %td
+            -#     = @size.size
             %tr
               %th 商品の状態
               %td
@@ -84,35 +84,35 @@
           (税込)
         %span.item_shipping_fee
           送料込み
-          -# ここから
+          ここから
       .item-buy-btn
-        -# -if @item.buyer_id != nil
-        -#   = link_to ‘売り切れました‘, root_path, class: “item-buy-btn”
-        -# -elsif user_signed_in?
+        -if @item.buyer_id != nil
+          = link_to ‘売り切れました‘, root_path, class: “item-buy-btn”
+        -elsif user_signed_in?
       
-        -#   -if @item.seller_id == current_user.id
-        -#     = link_to '編集画面に進む', edit_item_path(params[:id]), class:“item-buy-btn__destroy”
-        -#     %span or
-        -#     = link_to '削除する', edit_item_path(params[:id]), class:“item-buy-btn__destroy”,method: :delete
-        -#   - elsif @item.buyer_id == nil
-        -#     = link_to ‘購入画面に進む‘,item_buyers_path(@item), class: “item-buy-btn”
-        -#   - else
-        -#     = link_to ‘ログインして購入‘, new_user_session_path, class: “item-buy-btn”
-        -#     %span or
-        -#     = link_to ‘新規会員登録して購入’, new_user_registration_path, class: “item-buy-btn”
+          -if @item.seller_id == current_user.id
+            = link_to '編集画面に進む', edit_item_path(params[:id]), class:“item-buy-btn__destroy”
+            %span or
+            = link_to '削除する', edit_item_path(params[:id]), class:“item-buy-btn__destroy”,method: :delete
+          - elsif @item.buyer_id == nil
+            = link_to ‘購入画面に進む‘,item_buyers_path(@item), class: “item-buy-btn”
+          - else
+            = link_to ‘ログインして購入‘, new_user_session_path, class: “item-buy-btn”
+            %span or
+            = link_to ‘新規会員登録して購入’, new_user_registration_path, class: “item-buy-btn”
         
         
-          -# ここまで
-        -# - if user_signed_in?
-        -#   - if current_user.id == @item.seller_id
-        -#     = link_to '編集画面に進む', edit_item_path(@item), class: "item-edit-btn", method: :get
-        -#     = link_to '削除する', items_path(@item), class: "item-delete-btn" ,method: :delete
-        -#   - else
-        -#     = link_to item_buyers_path, class: "item-buy-btn", method: :get do
-        -#       購入画面に進む
-        -# - else
-        -#   = link_to user_session_path, class: "item-buy-btn", method: :get do
-        -#     購入画面に進む
+          ここまで
+        - if user_signed_in?
+          - if current_user.id == @item.seller_id
+            = link_to '編集画面に進む', edit_item_path(@item), class: "item-edit-btn", method: :get
+            = link_to '削除する', items_path(@item), class: "item-delete-btn" ,method: :delete
+          - else
+            = link_to item_buyers_path, class: "item-buy-btn", method: :get do
+              購入画面に進む
+        - else
+          = link_to user_session_path, class: "item-buy-btn", method: :get do
+            購入画面に進む
         .item-description
           = @item.description
           .item_button_container
