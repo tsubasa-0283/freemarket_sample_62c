@@ -87,9 +87,9 @@
           = link_to ‘売り切れました‘, root_path, class: "item-buy-btn"
         -elsif user_signed_in?
           -if @item.seller_id == current_user.id
-            = link_to '編集画面に進む',edit_item_path(@item), class: "item-buy-btn__destroy"
+            = link_to '編集画面に進む',edit_item_path(@item), class: "item-buy-btn"
             %span or
-            = link_to '削除する', item_path(@item), class:"item-buy-btn__destroy",method: :delete
+            = link_to '削除する', item_path(@item), class:"item-buy-btn", method: :delete
           - elsif @item.buyer_id == nil
             = link_to '購入画面に進む',item_buyers_path(@item), class: "item-buy-btn"
           - else
