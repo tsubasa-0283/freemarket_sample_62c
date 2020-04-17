@@ -52,10 +52,7 @@
               %th ブランド
               %td
                 = @brand.name
-            -# %tr
-            -#   %th 商品サイズ
-            -#   %td
-            -#     = @size.size
+
             %tr
               %th 商品の状態
               %td
@@ -84,7 +81,7 @@
           (税込)
         %span.item_shipping_fee
           送料込み
-          -# ここから
+
       .item-buy-btn
         -if @item.buyer_id != nil
           = link_to ‘売り切れました‘, root_path, class: "item-buy-btn"
@@ -100,33 +97,6 @@
             %span or
             = link_to '新規会員登録して購入', new_user_registration_path, class: "item-buy-btn"
           
-        
-        -#   ここまで
-        -# -# - if user_signed_in?
-        -#   - if current_user.id == @item.seller_id
-        -#     = link_to '編集画面に進む', edit_item_path(@item), class: "item-edit-btn", method: :get
-        -#     = link_to '削除する', items_path(@item), class: "item-delete-btn" ,method: :delete
-        -#   - else
-        -#     = link_to item_buyers_path, class: "item-buy-btn", method: :get do
-        -#       購入画面に進む
-        -# - else
-        -#   = link_to user_session_path, class: "item-buy-btn", method: :get do
-        -#     購入画面に進む
-        -# .item-description
-        -#   = @item.description
-        -#   .item_button_container
-        -#     .item_button
-        -#       .item_button__left
-        -#         .fas.fa-heart
-        -#           いいね
-        -#       .item_button__right
-        -#         .fas.fa-flag
-        -#           不適切な商品の報告
-        -#     .item_text
-        -#       .fas.fa-unlock-alt
-        -#         あんしん・あんぜんへの取り組み
-
-  -# コメント部分
   %section
   .message_container
     .message_content
