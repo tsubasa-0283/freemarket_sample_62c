@@ -89,14 +89,10 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-      if user_signed_in? && current_user.id == @user.id
-        if @item.destroy
-          redirect_to root_path, notice: "削除しました"
-        else
-          redirect_to root_path, alert: "削除に失敗しました"
-        end
+      if @item.destroy
+        redirect_to root_path, notice: "削除しました"
       else
-        redirect_to  new_user_session_path
+        redirect_to root_path, alert: "削除に失敗しました"
       end
     end
 
