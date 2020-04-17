@@ -84,7 +84,6 @@ class ItemsController < ApplicationController
         @address = Prefecture.find(@item.prefecture_id)
         @condition = Condition.find(@item.condition_id)
         @postage = Postage.find(@item.postage_id)
-        # binding.pry
       else
         render index
       end
