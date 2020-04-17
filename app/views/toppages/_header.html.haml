@@ -35,7 +35,7 @@
           %li.right__login
             = link_to "マイページ", mypages_path, class: "right__none" 
           %li.right__signup
-            = link_to "ログアウト", logout_users_path, class: "right__none" 
+            = link_to "ログアウト", logout_mypages_path, class: "right__none" 
         - else
           %li.right__login
             =link_to "ログイン", new_user_session_path, class: "right__none"
