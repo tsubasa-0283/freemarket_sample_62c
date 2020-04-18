@@ -1,4 +1,7 @@
-%h1.buy-content__attention
+.buy-main
+  .buy-main__box
+    .buy-content
+      %h1.buy-content__attention
         %i.far.fa-clock
           発送をお待ちください
         %h2.buy-content__attention__title
@@ -7,7 +10,7 @@
           .buy-content__item__inner
             .buy-item-main
               .buy-item-image
-                = image_tag "#{@item.images[0].url}", size: '64x64', class: 'buydetails-contet__image'
+                = image_tag "#{@item.images[0].src.url}", size: '64x64', class: 'buydetails-contet__image'
               .buy-item-detail
                 .buy-item-name
                   = @item.name
