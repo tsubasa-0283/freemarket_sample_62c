@@ -1,10 +1,13 @@
-%h2.buy-content__title
+.buy-main
+  .buy-main__box
+    .buy-content
+      %h2.buy-content__title
         購入内容の確認
       .buy-content__item
         .buy-content__item__inner
           .buy-item-main
             .buy-item-image
-              = image_tag item.images[0].src.url, size: '64x64', class: 'buydetails-content__image'
+              = image_tag "#{@item.images[0].src.url}", size: '100x100', class: 'buydetails-content__image'
             .buy-item-detail
               .buy-item-name
                 = @item.name
