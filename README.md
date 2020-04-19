@@ -259,5 +259,3 @@
 
 ### Association
 - has_many :items
-test,test
-test
