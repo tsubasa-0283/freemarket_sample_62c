@@ -35,15 +35,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     @user.build_address(user_params[:address_attributes]) #今回のビューで入力された情報を代入する。
 
-    if @user.save
-      #ここでidをsessionに入れることでログイン状態に持っていける
-      session[:user_id] = @user.id
-      # bypass_sign_in(user)
-      redirect_to root_path
-    else
-      flash.now[:alert] = @user.errors.full_messages
-      render action: :step1
-    end
+      if @user.save
+        #ここでidをsessionに入れることでログイン状態に持っていける
+        session[:user_id] = @user.id
+        bypass_sign_in(@user)
+        flash[:alert] = "新規登録しました。"
+        redirect_to root_path
+      else
+        flash.now[:alert] = @user.errors.full_messages
+        render action: :step1
+      end
   end
 
   def done

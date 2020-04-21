@@ -1,12 +1,5 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-ja:
-  devise:
-    confirmations:
-      confirmed: アカウントを登録しました。
-      send_instructions: 登録方法を数分以内にメールでご連絡します。
-      send_paranoid_instructions: メールアドレスが登録されていれば、数分以内にアカウントを登録する方法が記載されているメールが届きます。
-
 en:
   devise:
     confirmations:
